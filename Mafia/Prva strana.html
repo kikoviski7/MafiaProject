@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mafia.css">
+    <title>Mafia</title>
+</head>
+<body>
+    <!-- Sandra Milos Kole Milica Nikola Milan Luka?  -->
+    <div>
+        <input type="text" id="igraci" placeholder="Igraci" value="Igraci">
+        <button onclick="playerSumerize()">Gotovo</button>
+    </div>
+    
+
+     <div class="mafia">
+        <h3>Mafija</h3>
+    <input type="checkbox" class="checkbox" id="kum">Kum
+    <input type="checkbox" class="checked" id="mafioza">Mafioza
+    </div>
+    <div>
+        <h3>Grad</h3>
+        
+    
+        <div class="town">
+            <h4>Town Support</h2>
+            <input type="checkbox" class="checked" id="zavodnica">Zavodnica
+            <input type="checkbox"  id="transporter">Transporter
+            <input type="checkbox"  id="pop">Pop
+            <input type="checkbox"  id="major">Major
+        </div>
+        <div>
+            <h4>Town Investigative</h4>
+            <input type="checkbox" class="checked" id="serif">Serif
+        </div>
+        <div>
+            <h4>Town Killing</h4>
+            <input type="checkbox" id="Ratni_Veteran">Ratni Veteran
+        </div> 
+        <div>
+            <h4>Town Protective</h4>
+            <input type="checkbox" class="checked" id="doktor">Doktor
+            <input type="checkbox" class="checked" id="bodigard">Bodigard
+        </div>
+    </div>
+    <div>
+        <h3>Neutral</h3>
+        <input type="checkbox" class="neutral">Ludak
+        <input type="checkbox" class="neutral">Izvrsilac
+        <input type="checkbox" class="neutral">Vukodlak
+    </div>
+    <br>
+    <div class="poslednji-div">
+        <button onclick="roleSumerize()">Gotovo</button>
+    </div>
+<br><br><br>
+
+    
+
+
+
+    
+    <script src="Mafia.js"></script>
+</body>
+</html>

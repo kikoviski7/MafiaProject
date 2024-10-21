@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        
+        body{
+            background-color: #313131;
+        }
+        .Eksli-prva-strana{
+            background-color: #313131;
+            color: white;
+            
+            position: relative;
+            transform: translate(15%, 20%);
+            width: 300px;
+            height: 550px;
+        }
+        .Eksli-druga-strana{
+            transform: translate(15%, 30%);
+            width: 300px;
+            height: 550px;
+            position: relative;
+        }
+
+        body{
+            background-color: #313131;
+        }
+        
+        .section{
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+
+            /* Svi redovi ce biti toliko piksela */
+            grid-auto-rows: 60px;
+        }
+
+        hr{
+            height: 3px;
+            background-color: black;
+            border: none;
+            
+        }
+
+        .checkbox{display: none;}
+
+       
+
+        .section div{
+            position: relative;
+            margin: 5px;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            
+        }
+
+        .bodyguard{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        .mafia-section .checkbox-box{
+            background-color: rgb(209, 13, 13);
+            border: solid 1px red;
+            transition: 0.5s;
+            
+        }
+
+        .mafia-section .checkbox:checked + .checkbox-box{
+            background-color: #313131;
+            box-shadow: 0 0 10px red,
+            inset 5px 5px 10px red,
+            inset -5px -5px 10px red;
+            border-radius: 15px;
+        }
+
+        .town-section .checkbox-box{
+            background-color: rgb(126, 208, 3);
+            border: solid 1px yellowgreen;
+            transition: 0.5s;
+        }
+
+        .town-section .checkbox:checked + .checkbox-box{
+            background-color: #313131;
+            box-shadow: 0 0 10px yellowgreen,
+            inset 5px 5px 10px yellowgreen,
+            inset -5px -5px 10px yellowgreen;
+            border-radius: 15px;
+        }
+
+        
+
+        .neutral-section .checkbox-box{
+            background-color: rgb(107, 104, 104);
+            border: solid 1px grey;
+            transition: 0.5s;
+        }
+
+        .neutral-section .checkbox:checked + .checkbox-box{
+            background-color: #313131;
+            box-shadow: 0 0 10px grey,
+            inset 5px 5px 10px grey,
+            inset -5px -5px 10px grey;
+            border-radius: 15px;
+        }
+
+
+        .Eksli-druga-strana span{
+            height: 40px;
+            width: 30%;
+            position: absolute;
+            background-color: grey;
+            border: 3px solid rgb(177, 177, 177);
+            border-radius: 15px;
+            line-height: 40px;
+            font-size: 14px;
+            text-align: center;
+            margin-left: 130px;
+            margin-top: 50px;
+            color: white;
+        }
+        h1{
+            margin-bottom: 50px;
+            margin-top: 50px;
+            /* margin-left: 10px; */
+            text-align: center;
+        }
+
+        .input-button{
+            margin-right: 50px;
+        }
+        input{
+            padding-left:10px;
+            background-color: grey;
+            border: 3px solid rgb(177, 177, 177);
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-right: none;
+            height: 40px;
+            width: 150px;
+            
+        }
+
+        input:focus{
+            outline: none;
+        }
+
+        input::placeholder{
+            color: white;
+        }
+         span{
+            background-color: grey;
+            border: 3px solid rgb(177, 177, 177);
+            border-left: none;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            line-height: 40px;
+            font-size: 12px;
+            text-align: center;
+
+            /* Height nece da radi bez absolute */
+            height: 40px;
+            width: 40%;
+            position: absolute;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .about-mafia{
+            position: relative;
+            text-align: center;
+            top: 50px;
+            
+        }
+        h4{
+            margin: 5px;
+        }
+
+        p{
+            width: 50%;
+            margin: auto;
+        }
+        button{
+            position: relative;
+            margin-top: 300px;
+        }
+
+    </style>
+    <title>Sve u jednoj</title>
+</head>
+<body>
+    <div class="Eksli-prva-strana">
+        <h1>WHAT ARE YOUR NAMES?</h1>
+        <div class="input-button">
+            <input type="text" placeholder="Type your names here..." id="igraci">
+            <span onclick="playerSumerize()">WE ARE READY!</span>
+            <!-- <span onclick="document.location='Eksli druga strana.html'"> WE ARE READY!</span> -->
+        </div>
+        <div class="about-mafia">
+            <h4>About mafia</h4>
+            <p>Mafia is a game that challenges players on their 
+                ability to convincigly lie as well as recognize 
+                when other players are lying...
+            </p>
+            <h4>MORE</h4>
+        </div>
+    </div>
+    <div class="Eksli-druga-strana">
+        <div class="mafia-section section">
+            <label for="godfather" class="label">
+                <input type="checkbox" class="checkbox" id="godfather">
+                <div class="checkbox-box">GODFATHER</div>
+            </label>
+            <label for="mafioso" class="label">
+                <input type="checkbox" class="checkbox" id="mafioso">
+                <div class="checkbox-box">MAFIOSO</div>
+            </label>
+            <label for="consort" class="label">
+                <input type="checkbox" class="checkbox" id="consort">
+                <div class="checkbox-box">CONSORT</div>
+            </label>
+            <label for="janitor" class="label">
+                <input type="checkbox" class="checkbox" id="janitor">
+                <div class="checkbox-box">JANITOR</div>
+            </label>
+        </div>
+        <hr>
+        <div class="town-section section">
+            <label for="escort" class="label">
+                <input type="checkbox" class="checkbox" id="escort">
+                <div class="checkbox-box">ESCORT</div>
+            </label>
+            <label for="transporter" class="label">
+                <input type="checkbox" class="checkbox" id="transporter">
+                <div class="checkbox-box">TRANSPORTER</div>
+            </label>
+            <label for="retributionist" class="label">
+                <input type="checkbox" class="checkbox" id="retributionist">
+                <div class="checkbox-box">RETRIBUTIONIST</div>
+            </label>
+            <label for="major" class="label">
+                <input type="checkbox" class="checkbox" id="major">
+                <div class="checkbox-box">MAJOR</div>
+            </label>
+            <label for="sherif" class="label">
+                <input type="checkbox" class="checkbox" id="sherif">
+                <div class="checkbox-box">SHERIF</div>
+            </label>
+            <label for="veteran" class="label">
+                <input type="checkbox" class="checkbox" id="veteran">
+                <div class="checkbox-box">VETERAN</div>
+            </label>
+            <label for="vigilante" class="label">
+                <input type="checkbox" class="checkbox" id="vigilante">
+                <div class="checkbox-box">VIGILANTE</div>
+            </label>
+            <label for="doctor" class="label">
+                <input type="checkbox" class="checkbox" id="doctor">
+                <div class="checkbox-box">DOCTOR</div>
+            </label>
+            <label for="bodyguard" class="label">
+                <input type="checkbox" class="checkbox" id="bodyguard">
+                <div class="checkbox-box">BODYGUARD</div>
+            </label>
+            <label for="lookout" class="label">
+                <input type="checkbox" class="checkbox" id="lookout">
+                <div class="checkbox-box">LOOKOUT</div>
+            </label>
+        </div>
+        <hr>
+        <div class="neutral-section section">
+            <label for="jester" class="label">
+                <input type="checkbox" class="checkbox" id="jester">
+                <div class="checkbox-box">JESTER</div>
+            </label>
+            <label for="executioner" class="label">
+                <input type="checkbox" class="checkbox" id="executioner">
+                <div class="checkbox-box">EXECUTIONER</div>
+            </label>
+            <label for="werewolf" class="label">
+                <input type="checkbox" class="checkbox" id="werewolf">
+                <div class="checkbox-box">WEREWOLF</div>
+            </label>
+            <label for="serial-killer" class="label">
+                <input type="checkbox" class="checkbox" id="serial-killer">
+                <div class="checkbox-box">SERIAL-KILLER</div>
+            </label>
+        </div>
+    
+        <!-- <span onclick="document.location='Transporter strana.html'"> LET'S PLAY!</span> -->
+        <span id="roleButton" onclick="roles">LETS PLAY!</span>
+    </div>
+
+    <button onclick="randomChoosing()">IZRACUNAJ SVE</button>
+    <script>
+        const roles = function roleSumerize() {                               //nece da appenduje div na div
+
+            
+            var divs = document.getElementsByClassName("checkbox-box");
+            let input;
+            let role;
+            let roleList;
+            let roles;
+            
+            
+            // console.log(roles[0].closest('input')); - closest(parent)
+            
+            
+           for(i = 0; i < divs.length; i++){
+            // roleList += ' ' + roles[i].innerHTML;
+            input = divs[i].previousElementSibling;
+            
+
+            if(input.checked == true){
+                
+                role = input.getAttribute('id');
+                roleList += ' ' + role;
+                
+            }
+            
+           }
+           roles = roleList.split(" ");    
+           console.log(roles);
+           return roles;
+
+        }
+
+
+        const names = function playerSumerize() {
+            // <!-- Sandra Milos Kole Milica Nikola Milan Luka
+
+
+            let igraci = document.querySelector('#igraci').value;
+
+            //razdvaja stringove po razmacima i stavlja ga u igrac (igrac je pre bio const)
+            let igrac = igraci.split(" ");
+
+
+            let randomIgrac = Math.floor(Math.random() * igrac.length);
+            console.log(igrac);
+            return igrac;
+        }
+        
+
+        
+        function randomChoosing(players = names, roles = roles){
+           
+            console.log(players + roles);
+        }
+    </script>
+</body>
+</html>

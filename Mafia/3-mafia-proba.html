@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        body{display: flex;
+        flex-direction: column;
+    width: 30%;
+align-items: left;}
+    </style>
+    <input type="text" class="players" value="Sandra Nikolin Kole Milica Knez Milan">
+    <!-- <textarea  id="" cols="15" rows="10"></textarea> -->
+    <button onclick="playerSummarize()">Names</button>
+
+    <input type="checkbox" id="godfather" class="role" checked>GODFATHER
+    <input type="checkbox" id="mafioso" class="role" checked>MAFIOSO
+    <input type="checkbox" id="escort" class="role" checked>ESCORT
+    <input type="checkbox" id="doctor" class="role" checked>DOCTOR
+    <input type="checkbox" id="bodyguard" class="role" checked>BODYGUARD
+    <input type="checkbox" id="serial-killer" class="role" checked>SERIAL-KILLER
+
+    <button onclick="roleSummarize()">Roles</button>
+
+    <button onclick="Roll()">Roll</button>
+
+    <script>
+        // Sve u jednom
+
+function Roll(){
+    // Prvo selektujem input
+    let input = document.querySelector('.players');
+
+    // Iz inputa uzimam imena igraca
+    let players = input.value;
+ 
+    // Stavljam imena igraca u listu
+    let playersList = players.split(' ');
+
+    // Selektujem svaki checkbox
+    let roles = document.querySelectorAll('.role');
+
+    // Deklarisem sve varijable ovde jer ne mogu u if-u
+    var roleList;
+    let roleName, role;
+     
+    // Pravim petlju da bih svaki checkbox mogao 
+    // da selektujem zasebno
+    for(i = 0; i < roles.length; i++){
+        // Proveravam da li je checkbox checkovan
+        if(roles[i].checked == true){
+ 
+            // Ako je checkovan, izvlacim iz njega id
+            roleName = roles[i].getAttribute('id');
+ 
+            // Id stavljam u jednu varijablu
+            role = role + ' ' + roleName;
+ 
+            // Tu varijablu pretvaram u listu
+            roleList = role.split(' ');
+        }
+    }
+    
+    // Nek se generator ponovi onoliko puta koliko ima imena u listi
+    for(j = 0; j < playersList.length; j++){
+        // Generisem random brojeve za players i roles
+        p = Math.floor(Math.random() * 6);
+        r = Math.floor(Math.random() * 7);
+
+        // Dok je r jednak 0, generisi opet
+        while(r == 0){
+            r = Math.floor(Math.random() * 7);
+        }
+
+        // Pravim varijablje za nasumicna imena i rolove
+        let chosenName, chosenRole;
+        let generatedP, generatedR;
+
+        // Proveravanje se ne obavlja u prvoj fazi petlje
+        // Jer nema izabranih imena i uloga
+        if(j > 0){
+            // Proveravam da li se isti broj vec generisao 
+            while(generatedP == p){
+                p = Math.floor(Math.random() * 6);
+            }
+        }
+
+        
+        
+        // Stavljam ime i ulogu u jednu varijablu
+        chosenName = playersList[p];
+        chosenRole = roleList[r];
+        }
+        console.log(playersList);
+        console.log(roleList);
+    }
+    </script>
+</body>
+</html>

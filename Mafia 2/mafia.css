@@ -1,0 +1,107 @@
+@font-face {
+    font-family: Mafia;
+    src: url(Runcible\ Cleft.ttf);
+}
+
+body{
+    background-color: rgb(74, 74, 74);
+    font-family: Mafia;
+}
+
+.input{
+    border: solid 1px;
+    border-color: black;
+    background-color: grey;
+    height: 30px;
+    width: 200px;
+    margin: 50px;
+
+}
+
+.input:focus{
+    border: solid 1px;
+    outline: 0;
+    border-color:green;
+    background-color:lightgreen;
+    box-shadow: 1px 1px 10px yellowgreen,
+    -1px -1px 10px yellowgreen;
+
+}
+
+.roles{
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox{display: none;}
+
+.checkbox_box{
+    background-color: rgb(44, 44, 44);
+    border: 2px solid rgb(44, 44, 44);
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 75px;
+    box-shadow: inset 0px 10px 20px rgb(255, 255, 255),
+    inset 0px -10px 10px rgb(24, 24, 24);
+}
+
+.mafia-header{
+    color: red;
+    font-size: 31px;
+    margin-top: 0;
+}
+
+.mafia{
+    color: red;
+    display: block;
+}
+
+.mafia-roles{display: flex;}
+
+.mafia .checkbox:checked + .checkbox_box{
+    border-color: red;
+    box-shadow: 0 0 10px red,
+    inset 5px 5px 10px red,
+    inset -5px -5px 10px red;
+}
+
+.town-header{
+    color: greenyellow;
+    font-size: 31px;
+    margin-top: 0;
+}
+
+.town{color: greenyellow;}
+
+.town-roles{display: block;}
+
+.town-roles > div{display: flex;}
+
+.town .checkbox:checked + .checkbox_box{
+    border-color: greenyellow;
+    box-shadow: 0 0 10px greenyellow,
+    inset 5px 5px 10px greenyellow,
+    inset -5px -5px 10px greenyellow;
+}
+
+.neutral-header{
+    color: #cccccc;
+    font-size: 31px;
+    margin-top: 0;
+}
+
+.neutral{color: #cccccc;}
+
+.neutral{display: block;}
+
+.neutral-roles{display: flex;}
+
+.neutral .checkbox:checked + .checkbox_box{
+    border-color: #cccccc;
+    box-shadow: 0 0 10px #cccccc,
+    inset 5px 5px 10px #cccccc,
+    inset -5px -5px 10px #cccccc;
+}

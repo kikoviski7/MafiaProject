@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mafia.css">
+    <title>Mafia</title>
+</head>
+<body>
+    <!-- Sandra Milos Kole Milica Nikola Milan Luka?  -->
+    <div>
+        <input type="text" id="igraci" placeholder="Igraci" class="input">
+        <button onclick="playerSumerize()">Gotovo</button>
+    </div>
+    <div class="roles">
+        <div class="mafia">
+            <h3 class="mafia-header">Mafija</h3>
+            <div class="mafia-roles">
+                <label for="kum" class="label">
+                    <input type="checkbox" class="checkbox" id="kum">
+                    <div class="checkbox_box">Kum</div>
+                </label>
+                <label for="mafioza" class="label">
+                    <input type="checkbox" class="checkbox" id="mafioza">
+                    <div class="checkbox_box">Mafioza</div>
+                </label>
+            </div>
+        </div>
+
+       
+        <div class="town">
+            <h3 class="town-header">Grad</h3>
+            <div class="town-roles">
+                <h4 class="town-h4-header">Town Support</h2>
+                <div class="town-support">
+                    
+                        <label for="zavodnica" class="label">
+                            <input type="checkbox" class="checkbox" id="zavodnica">
+                            <div class="checkbox_box">Zavodnica</div>
+                        </label>
+                        <label for="transporter" class="label">
+                            <input type="checkbox" class="checkbox" id="transporter">
+                            <div class="checkbox_box">Transporter</div>
+                        </label>
+                        <label for="pop" class="label">
+                            <input type="checkbox" class="checkbox" id="pop">
+                            <div class="checkbox_box">Pop</div>
+                        </label>
+                        <label for="major" class="label">
+                            <input type="checkbox" class="checkbox" id="major">
+                            <div class="checkbox_box">Major</div>
+                        </label>
+                </div>
+                
+                <h4 class="town-h4-header">Town Investigative</h4>
+                <div class="town-investigative">
+                    <label for="serif" class="label">
+                        <input type="checkbox" class="checkbox" id="serif">
+                        <div class="checkbox_box">Serif</div>
+                    </label>
+                </div>
+                
+                <h4 class="town-h4-header">Town Killing</h4>
+                <div class="town-killing">
+                    <label for="veteran" class="label">
+                        <input type="checkbox" class="checkbox" id="veteran">
+                        <div class="checkbox_box">Veteran</div>
+                    </label>
+                    <label for="policajac" class="label">
+                        <input type="checkbox" class="checkbox" id="policajac">
+                        <div class="checkbox_box">Policajac</div>
+                    </label>
+                </div>
+
+                <h4 class="town-h4-header">Town Protective</h4>
+                <div class="town-protective">
+                    <label for="doktor" class="label">
+                        <input type="checkbox" class="checkbox" id="doktor">
+                        <div class="checkbox_box">Doktor</div>
+                    </label>
+                    <label for="bodigard" class="label">
+                        <input type="checkbox" class="checkbox" id="bodigard">
+                        <div class="checkbox_box">Bodigard</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="neutral">
+            <h3 class="neutral-header">Neutral</h3>
+            <div class="neutral-roles">
+                <label for="ludak" class="label">
+                    <input type="checkbox" class="checkbox" id="ludak">
+                    <div class="checkbox_box">Ludak</div>
+                </label>
+                <label for="izvrsilac" class="label">
+                    <input type="checkbox" class="checkbox" id="izvrsilac">
+                    <div class="checkbox_box">Izvrsilac</div>
+                </label>
+                <label for="vukodlak" class="label">
+                    <input type="checkbox" class="checkbox" id="vukodlak">
+                    <div class="checkbox_box">Vukodlak</div>
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <br>
+    <div class="poslednji-div">
+        <button onclick="roleSumerize()">Gotovo</button>
+    </div>
+<br><br><br>
+
+    
+
+
+
+    
+    <script src="Mafia.js"></script>
+</body>
+</html>

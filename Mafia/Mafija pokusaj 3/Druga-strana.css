@@ -1,0 +1,134 @@
+body{
+    background-color: #313131;
+}
+
+.town-treca-strana{
+   
+    background-color: grey;
+    background-image: linear-gradient(grey, yellowgreen);
+    background-position-y: 350px;
+    background-repeat: no-repeat;
+    
+}
+
+.mafia-treca-strana{
+   
+    background-color: grey;
+    background-image: linear-gradient(grey, red);
+    background-position-y: 350px;
+    background-repeat: no-repeat;
+    
+}
+
+.section{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+
+    /* Svi redovi ce biti toliko piksela */
+    grid-auto-rows: 60px;
+}
+
+hr{
+    height: 3px;
+    background-color: black;
+    border: none;
+    
+}
+
+.checkbox{display: none;}
+
+
+
+.section div{
+    position: relative;
+    margin: 5px;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    
+}
+
+.bodyguard{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.mafia-section .checkbox-box{
+    background-color: rgb(209, 13, 13);
+    border: solid 1px red;
+    transition: 0.5s;
+    
+}
+
+.mafia-section .checkbox:checked + .checkbox-box{
+    background-color: #313131;
+    box-shadow: 0 0 10px red,
+    inset 5px 5px 10px red,
+    inset -5px -5px 10px red;
+    border-radius: 15px;
+}
+
+.town-section .checkbox-box{
+    background-color: rgb(126, 208, 3);
+    border: solid 1px yellowgreen;
+    transition: 0.5s;
+}
+
+.town-section .checkbox:checked + .checkbox-box{
+    background-color: #313131;
+    box-shadow: 0 0 10px yellowgreen,
+    inset 5px 5px 10px yellowgreen,
+    inset -5px -5px 10px yellowgreen;
+    border-radius: 15px;
+}
+
+
+
+.neutral-section .checkbox-box{
+    background-color: rgb(107, 104, 104);
+    border: solid 1px grey;
+    transition: 0.5s;
+}
+
+.neutral-section .checkbox:checked + .checkbox-box{
+    background-color: #313131;
+    box-shadow: 0 0 10px grey,
+    inset 5px 5px 10px grey,
+    inset -5px -5px 10px grey;
+    border-radius: 15px;
+}
+
+
+.btn{
+    height: 40px;
+    width: 30%;
+    position: absolute;
+    background-color: grey;
+    border: 3px solid rgb(177, 177, 177);
+    border-radius: 15px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+    margin-left: 130px;
+    margin-top: 50px;
+    color: white;
+}
+
+.h1-town{
+    color: yellowgreen;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.h1-mafia{
+    color: red;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.h1-neutral{
+    color: grey;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

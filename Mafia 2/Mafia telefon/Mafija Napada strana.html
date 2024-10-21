@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: grey;
+            background-image: linear-gradient(grey, red);
+            background-position-y: 350px;
+            background-repeat: no-repeat;
+        }
+        
+        .section{
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+
+            /* Svi redovi ce biti toliko piksela */
+            grid-auto-rows: 60px;
+        }
+
+        h1{
+            color: red;
+            text-align: center;
+            margin: 20px;
+        }
+
+
+        .checkbox{display: none;}
+
+       
+
+        div div{
+            position: relative;
+            margin: 5px;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            
+        }
+
+        
+
+
+        .mafia-section .checkbox-box{
+            background-color: rgb(209, 13, 13);
+            border: solid 1px red;
+            transition: 0.5s;
+            
+        }
+
+        .mafia-section .checkbox:checked + .checkbox-box{
+            background-color: #313131;
+            box-shadow: 0 0 10px red,
+            inset 5px 5px 10px red,
+            inset -5px -5px 10px red;
+            border-radius: 15px;
+        }
+        span{
+            height: 40px;
+            width: 30%;
+            position: absolute;
+            background-color: grey;
+            border: 3px solid rgb(177, 177, 177);
+            border-radius: 15px;
+            line-height: 40px;
+            font-size: 14px;
+            text-align: center;
+            margin-left: 130px;
+            margin-top: 50px;
+            color: white;
+        }
+
+        
+    </style>
+    <title>Mafia</title>
+</head>
+<body>
+    <h1>Mafia</h1>
+    <div class="mafia-section section">
+        <label for="godfather" class="label">
+            <input type="checkbox" class="checkbox" id="godfather">
+            <div class="checkbox-box">SANDRA</div>
+        </label>
+        <label for="mafioso" class="label">
+            <input type="checkbox" class="checkbox" id="mafioso">
+            <div class="checkbox-box">KOLE</div>
+        </label>
+        <label for="consort" class="label">
+            <input type="checkbox" class="checkbox" id="consort">
+            <div class="checkbox-box">MILOS</div>
+        </label>
+        <label for="janitor" class="label">
+            <input type="checkbox" class="checkbox" id="janitor">
+            <div class="checkbox-box">RADOVAN</div>
+        </label>
+    
+    
+        <label for="escort" class="label">
+            <input type="checkbox" class="checkbox" id="escort">
+            <div class="checkbox-box">KNEZI</div>
+        </label>
+        <label for="transporter" class="label">
+            <input type="checkbox" class="checkbox" id="transporter">
+            <div class="checkbox-box">MILICA</div>
+        </label>
+        <label for="retributionist" class="label">
+            <input type="checkbox" class="checkbox" id="retributionist">
+            <div class="checkbox-box">MILAN</div>
+        </label>
+        <label for="major" class="label">
+            <input type="checkbox" class="checkbox" id="major">
+            <div class="checkbox-box">LUKA</div>
+        </label>
+        <label for="sherif" class="label">
+            <input type="checkbox" class="checkbox" id="sherif">
+            <div class="checkbox-box">JOVAN</div>
+        </label>
+        <label for="veteran" class="label">
+            <input type="checkbox" class="checkbox" id="veteran">
+            <div class="checkbox-box">PETAR</div>
+        </label>
+        
+    </div>
+
+    <span onclick="document.location='Mafija Napada strana.html'">NEXT</span>
+</body>
+</html>

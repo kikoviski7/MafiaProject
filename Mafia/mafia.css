@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(74, 74, 74);
+}
+
+.mafia{
+    color: red;
+}
+
+
+
+.input-wrapper label { 
+position: relative;
+display: block;
+margin: 40px 0;
+color: #fff;
+font-size: 1.5em;
+cursor: pointer;
+}
+.input-wrapper input[type="checkbox"] {
+    -webkit-appearance: none;
+}
+
+
+.input-wrapper i {
+position: absolute; 
+display: inline-block;
+width: 25px;
+height: 25px;  
+border: 2px solid #fff;
+
+
+ }
