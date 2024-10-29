@@ -1,0 +1,84 @@
+Brainstorming:
+
+- potreban je sistem za automatsko izracunavanje odluka donesenih tokom igre od strane igraca
+- sistem bi trebalo da nasumicno odredi koji igrac ce imati koju ulogu
+- sistem bi trebalo da cuva podatke kao sto su igraci koji su igrali, uloge koje se koriste tokom igre, i informacije o igri(koji tim je pobedio,
+ko je imao koju ulogu tokom te specificne igre, verzija igre u kojoj se igralo, vreme zavrsetka igre)
+- sistem bi trebalo da ima opciju za pokretanje potrebnih tajmera(3 minuta diskusija)
+- sistem treba da ima interfejs za glasanje, formulu koja racuna kada neko mora da izlazi da se brani( ako ima 8 zivih, 4 je potrebno za optuzbu)
+- kada optuzeni zavrsi sa izlaganjem, potrebno je zabeleziti da li su ostali igraci glasali, ako jesu, da li su glasali da je kriv ili ne
+- naratoru su konstantno potrebne informacije ko je koja uloga i ko je ziv a ko mrtav 
+- igraci koji su igrali treba da imaju ime, prezime, korisnicko ime(nadimak), broj pobeda i gubitaka u toj verziji 
+- svaka uloga treba da ima svoje opcije u korelaciji sa sposobnostima(serijski ubica ima dodatno dugme, doktor moze da izabere sebe jednom itd)
+- u sistem treba da bude ugradjena logika za svaku ulogu, kako sam treba da izracuna ishod posle noci
+- sistem posle noci treba da ispise recenice koje korisnik(narator) izgovara (ako je neko umro izgovara se ko je umro, od koga je ubijen i mozda
+sta je bio; ako niko nije umro govori da se nista nije dogodilo)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Pravila igre: 
+
+- igra se zove mafija. igra se sa 7-8 ljudi gde svako ima svoju ulogu. igra se zavrsava kada pobedi jedan od timova 
+(grad, mafija ili neutralna uloga)
+- jedan tim pobedjuje tako sto izbaci sve igrace iz suprotnog tima (npr. kada grad izbaci sve koji nisu grad itd.)
+- igraci se izbacuju na razlicite nacine u zavisnosti od tima i uloge, i u zavisnosti od dela igre
+- postoje 2 dela igre: noc i dan 
+- postoje razlicite uloge: Godfather i Mafioso koji su na strani mafije, Jester koji je neutralan, i ostali koji su na strani grada:
+Tavern Keeper, Doctor, Sheriff, Villager
+- svaka uloga ima svoju sposobnost. sposobnosti mogu biti izbacivanje iz igre, indentifikovanje drugih uloga ili sprecavanje sposobnosti.
+- igra pocinje od dana, gde svaki igrac dobija svoju ulogu {i ima prilike da pita za pravila igre} (samo prvi dan je ovakav).
+- tokom noci, svaka igrac bira drugog igraca za metu, odnosno primenjuje sposobnost svoje uloge na drugog igraca (dakle ili sprecava ili 
+indentifikuje ili izbacuje iz igre) 
+- na pocetku dana, narator objavljuje ko je izbacen iz igre, nakon cega pocinje diskusija od 3 minuta
+- posle diskusije, igraci glasaju koga zele da izbace iz igre
+- uvek posle dana ide noc i uvek posle noci ide dan sve do zavrsetka igre (sve dok jedan od timova ne pobedi)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Slucaj koriscenja:
+
+Prva strana (pregame)
+- upisuju se igraci u bazu ako je potrebno
+- igraci se ubacuju u igru
+- slucaj koriscenja se zavrsava prelazenjem na drugu stranu
+
+Druga strana (pregame)
+- biraju se uloge za igru u odnosu na broj igraca
+- slucaj koriscenja se zavrsava prelazenjem na trecu stranu
+
+Treca strana (game - noc)
+Preduslov: sistem je dodelio svakom igracu ulogu, sve je ispravno
+- belezi se odluka svakog igraca
+- sistem izracunava posledice odluka
+- slucaj koriscenja se zavrsava prelazenjem na cetvrtu stranu
+
+Cetvrta strana (game - dan)
+- ispisuju se desavanja (posledica odluka)
+- narator pokrece tajmer od 3 minuta za diskusiju
+- posle diskusije, bira se igrac koji ispada iz igre (ukoliko se igraci sloze)
+- slucaj koriscenja se zavrsava vracanjem na trecu stranu (ponavlja se dok se igra ne zavrsi)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Opis uloga:
+
+Sve uloge ucestvuju u dnevnim diskusijama i imaju pravo da glasaju.
+
+Tim grad: Tavern Keeper, Sheriff, Doctor, Vigilante, Villager (pobedjuju kada izbace sve ubice)
+- Villager: ova uloga nema sposobnost
+- Tavern Keeper: bira igraca ciju sposobnost ce da spreci te noci; ne moze da bira istu osobu 2 noci za redom
+- Sheriff: bira igraca za koga ce da proveri da li ima sposobnost da izbacuje iz igre tokom noci ili ne
+- Doctor: bira igraca koji nece biti izbacen tokom noci; ne moze da bira istu osobu 2 noci za redom
+- Vigilante: bira igraca koga zeli da izbaci iz igre tokom noci
+
+
+Tim mafia: Godfather, Mafioso (pobedjuju kada izbace sve igrace koji nisu mafija)
+- Godfather: bira igraca koga zeli da izbaci iz igre tokom noci.
+- Mafioso: izbacuje igraca po odabiru Godfather-a.
+
+
+Nesvrstane uloge: Serial Killer, Jester (pobedjuju na svoje specificne nacine)
+- Serial Killer: bira igraca koga zeli da izbaci iz igre tokom noci. pobedjuje kada je poslednji igrac u igri
+- Jester: ova uloga nema sposobnost. pobedjuje kada biva izglasan tokom dnevne diskusije
+
+
+
+

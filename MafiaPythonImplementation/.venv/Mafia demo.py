@@ -10,6 +10,8 @@ def set_default_game(players_list):
         player.role_blocked = False
 
 
+
+
 class Player:
     def __init__(self, name, number):
         self.name = name
@@ -116,6 +118,8 @@ class SerialKiller(AttackingRoles):
         #     if not self.cautious:
         #         for role_blockers in self.targeted_by:
         #             role_blockers.is_alive = False
+
+
 
 
 class Sheriff(Role):
@@ -229,3 +233,4 @@ print(sheriff.name + " interrogates " + godfather.name)
 print(sheriff.visit(godfather))
 print(sheriff.name + " interrogates " + mafioso.name)
 print(sheriff.visit(mafioso))
+
