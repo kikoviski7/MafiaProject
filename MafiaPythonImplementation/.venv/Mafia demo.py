@@ -1,3 +1,10 @@
+# Ispravke u kodu
+# - Role treba da bude atribut klasi Player a ne obrnuto
+# - Targeted by preimenovati u "house"
+# - Role treba da bude apstraktna klasa
+# - Healing roles preimenovati u Protecting roles
+# - Preimenovati setdefaultgame u setdefaultnight
+
 def set_default_game(players_list):
     for player in players_list:
         if player.side == 'Town' or player.name == 'Jester' or player.name == 'Mafioso':
