@@ -61,10 +61,27 @@ window.addEventListener('load', () =>{
         
 
     }
+    let body = document.querySelector("body");
+    console.log(body)
     for(i = 0; i < playersList.length; i++){
-        console.log(usedNames[i]);
-        console.log(usedRoles[i]);
-        console.log('----------------');
+        // console.log(usedNames[i]);
+        // console.log(usedRoles[i]);
+        // console.log('----------------');
+
+        let div = document.createElement("div");
+        let pName = document.createElement("p");
+        let pRole = document.createElement("p");
+        let pLine = document.createElement("p");
+
+        pName.innerText = usedNames[i];
+        pRole.innerText = usedRoles[i];
+        pLine.innerText = (i+1) + ' ----------------'
+
+        body.appendChild(div);
+        div.appendChild(pName);
+        div.appendChild(pRole);
+        div.appendChild(pLine);
+        
     }
     
 })
