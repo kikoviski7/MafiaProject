@@ -121,10 +121,10 @@ class SerialKiller(AttackingRoles):
         target.targeted_by.append(self)
         if self.attack > target.defence:
             target.is_alive = False
-        # if len(self.targeted_by) != 0:  #  valja napraviti da ubije samo roleBlockere
-        #     if not self.cautious:
-        #         for role_blockers in self.targeted_by:
-        #             role_blockers.is_alive = False
+        if len(self.targeted_by) != 0:  #  valja napraviti da ubije samo roleBlockere
+            if not self.cautious:
+                for role_blockers in self.targeted_by:
+                    role_blockers.is_alive = False
 
 
 
