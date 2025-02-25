@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Godfather extends Role {
 
 	public Godfather() {
-		super("godfather", 1, 1, false, false, "mafia", "attacking"); // Call the parent constructor with required parameter
+		super("godfather", 1, 1, false, false, "mafia", "attacking", 10); // Call the parent constructor with required parameter
 	}
 
 	@Override

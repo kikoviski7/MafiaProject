@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Tracker extends Role {
 	public Tracker() {
-		super("tracker", 0, 0, false, false, "town", "investigative");
+		super("tracker", 0, 0, false, false, "town", "investigative", 10);
 		// TODO Auto-generated constructor stub
 	}
 

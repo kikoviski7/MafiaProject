@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Sheriff extends Role {
 	public Sheriff() {
-		super("sheriff", 0, 0, false, false, "town", "investigative", 10);
+		super("sheriff", 0, 0, false, false, "town", "investigative");
 
 	}
 

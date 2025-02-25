@@ -2,10 +2,9 @@ package Model;
 
 import java.util.ArrayList;
 
-public class Sheriff extends Role {
-	public Sheriff() {
-		super("sheriff", 0, 0, false, false, "town", "investigative", 10);
-
+public class Mafioso extends Role{
+	public Mafioso() {
+		super("mafioso", 1, 0, true, false, "mafia", "attacking");
 	}
 
 	@Override
@@ -19,8 +18,7 @@ public class Sheriff extends Role {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 
 	
 }
+	

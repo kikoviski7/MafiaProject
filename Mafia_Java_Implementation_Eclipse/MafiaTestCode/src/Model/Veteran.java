@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Veteran extends Role {
 	public Veteran() {
-		super("veteran", 3, 0, false, false, "town", "aggresive", 2);
+		super("veteran", 3, 0, false, false, "town", "aggresive");
 
 	}
 

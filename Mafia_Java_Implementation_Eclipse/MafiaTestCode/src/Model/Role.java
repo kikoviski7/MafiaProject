@@ -10,12 +10,13 @@ public abstract class Role {
 	public boolean isFramed = false;
 	public String alignment;
 	public boolean isRoleBlocked = false;
+	// category
 	public String category;
-	public int hasAction;
+	public boolean hasAction;
 	
 
 	
-	public Role(String name, int attack, int defence, boolean suspiciousToSheriff, boolean isFramed, String alignment, String subAlignment, int hasAction) {
+	public Role(String name, int attack, int defence, boolean suspiciousToSheriff, boolean isFramed, String alignment, String subAlignment) {
 		this.name = name;
 		this.attack = attack;
 		this.defence = defence;
@@ -23,7 +24,6 @@ public abstract class Role {
 		this.isFramed = isFramed;
 		this.alignment = alignment;
 		this.category = subAlignment;
-		this.hasAction = hasAction;
 	}
 	
 

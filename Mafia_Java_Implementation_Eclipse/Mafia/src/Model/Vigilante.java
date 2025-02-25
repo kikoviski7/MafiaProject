@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Vigilante extends Role {
 	public Vigilante() {
-		super("vigilante" ,1, 0, false, false, "town", "aggresive");
+		super("vigilante" ,1, 0, false, false, "town", "aggresive", 3);
 		// TODO Auto-generated constructor stub
 	}
 

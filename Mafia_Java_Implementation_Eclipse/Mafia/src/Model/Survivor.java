@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Survivor extends Role{
 	public Survivor()  {
-		super("survivor", 0,0,false,false,"unaligned","evil");
+		super("survivor", 0,0,false,false,"unaligned","evil", 10);
 		
 	}
 

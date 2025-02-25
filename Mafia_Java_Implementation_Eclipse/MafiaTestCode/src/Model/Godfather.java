@@ -2,10 +2,10 @@ package Model;
 
 import java.util.ArrayList;
 
-public class Sheriff extends Role {
-	public Sheriff() {
-		super("sheriff", 0, 0, false, false, "town", "investigative", 10);
+public class Godfather extends Role {
 
+	public Godfather() {
+		super("godfather", 1, 1, false, false, "mafia", "attacking"); // Call the parent constructor with required parameter
 	}
 
 	@Override
@@ -19,8 +19,7 @@ public class Sheriff extends Role {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
+
 
 	
 }

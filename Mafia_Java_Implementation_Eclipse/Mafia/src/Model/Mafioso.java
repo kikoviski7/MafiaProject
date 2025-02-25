@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Mafioso extends Role{
 	public Mafioso() {
-		super("mafioso", 1, 0, true, false, "mafia", "attacking");
+		super("mafioso", 1, 0, true, false, "mafia", "attacking", 10);
 	}
 
 	@Override

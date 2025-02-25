@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Jester extends Role {
 	public Jester() {
-		super("jester", 0, 0, false, false, "unaligned", "evil");
+		super("jester", 0, 0, false, false, "unaligned", "evil", 10);
 
 	}
 

@@ -157,6 +157,8 @@ public class Main {
 		}
 
 		// TODO: testirati da li veteran umire.
+		// TODO: red akcija ce biti definisan listom: prvi role u listi ima priotitet
+		// TODO: ako veteran nema alertova ne moze da alertuje
 		if (veteran != null) {
 			veteran.role.action(veteran.target, PlayersList);
 		}
@@ -212,7 +214,8 @@ public class Main {
 				System.out.println("\n-----------------------------\n");
 				continue;
 			}
-
+			
+			//TODO: mafija moze da izabere mafiju iako se ne prikazuje
 			// Mafioso, Godfather, Framer, Consort - Mafia choosing
 			if (player.role.alignment == "mafia") {
 				// Ako je Godfather ziv, mafioso ne bira
@@ -295,7 +298,7 @@ public class Main {
 			}
 
 			// Doctor, Bodyguard - Can choose everyone
-			if (player.role.subAlignment == "protective") {
+			if (player.role.getCategory() == "protective") {
 
 				System.out.println(
 						player.name + " " + player.role.name + " is choosing" + "\n-----------------------------\n");
