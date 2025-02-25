@@ -174,7 +174,8 @@ public class Main {
 		if (doctor != null) {
 			doctor.role.action(doctor.target, PlayersList);
 		}
-
+		
+		//TODO: svaki napadac treba da proveri da li bodyguard cuva njegov target pre napada
 		if (bodyguard != null) {
 			bodyguard.role.action(bodyguard.target, PlayersList);
 		}
@@ -191,10 +192,22 @@ public class Main {
 			vigilante.role.action(vigilante.target, PlayersList);
 		}
 
+		if (mafioso != null) {
+			mafioso.role.action(mafioso.target, PlayersList);
+		}
+		
+		if (godfather != null) {
+			godfather.role.action(godfather.target, PlayersList);
+		}
+		
+		if (tracker != null) {
+			tracker.role.action(tracker.target, PlayersList);
+		}
+
 		printPlayers(PlayersList);
 
 	}
-	//Execution order
+	// Execution order
 	// veteran
 	// transporter
 	// consort
@@ -214,8 +227,8 @@ public class Main {
 				System.out.println("\n-----------------------------\n");
 				continue;
 			}
-			
-			//TODO: mafija moze da izabere mafiju iako se ne prikazuje
+
+			// TODO: mafija moze da izabere mafiju iako se ne prikazuje
 			// Mafioso, Godfather, Framer, Consort - Mafia choosing
 			if (player.role.alignment == "mafia") {
 				// Ako je Godfather ziv, mafioso ne bira
@@ -318,7 +331,7 @@ public class Main {
 			}
 
 			// Vigilante, Tracker, Sheriff - Default choosing (Everyone but them)
-			//TODO: Vigilante moze da izabere sebe a ne bi smeo
+			// TODO: Vigilante moze da izabere sebe a ne bi smeo
 			else {
 
 				System.out.println(
