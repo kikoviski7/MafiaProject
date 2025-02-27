@@ -3,20 +3,32 @@ package Model;
 import java.util.ArrayList;
 
 public class Vigilante extends Role {
+	Player vigilante;
 	public Vigilante() {
-		super("vigilante" ,1, 0, false, false, "town", "aggresive", 3);
-		// TODO Auto-generated constructor stub
+		super("vigilante" ,1, 0, false, false, "town", "aggresive", 2);
 	}
 
 	@Override
 	public void action(Player target, ArrayList<Player> playersList) {
-		// TODO Auto-generated method stub
+		for(Player player : playersList) {
+			if(player.role.name.equals("vigilante")) {
+				vigilante = player;
+				break;
+			}
+		}
+		
+		if (!vigilante.role.isRoleBlocked && vigilante.role.hasAction > 0) {
+			visit(target, playersList);
+			
+		}
 		
 	}
 
 	@Override
-	public void visit(Player player, ArrayList<Player> PlayersList) {
-		// TODO Auto-generated method stub
+	public void visit(Player target, ArrayList<Player> PlayersList) {
+		if(target.role.defence < vigilante.role.attack) {
+			target.isAlive = false;
+		}
 		
 	}
 

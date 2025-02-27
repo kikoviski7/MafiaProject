@@ -108,6 +108,8 @@ public class Main {
 		Player mafioso = null;
 		Player godfather = null;
 		Player tracker = null;
+		Player jester = null;
+		Player survivor = null;
 
 		for (Player player : PlayersList) {
 			switch (player.role.name) {
@@ -144,11 +146,13 @@ public class Main {
 			case "tracker":
 				tracker = player;
 				break;
-			case "mayor":
-				break;
 			case "survivor":
+				survivor = player;
 				break;
 			case "jester":
+				jester = player;
+				break;
+			case "mayor":
 				break;
 
 			default:
@@ -174,10 +178,19 @@ public class Main {
 		if (doctor != null) {
 			doctor.role.action(doctor.target, PlayersList);
 		}
-		
-		//TODO: svaki napadac treba da proveri da li bodyguard cuva njegov target pre napada
+
+		// TODO: svaki napadac treba da proveri da li bodyguard cuva njegov target pre
+		// napada
 		if (bodyguard != null) {
 			bodyguard.role.action(bodyguard.target, PlayersList);
+		}
+
+		if (survivor != null) {
+			survivor.role.action(survivor.target, PlayersList);
+		}
+
+		if (jester != null) {
+			jester.role.action(jester.target, PlayersList);
 		}
 
 		if (framer != null) {
@@ -195,11 +208,11 @@ public class Main {
 		if (mafioso != null) {
 			mafioso.role.action(mafioso.target, PlayersList);
 		}
-		
+
 		if (godfather != null) {
 			godfather.role.action(godfather.target, PlayersList);
 		}
-		
+
 		if (tracker != null) {
 			tracker.role.action(tracker.target, PlayersList);
 		}
@@ -211,7 +224,7 @@ public class Main {
 	// veteran
 	// transporter
 	// consort
-	// doctor/bodyguard
+	// doctor/bodyguard/jester/survivor
 	// framer
 	// sheriff
 	// vigilante/mafioso/godfather
@@ -220,138 +233,151 @@ public class Main {
 	private static void choosingTragets(ArrayList<Player> PlayersList) {
 		for (Player player : PlayersList) {
 
-			// Survivor, Mayor, Jester - None
-			if (player.role.alignment == "unaligned" || player.role.name == "mayor") {
-				System.out.println("\n-----------------------------\n");
-				System.out.println(player.name + " " + player.role.name + " does not choose");
-				System.out.println("\n-----------------------------\n");
-				continue;
-			}
-
-			// TODO: mafija moze da izabere mafiju iako se ne prikazuje
-			// Mafioso, Godfather, Framer, Consort - Mafia choosing
-			if (player.role.alignment == "mafia") {
-				// Ako je Godfather ziv, mafioso ne bira
-				if (player.role.name == "mafioso" && PlayersList.get(0).isAlive == true) {
+			if (player.isAlive) {
+				
+				// Survivor, Mayor, Jester - None
+				//TODO: survivor i jester sada biraju
+				if (player.role.alignment == "unaligned" || player.role.name == "mayor") {
+					System.out.println("\n-----------------------------\n");
+					System.out.println(player.name + " " + player.role.name + " does not choose");
+					System.out.println("\n-----------------------------\n");
 					continue;
 				}
 
-				System.out.println(
-						player.name + " " + player.role.name + " is choosing" + "\n-----------------------------\n");
-
-				for (int i = 0; i < numberOfPlayers; i++) {
-					Player pl = PlayersList.get(i);
-					if (pl.role.alignment == "mafia") {
+				// TODO: mafija moze da izabere mafiju iako se ne prikazuje
+				// Mafioso, Godfather, Framer, Consort - Mafia choosing
+				if (player.role.alignment == "mafia") {
+					// Ako je Godfather ziv, mafioso ne bira
+					// TODO: ovde sam stavio: "ako je ziv prvi u listi" bice bug ako bude mesao
+					// listu rolova
+					if (player.role.name == "mafioso" && PlayersList.get(0).isAlive == true) {
+						player.target = PlayersList.get(0).target;
+						PlayersList.get(0).target = null;
 						continue;
 					}
-					System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
-				}
 
-				System.out.println("\nChoose a number: ");
+					System.out.println(player.name + " " + player.role.name + " is choosing"
+							+ "\n-----------------------------\n");
 
-				Scanner scanner = new Scanner(System.in); // Create a Scanner object
-				int target = scanner.nextInt(); // Reads integer input
-				player.target = PlayersList.get(target - 1);
-				System.out.println("--------------------------------");
-
-				continue;
-			}
-
-			// Transporter - Chooses anyone (two targets)
-			if (player.role.name == "transporter") {
-				System.out.println(
-						player.name + " " + player.role.name + " is choosing" + "\n-----------------------------\n");
-
-				// Get throught all players
-				for (int i = 0; i < numberOfPlayers; i++) {
-					Player pl = PlayersList.get(i);
-
-					System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
-				}
-
-				System.out.println("\nChoose a number: ");
-
-				Scanner scanner = new Scanner(System.in); // Create a Scanner object
-				int target = scanner.nextInt(); // Reads integer input
-				player.target = PlayersList.get(target - 1);
-				System.out.println("--------------------------------");
-
-				// Get throught all players
-				for (int i = 0; i < numberOfPlayers; i++) {
-					Player pl = PlayersList.get(i);
-					if (!pl.equals(player.target))
+					for (int i = 0; i < numberOfPlayers; i++) {
+						Player pl = PlayersList.get(i);
+						if (pl.role.alignment == "mafia" || !(pl.isAlive)) {
+							continue;
+						}
+						
 						System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
-				}
-
-				System.out.println("\nChoose another number: ");
-
-				Scanner secondScanner = new Scanner(System.in); // Create a Scanner object
-				int secondTarget = scanner.nextInt(); // Reads integer input
-				transporterSecondTargets.add(PlayersList.get(secondTarget - 1));
-				continue;
-			}
-
-			// Veteran - Only self choose
-			if (player.role.name == "veteran") {
-
-				System.out.println(
-						player.name + " " + player.role.name + " is choosing" + "\n-----------------------------\n");
-
-				Scanner scanner = new Scanner(System.in); // Create a Scanner object
-				System.out.println("Stay alert?: y/n\n");
-				System.out.println("\n-----------------------------\n");
-
-				String veteranDecision = scanner.nextLine(); // Read user input
-
-				if (veteranDecision.trim().equals("y")) {
-					player.target = player;
-				}
-				continue;
-
-			}
-
-			// Doctor, Bodyguard - Can choose everyone
-			if (player.role.getCategory() == "protective") {
-
-				System.out.println(
-						player.name + " " + player.role.name + " is choosing" + "\n-----------------------------\n");
-
-				for (int i = 0; i < numberOfPlayers; i++) {
-					Player pl = PlayersList.get(i);
-
-					System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
-				}
-
-				System.out.println("\nChoose a number: ");
-
-				Scanner scanner = new Scanner(System.in); // Create a Scanner object
-				int target = scanner.nextInt(); // Reads integer input
-				player.target = PlayersList.get(target - 1);
-				System.out.println("--------------------------------");
-			}
-
-			// Vigilante, Tracker, Sheriff - Default choosing (Everyone but them)
-			// TODO: Vigilante moze da izabere sebe a ne bi smeo
-			else {
-
-				System.out.println(
-						player.name + " " + player.role.name + " is choosing" + "\n-----------------------------\n");
-
-				for (int i = 0; i < numberOfPlayers; i++) {
-					Player pl = PlayersList.get(i);
-
-					if (player == pl) {
-						continue;
 					}
-					System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+
+					System.out.println("\nChoose a number: ");
+
+					Scanner scanner = new Scanner(System.in); // Create a Scanner object
+					int target = scanner.nextInt(); // Reads integer input
+					player.target = PlayersList.get(target - 1);
+					System.out.println("--------------------------------");
+
+					continue;
 				}
 
-				System.out.println("Choose a number: ");
+				// Transporter - Chooses anyone (two targets)
+				if (player.role.name == "transporter") {
+					System.out.println(player.name + " " + player.role.name + " is choosing"
+							+ "\n-----------------------------\n");
 
-				Scanner scanner = new Scanner(System.in); // Create a Scanner object
-				int target = scanner.nextInt(); // Reads integer input
-				player.target = PlayersList.get(target - 1);
-				System.out.println("--------------------------------");
+					// Get throught all players
+					for (int i = 0; i < numberOfPlayers; i++) {
+						Player pl = PlayersList.get(i);
+
+						if(pl.isAlive) {
+							System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+						}
+					}
+
+					System.out.println("\nChoose a number: ");
+
+					Scanner scanner = new Scanner(System.in); // Create a Scanner object
+					int target = scanner.nextInt(); // Reads integer input
+					player.target = PlayersList.get(target - 1);
+					System.out.println("--------------------------------");
+
+					// Get throught all players
+					for (int i = 0; i < numberOfPlayers; i++) {
+						Player pl = PlayersList.get(i);
+						if (!pl.equals(player.target))
+							System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+					}
+
+					System.out.println("\nChoose another number: ");
+
+					Scanner secondScanner = new Scanner(System.in); // Create a Scanner object
+					int secondTarget = scanner.nextInt(); // Reads integer input
+					transporterSecondTargets.add(PlayersList.get(secondTarget - 1));
+					continue;
+				}
+
+				// Veteran - Only self choose
+				if (player.role.name == "veteran") {
+
+					System.out.println(player.name + " " + player.role.name + " is choosing"
+							+ "\n-----------------------------\n");
+
+					Scanner scanner = new Scanner(System.in); // Create a Scanner object
+					System.out.println("Stay alert?: y/n\n");
+					System.out.println("\n-----------------------------\n");
+
+					String veteranDecision = scanner.nextLine(); // Read user input
+
+					if (veteranDecision.trim().equals("y")) {
+						player.target = player;
+					}
+					continue;
+
+				}
+
+				// Doctor, Bodyguard - Can choose everyone
+				if (player.role.getCategory() == "protective") {
+
+					System.out.println(player.name + " " + player.role.name + " is choosing"
+							+ "\n-----------------------------\n");
+
+					for (int i = 0; i < numberOfPlayers; i++) {
+						Player pl = PlayersList.get(i);
+
+						if(pl.isAlive) {
+							System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+						}
+					}
+
+					System.out.println("\nChoose a number: ");
+
+					Scanner scanner = new Scanner(System.in); // Create a Scanner object
+					int target = scanner.nextInt(); // Reads integer input
+					player.target = PlayersList.get(target - 1);
+					System.out.println("--------------------------------");
+				}
+
+				// Vigilante, Tracker, Sheriff - Default choosing (Everyone but them)
+				// TODO: Vigilante moze da izabere sebe a ne bi smeo
+				else {
+
+					System.out.println(player.name + " " + player.role.name + " is choosing"
+							+ "\n-----------------------------\n");
+
+					for (int i = 0; i < numberOfPlayers; i++) {
+						Player pl = PlayersList.get(i);
+
+						if (player == pl || !(pl.isAlive)) {
+							continue;
+						}
+						System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+					}
+
+					System.out.println("Choose a number: ");
+
+					Scanner scanner = new Scanner(System.in); // Create a Scanner object
+					int target = scanner.nextInt(); // Reads integer input
+					player.target = PlayersList.get(target - 1);
+					System.out.println("--------------------------------");
+				}
 			}
 
 		}

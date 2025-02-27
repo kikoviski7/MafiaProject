@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
+//TODO: doctor nije uspeo da zastiti target. Proveriti doctora opet
+
 public class Doctor extends Role {
 	Player doctor = null;
 	public Doctor() {
@@ -18,9 +20,9 @@ public class Doctor extends Role {
 		        break; // Stop searching after finding the first match
 		    }
 		}
-		if (doctor.role.isRoleBlocked != true) {
-			if (!(doctor == target && doctor.role.hasAction > 0)) {
-				return;
+		if (!doctor.role.isRoleBlocked) {
+			if ((doctor == target && doctor.role.hasAction == 0)) {
+				System.out.println("You took one. Take it or leave.");
 			}
 			visit(target, playersList);
 		}

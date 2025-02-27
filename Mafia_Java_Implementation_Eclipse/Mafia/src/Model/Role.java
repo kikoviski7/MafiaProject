@@ -11,6 +11,8 @@ public abstract class Role {
 	public String alignment;
 	public boolean isRoleBlocked = false;
 	public String category;
+	//TODO: da se ovo zove "action", a da postoji metoda koja se zove hasAction koja vraca boolean
+	// da bi kod bio citljiviji
 	public int hasAction;
 	
 
