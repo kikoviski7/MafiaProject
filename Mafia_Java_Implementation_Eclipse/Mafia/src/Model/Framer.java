@@ -10,14 +10,16 @@ public class Framer extends Role {
 
 	@Override
 	public void action(Player target, ArrayList<Player> playersList) {
-		// TODO Auto-generated method stub
+
 		
+		visit(target, playersList);
+
 	}
 
 	@Override
-	public void visit(Player player, ArrayList<Player> PlayersList) {
-		// TODO Auto-generated method stub
-		
+	public void visit(Player target, ArrayList<Player> PlayersList) {
+		target.role.isFramed = true;
+
 	}
 
 	
