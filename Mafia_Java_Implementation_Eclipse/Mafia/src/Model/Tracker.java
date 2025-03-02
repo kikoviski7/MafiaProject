@@ -33,6 +33,12 @@ public class Tracker extends Role {
 		if(untrackable.contains(target)) {
 			System.out.println("Your target is fast as fuck boii");
 		}
+		else if(target.role.isFramed) {
+			System.out.println("Zajebote.");
+		}
+		else if(target.target == null) {
+			System.out.println("Your target lazy af.");
+		}
 		else {
 			System.out.println("Your target visited " + target.target.name);
 		}

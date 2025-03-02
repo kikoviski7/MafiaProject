@@ -52,14 +52,23 @@ public class Main {
 		for (int i = 0; i < PlayersList.size(); i++) {
 			System.out.println("\nPlayer name: " + PlayersList.get(i).name);
 			System.out.println("Player number: " + PlayersList.get(i).number);
-			System.out.println("Player role: " + PlayersList.get(i).role.name);
 			System.out.println("Player isAlive: " + PlayersList.get(i).isAlive);
-			if (PlayersList.get(i).target != null) {
+			System.out.println("Player role: " + PlayersList.get(i).role.name);
+			
+			if(PlayersList.get(i).role.name.equals("transporter")) {
+				System.out.println("Players targets: " + PlayersList.get(i).target.name + " "
+						+ PlayersList.get(i).target.role.name + " "
+								+ transporterSecondTargets.get(night - 1).name + " " + transporterSecondTargets.get(night - 1).role.name);
+			}
+			
+			else if (PlayersList.get(i).target != null) {
 				System.out.println("Players target: " + PlayersList.get(i).target.name + " "
 						+ PlayersList.get(i).target.role.name);
-			} else {
+			}
+			else {
 				System.out.println("Players target: no target");
 			}
+			System.out.println("Player role-blocked: " + PlayersList.get(i).role.isRoleBlocked);
 		}
 		System.out.println("--------------------------------");
 	}
@@ -174,6 +183,14 @@ public class Main {
 		if (consort != null) {
 			consort.role.action(consort.target, PlayersList);
 		}
+		
+		if (survivor != null) {
+			survivor.role.action(survivor.target, PlayersList);
+		}
+
+		if (jester != null) {
+			jester.role.action(jester.target, PlayersList);
+		}
 
 		if (doctor != null) {
 			doctor.role.action(doctor.target, PlayersList);
@@ -185,18 +202,17 @@ public class Main {
 			bodyguard.role.action(bodyguard.target, PlayersList);
 		}
 
-		if (survivor != null) {
-			survivor.role.action(survivor.target, PlayersList);
-		}
-
-		if (jester != null) {
-			jester.role.action(jester.target, PlayersList);
-		}
-
+		
+		//TODO: framer kao role je useless kada nema sheriffa. razmisliti kako uticati na trackera
+				// da li da se trackeru prikaze random lik, ili da tracker prosto ne moze da trackuje osobu koja je frame-ovana?
+		// kada framer framuje, susToSheriff mu se invertuje
+		// ako je bio sus vise nije, ako nije bio sus, sad jeste
+		// ako transporter zameni neku mafiju, framer moze da frameuje svog
 		if (framer != null) {
 			framer.role.action(framer.target, PlayersList);
 		}
 
+		//TODO: Sheriff action treba da se premesti gore u deo gde se bira
 		if (sheriff != null) {
 			sheriff.role.action(sheriff.target, PlayersList);
 		}
@@ -212,7 +228,10 @@ public class Main {
 		if (godfather != null) {
 			godfather.role.action(godfather.target, PlayersList);
 		}
-
+		
+		//TODO: Tracker action treba da se premesti gore u deo gde se bira
+		//Tracker ne moze da trackuje transportera?
+		//ili da se napravi kao da je transporter uvek frameovan od strane trackera
 		if (tracker != null) {
 			tracker.role.action(tracker.target, PlayersList);
 		}
@@ -224,23 +243,43 @@ public class Main {
 	// veteran
 	// transporter
 	// consort
-	// doctor/bodyguard/jester/survivor
+	//jester/survivor
+	// doctor/bodyguard
 	// framer
 	// sheriff
 	// vigilante/mafioso/godfather
 	// tracker
-
+	
+	
+	//TODO: kada biraju doctor, bodyguard, veteran, jester i survivor, napisati koliko imaju action left.
 	private static void choosingTragets(ArrayList<Player> PlayersList) {
 		for (Player player : PlayersList) {
 
 			if (player.isAlive) {
 				
-				// Survivor, Mayor, Jester - None
-				//TODO: survivor i jester sada biraju
-				if (player.role.alignment == "unaligned" || player.role.name == "mayor") {
+				// Mayor - None
+				
+				if (player.role.name == "mayor") {
+//					System.out.println("\n-----------------------------\n");
+//					System.out.println(player.name + " " + player.role.name + " does not choose");
+//					System.out.println("\n-----------------------------\n");
+					continue;
+				}
+				
+				//TODO: survivor i jester su slicni kao veteran
+				if (player.role.alignment == "unaligned") {
+					System.out.println(player.name + " " + player.role.name + " is choosing"
+							+ "\n-----------------------------\n");
+
+					Scanner scanner = new Scanner(System.in); // Create a Scanner object
+					System.out.println("Protect yourself?: y/n\n");
 					System.out.println("\n-----------------------------\n");
-					System.out.println(player.name + " " + player.role.name + " does not choose");
-					System.out.println("\n-----------------------------\n");
+
+					String decision = scanner.nextLine(); // Read user input
+
+					if (decision.trim().equals("y")) {
+						player.target = player;
+					}
 					continue;
 				}
 
@@ -411,16 +450,27 @@ public class Main {
 		RolesList.add(new Mafioso()); // Mafia attacking
 
 		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
+		
+//		RolesList.add(new Consort());
 
-		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+//		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+		
+		RolesList.add(new Bodyguard());
 
-		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
+//		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
+		
+		RolesList.add(new Vigilante());
 
-		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
-
-		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
+//		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
+		
+		RolesList.add(new Transporter());
 
 		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
+		
+		//Town investigative bi trebalo poslednji da biraju zato sto oni dobijaju povratnu informaciju odmah
+		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
+		
+//		RolesList.add(new Tracker());
 
 //		for (Role role : RolesList) {
 //			System.out.println("Role: " + role.name);

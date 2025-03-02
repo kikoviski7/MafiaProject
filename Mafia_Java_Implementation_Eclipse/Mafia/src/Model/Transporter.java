@@ -22,6 +22,10 @@ public class Transporter extends Role {
 		
 		if (transporter != null) {
 			transporterSecondTarget = secondTarget;
+			if (secondTarget.role.name.equals("veteran")) {
+				transporter.isAlive = false;
+				return;
+			}
 			visit(transporter, playersList);
 		}
 		

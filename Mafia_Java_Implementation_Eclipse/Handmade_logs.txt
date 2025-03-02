@@ -1,0 +1,146 @@
+Handmade logs
+
+---------------------------------------
+Attacked 💀
+Protected 🛡
+Role-Blocked 😍
+Transported 🔁
+Framed 🖼
+---------------------------------------
+
+Mafioso 💀 - Mayor 🛡
+Consort - Sheriff 😍
+Bodyguard 💀 - Mayor 🛡
+Vigilante - Jester 🛡
+Sheriff 😍 - Mafioso 💀
+Jester 🛡 - Jester 🛡
+_____________________________
+Interakcija Bodyguard - (Napadnut Role) 💀 ✅
+Interakcija Bodyguard - (Zasticen Role) 🛡 ✅ (Svi prezivljavaju)
+_____________________________
+
+Mafioso 💀 - Mayor 🛡
+Consort - Vigilante 😍
+Bodyguard 💀 - Mayor 🛡
+Vigilante 😍 - Consort
+Tracker - Vigilante 😍
+Survivor 🛡 - Survivor 🛡
+
+__________________________________________________________
+__________________________________________________________
+
+Mafioso 💀 - Survivor 🛡
+Framer 🔁 - Transporter 🖼
+Bodyguard 💀 - Survivor 🛡
+Veteran 🔁 - None
+Tracker - Transporter 🖼
+Transporter 🖼 - Veteran 🔁, Framer 🔁
+Survivor 🛡 - None
+
+__________________________________________________________
+Interakcija Tracker - Transporter ✅ (Tracker-u ne moze da Trackuje Transportera)
+Interakcija Tracker - (Frameovan Role) 🖼 ✅ (Ako je role frameovan, ne moze biti trackovan)
+__________________________________________________________
+
+Mafioso 💀 - Veteran 🛡
+Consort 💀 - Veteran 🛡
+Doctor 💀 - Veteran 🛡
+Veteran 🛡 - Veteran 🛡
+Sheriff 💀 - Veteran 🛡
+Transporter - Sheriff 💀, Veteran 🛡
+
+__________________________________________________________
+Interakcija Transporter - (Random Role), Veteran 🛡 ✅ (Transporter ne zamenjuje nikoga i samo umire)
+__________________________________________________________
+
+Mafioso 💀 - Survivor 🛡
+Consort - Tracker 💀😍
+Bodyguard - Survivor 🛡
+Veteran 🛡 - Veteran 🛡
+Tracker 💀😍 - Veteran 🛡
+Transporter 💀 - Godfather, Veteran 🛡
+Survivor 🛡 - Survivor 🛡
+
+__________________________________________________________
+Interakcija (Role-Blocked Role) 😍 - Veteran 🛡 ✅ (Role-blockovan role umire od veterana iako je role-blockovan)
+__________________________________________________________
+
+Mafioso 💀🔁 - Tracker 🛡
+Framer - Bodyguard 🖼
+Bodyguard 💀🖼 - Tracker 🛡
+Veteran - None
+Tracker 🛡 - Bodyguard 💀🖼
+Transporter - Godfather 🔁, Mafioso 🔁
+Jester 🛡 - Jester 🛡
+
+__________________________________________________________
+Interakcija (Random Role) 🔁 - (Random Role) ❓ (Ako je role transportovan, da li treba da bude role-blockovan? za sad nije)
+__________________________________________________________
+
+Mafioso 💀🔁 - Veteran 🛡
+Framer 💀 - Veteran 🛡
+Bodyguard 💀 - Veteran 🛡
+Veteran 🛡 - Veteran 🛡
+Tracker - Transporter
+Transporter - Godfather 🔁, Mafioso 💀🔁
+Jester 🛡 - Jester 🛡
+
+__________________________________________________________
+__________________________________________________________
+
+Mafioso 💀 - Tracker 🛡
+Framer -Transporter 🔁🖼
+Bodyguard 💀 - Tracker 🛡
+Veteran 🛡 - Veteran 🛡
+Transporter 🔁 - Transporter 🔁🖼, Bodyguard 🔁
+Survivor 🛡 - Survivor 🛡
+Tracker 🛡 - Transporter 🔁🖼
+
+__________________________________________________________
+__________________________________________________________
+
+Mafioso 💀 - Transporter 🖼🛡🔁
+Framer - Transporter 🖼🛡🔁
+Bodyguard 💀🔁 - Transporter 🖼🛡🔁
+Vigilante - Transporter 🖼🛡🔁
+Transporter 🖼🛡🔁 - Bodyguard 💀🔁, Transporter 🖼🛡🔁
+Jester - Jester
+Sheriff - Transporter 🖼🛡🔁
+
+
+__________________________________________________________
+Interakcija: 
+
+Mafioso - (Role1) 
+Vigilante - (Role1) 
+Bodyguard - (Role1) 
+
+(Ako je role1 napadnut od vise napadaca, 
+role1 je mrtav, Bodyguard je mrtav i jedan nasumicno odabran napadac je mrtav)✅
+__________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
