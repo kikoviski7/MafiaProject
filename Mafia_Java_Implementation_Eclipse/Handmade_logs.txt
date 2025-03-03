@@ -119,6 +119,16 @@ Bodyguard - (Role1)
 role1 je mrtav, Bodyguard je mrtav i jedan nasumicno odabran napadac je mrtav)✅
 __________________________________________________________
 
+Mafioso 🔁 - Tracker 💀
+Consort - Bodyguard 😍
+Bodyguard 😍 - Tracker 💀
+Vigilante - Godfather 🔁
+Transporter - Godfather 🔁, Mafioso 🔁
+Survivor - None
+Tracker 💀 - Vigilante
+
+__________________________________________________________
+__________________________________________________________
 
 
 
