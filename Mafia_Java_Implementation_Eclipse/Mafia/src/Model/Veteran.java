@@ -20,6 +20,7 @@ public class Veteran extends Role {
 	public void visit(Player veteran, ArrayList<Player> PlayersList) {
 		
 		veteran.role.defence = 3;
+		veteran.role.hasAction--;
 		
 		for(Player pl : PlayersList) {
 			if (pl.role.name == "veteran") {
@@ -29,6 +30,7 @@ public class Veteran extends Role {
 				pl.isAlive = false;
 			}
 		}
+		
 		
 	}
 	

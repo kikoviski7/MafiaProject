@@ -130,6 +130,24 @@ Tracker 💀 - Vigilante
 __________________________________________________________
 __________________________________________________________
 
+Godfather 💀 - Tracker 🛡
+Consort - Mafioso 💀🔁😍
+Bodyguard 💀 - Tracker 🛡
+Vigilante - Mafioso 💀🔁😍
+Transporter - Mafioso 💀🔁😍, Survivor 🔁
+Survivor 🔁 - None
+Tracker 🛡 - Godfather 💀
+✅
+__________________________________________________________
+kada je Mafioso role-blockovan, Godfather napada. Godfather bi trebalo da umre 
+od Bodyguard-a ali ne umire. ✅
+To je zato sto prvo bodyguard ubija Mafioso-u, pa tek onda Mafioso prebacuje
+target na Godfather-a 
+
+Mafioso se pretvara u Godfather-a ako Godfather umre ❌
+__________________________________________________________
+
+
 
 
 

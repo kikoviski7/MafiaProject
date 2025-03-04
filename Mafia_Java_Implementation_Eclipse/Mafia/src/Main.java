@@ -170,6 +170,7 @@ public class Main {
 			return false;
 		}
 	}
+	// Ako role detektuje da je ubio Godfathera, trazi mafiosu u listi rolova i tom igracu dodeljuje godfathera.
 
 	private static void performActionsAndVisits(ArrayList<Player> PlayersList, ArrayList<Model.Role> RolesList) {
 
@@ -236,9 +237,8 @@ public class Main {
 			}
 		}
 
-		// TODO: testirati da li veteran umire.
-		// TODO: red akcija ce biti definisan listom: prvi role u listi ima priotitet
-		// TODO: ako veteran nema alertova ne moze da alertuje
+		
+		// TODO: red akcija ce biti definisan listom: prvi role u listi ima priotitet?
 		if (veteran != null) {
 			veteran.role.action(veteran.target, PlayersList);
 		}
@@ -280,21 +280,21 @@ public class Main {
 			framer.role.action(framer.target, PlayersList);
 		}
 
-		// TODO: Sheriff action treba da se premesti gore u deo gde se bira
+		// TODO: Sheriff action treba da se premesti gore u deo gde se bira. Samim tim bi i framer trebalo da se premesti gore
 		if (sheriff != null) {
 			sheriff.role.action(sheriff.target, PlayersList);
+		}
+		
+		if (mafioso != null) {
+			mafioso.role.action(mafioso.target, PlayersList);
+		}
+		
+		if (godfather != null) {
+			godfather.role.action(godfather.target, PlayersList);
 		}
 
 		if (vigilante != null) {
 			vigilante.role.action(vigilante.target, PlayersList);
-		}
-
-		if (mafioso != null) {
-			mafioso.role.action(mafioso.target, PlayersList);
-		}
-
-		if (godfather != null) {
-			godfather.role.action(godfather.target, PlayersList);
 		}
 
 		// TODO: Tracker action treba da se premesti gore u deo gde se bira
@@ -315,7 +315,8 @@ public class Main {
 	// doctor/bodyguard
 	// framer
 	// sheriff
-	// vigilante/mafioso/godfather
+	// mafioso
+	// vigilante/godfather
 	// tracker
 
 	// TODO: kada biraju doctor, bodyguard, veteran, jester i survivor, napisati
@@ -422,6 +423,7 @@ public class Main {
 				}
 
 				// Veteran - Only self choose
+				// TODO: ako veteran nema alertova ne moze da alertuje
 				if (player.role.name == "veteran") {
 
 					System.out.println(player.name + " " + player.role.name + " is choosing"
@@ -517,9 +519,9 @@ public class Main {
 
 		RolesList.add(new Mafioso()); // Mafia attacking
 
-		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
+//		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
-//		RolesList.add(new Consort());
+		RolesList.add(new Consort());
 
 //		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
 
@@ -533,18 +535,16 @@ public class Main {
 
 		RolesList.add(new Transporter());
 
-		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
+//		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
+		
+		RolesList.add(new Survivor());
 
 		// Town investigative bi trebalo poslednji da biraju zato sto oni dobijaju
 		// povratnu informaciju odmah
-		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
+//		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
 
-//		RolesList.add(new Tracker());
+		RolesList.add(new Tracker());
 
-//		for (Role role : RolesList) {
-//			System.out.println("Role: " + role.name);
-//
-//		}
 
 		return RolesList;
 	}
