@@ -100,13 +100,42 @@ public class Main {
 
 			setDefaultRound(PlayersListWithRoles);
 
-			day();
+			day(PlayersListWithRoles);
 		}
 
 	}
 
-	private static void day() {
-		return;
+	private static void day(ArrayList<Player> playersList) {
+		System.out.println("\nPick a player to lynch"
+				+ "\n-----------------------------\n");
+
+		for (int i = 0; i < numberOfPlayers; i++) {
+			Player pl = playersList.get(i);
+
+			if (pl.isAlive) {
+				System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+			}
+		}
+
+		System.out.println("\nChoose a number: ");
+		
+		Scanner scanner = new Scanner(System.in); // Create a Scanner object
+		int target = scanner.nextInt() - 1; // Reads integer input
+		if (target >= 0 && target <= 8) {
+			playersList.get(target).isAlive = false;
+			System.out.println("--------------------------------");
+		}
+
+		while(target <= 0 && target >= 8) {
+			System.out.println("\nChoose a number: ");
+			target = scanner.nextInt() - 1; // Reads integer input
+			if (target >= 0 && target <= 8) {
+				playersList.get(target).isAlive = false;
+				System.out.println("--------------------------------");
+			}
+		}
+		
+		
 
 	}
 
@@ -158,7 +187,8 @@ public class Main {
 
 		if (mafia.size() == 0) {
 			if (!(survivor == null)) {
-				System.out.println(survivor.role.name + "wins!");
+				System.out.println("Survivor wins!");
+
 
 			} else {
 				System.out.println("Town wins!");
@@ -169,7 +199,7 @@ public class Main {
 
 		else if (town.size() == 0) {
 			if (!(survivor == null)) {
-				System.out.println(survivor.role.name + "wins!");
+				System.out.println("Survivor wins!");
 
 			} else {
 				System.out.println("Mafia wins!");

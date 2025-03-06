@@ -164,7 +164,7 @@ Survivor 🔁 - None
 Tracker - Survivor 🔁
 
 Day 2
-obesiose 
+obesiose 🎗
 
 Night 2
 Mafioso 🔁 - Transporter 💀
@@ -198,8 +198,6 @@ Transporter prikazuje oba targeta svake noci ❌
 Ako je igrac sprecen, oduzima mu se SpecialAction ❌
 Frameovan igrac je frameovan dok ga neko ne proveri/trackuje ❓ (za sad je frameovan samo tu noc)
 __________________________________________________________
-
-
 
 
 
