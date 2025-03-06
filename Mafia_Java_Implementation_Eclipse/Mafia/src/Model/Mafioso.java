@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Mafioso extends Role{
 	Player mafioso;
 	Player godfather;
+	Player mafiaBacking;
 	public Mafioso() {
 		super("mafioso", 1, 0, true, false, "mafia", "attacking", 10);
 	}
@@ -18,6 +19,9 @@ public class Mafioso extends Role{
 			if(player.role.name.equals("godfather")) {
 				godfather = player;
 			}
+			if ("framer".equalsIgnoreCase(player.role.name) || "consort".equalsIgnoreCase(player.role.name)) {
+		    	mafiaBacking = player;
+		    }
 		}
 		
 		if(!mafioso.role.isRoleBlocked) {
@@ -27,6 +31,7 @@ public class Mafioso extends Role{
 			if (mafioso.isAlive == false) {
 				mafioso.isAlive = true;
 				godfather.isAlive = false;
+				mafioso.role.inherits = true;
 				
 			}
 			godfather.target = target;
@@ -40,6 +45,11 @@ public class Mafioso extends Role{
 	public void visit(Player target, ArrayList<Player> PlayersList) {
 		if(mafioso.role.attack > target.role.defence) {
 			target.isAlive = false;
+			
+			
+			if(target == mafioso && godfather.isAlive == false) {
+				mafiaBacking.role.inherits = true;
+			}
 		}
 		
 	}

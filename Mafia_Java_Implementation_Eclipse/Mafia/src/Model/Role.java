@@ -14,6 +14,7 @@ public abstract class Role {
 	//TODO: da se ovo zove "action", a da postoji metoda koja se zove hasAction koja vraca boolean
 	// da bi kod bio citljiviji
 	public int hasAction;
+	public boolean inherits = false;
 	
 
 	

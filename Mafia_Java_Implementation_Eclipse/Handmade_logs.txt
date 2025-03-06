@@ -137,7 +137,6 @@ Vigilante - Mafioso 💀🔁😍
 Transporter - Mafioso 💀🔁😍, Survivor 🔁
 Survivor 🔁 - None
 Tracker 🛡 - Godfather 💀
-✅
 __________________________________________________________
 kada je Mafioso role-blockovan, Godfather napada. Godfather bi trebalo da umre 
 od Bodyguard-a ali ne umire. ✅
@@ -145,7 +144,66 @@ To je zato sto prvo bodyguard ubija Mafioso-u, pa tek onda Mafioso prebacuje
 target na Godfather-a 
 
 Mafioso se pretvara u Godfather-a ako Godfather umre ❌
+ovo treba da se desava kad napadaju: 
+Mafioso ❌
+Godfather ❌
+Bodyguard ❌
+Veteran ❌
+Vigilante ❌
 __________________________________________________________
+Day 1
+
+Night 1
+
+Godfather 💀 - Tracker 🛡
+Consort - Mafioso 🔁💀😍
+Bodyguard 💀 - Tracker 🛡
+Vigilante - Mafioso 🔁💀😍
+Transporter - Mafioso 🔁💀😍, Survivor 🔁
+Survivor 🔁 - None
+Tracker - Survivor 🔁
+
+Day 2
+obesiose 
+
+Night 2
+Mafioso 🔁 - Transporter 💀
+Vigilante - Survivor 🛡
+Transporter 💀 - Mafioso 🔁, Tracker 🔁
+Survivor 🛡 - Survivor 🛡
+Tracker 🔁 - Tracker 🔁
+
+Day 3
+
+Night 3
+Mafioso - Vigilante 💀
+Vigilante 💀 - Survivor 💀
+Survivor 💀 - None
+Tracker - Vigilante 💀
+
+Day 4
+
+Night 4
+Mafioso - Tracker 💀
+Tracker - Mafioso
+
+Day 5
+Mafia Wins!
+
+__________________________________________________________
+Transporter ne moze da izabere mrtve za drugi target ❌
+Survivor moze da se zastiti ako nema action ❌
+Vigilante baca error ❌
+Transporter prikazuje oba targeta svake noci ❌
+Ako je igrac sprecen, oduzima mu se SpecialAction ❌
+Frameovan igrac je frameovan dok ga neko ne proveri/trackuje ❓ (za sad je frameovan samo tu noc)
+__________________________________________________________
+
+
+
+
+
+
 
 
 

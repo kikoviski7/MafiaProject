@@ -1,0 +1,243 @@
+Role List (sta rade rolovi)
+
+------------------------------------------------------------------------------------
+Godfather (Napada)
+------------------------------------------------------------------------------------
+Napad: 1
+Odbrana: 1
+Strana: Mafija
+
+Narucuje ubistvo koje Mafioso izvrsava. 
+- Ako mafioso ne moze da izvrsi ubistvo, izvrsava ga on licno.
+- Ako sheriff poseti godfathera, Godfather nece biti sus.
+
+
+------------------------------------------------------------------------------------
+Mafioso (Napada)
+------------------------------------------------------------------------------------
+Napad: 1
+Odbrana: 0
+Strana: Mafija
+
+Izvrsava naruceno ubistvo.
+- Ako nema Godfathera, on narucuje i izvrsava ubistvo.
+- Ako Godfather umre, on postaje Godfather.
+
+
+------------------------------------------------------------------------------------
+Consort (Sabotira)
+------------------------------------------------------------------------------------
+Napad: 0
+Odbrana: 0
+Strana: Mafija
+
+Role-Blockuje - sprecava igraca da radi ono sto bi inace radio
+- Consort ne moze da spreci Veteran-a
+- Consort ne moze da spreci Transporter-a
+
+
+------------------------------------------------------------------------------------
+Framer (Sabotira)
+------------------------------------------------------------------------------------
+Napad: 0
+Odbrana: 0
+Strana: Mafija
+
+Radi 2 stvari:
+- Sheriff-u daje laznu informaciju o tome da li je igrac mafije ili ne.
+- Tracker-u daje laznu informaciju o meti koja je posecena.
+
+
+------------------------------------------------------------------------------------
+Tracker (Info)
+------------------------------------------------------------------------------------
+Napad: 0
+Odbrana: 0
+Strana: Grad
+
+Posecuje jednog igraca i dobija povratnu informaciju o tome koga je posetio taj igrac.
+- ne moze da prati Transporter-a
+
+
+------------------------------------------------------------------------------------
+Sheriff (Info)
+------------------------------------------------------------------------------------
+Napad: 0
+Odbrana: 0
+Strana: Grad
+
+Posecuje jednog igraca i dobija povratnu informaciju o tome da li je igrac na strani mafije ili ne.
+- ako poseti Godfather-a, izaci ce mu da je on na strani grada.
+
+
+------------------------------------------------------------------------------------
+Mayor (Support)
+------------------------------------------------------------------------------------
+Napad: 0
+Odbrana: 0
+Strana: Grad
+
+Ima sposobnost da otkrije svima svoju ulogu preko dana
+- kada se Mayor otkrije, njegov glas tokom glasanja vredi 2
+- jednom kada se Mayor otkrije, ne moze biti zasticen.
+
+
+------------------------------------------------------------------------------------
+Transporter (Support)
+------------------------------------------------------------------------------------
+Napad: 0
+Odbrana: 0
+Strana: Grad
+
+Bira 2 igraca i menja im mesta.
+- svako ko je izabrao igraca1 za metu, sada bira igraca2
+- svako ko je izabrao igraca2 za metu, sada bira igraca1
+
+
+------------------------------------------------------------------------------------
+Veteran (Napada)
+------------------------------------------------------------------------------------
+Napad: 3 (max)
+Odbrana: 0
+Strana: Grad
+
+Ima sposobnost da ostane budan preko noci.
+- ako ostane budan, svako ko ga poseti je mrtav
+- moze da ostane budan samo 2 puta u toku jedne igre
+- kada ostane budan, dobija odbranu jacine 2
+
+
+------------------------------------------------------------------------------------
+Vigilante (Napada)
+------------------------------------------------------------------------------------
+Napad: 1
+Odbrana: 0
+Strana: Grad
+
+Tokom noci, bira igraca koga ce da ubije.
+- ako ubije nekoga ko je na njegovoj strani, umire na kraju sledece noci. Tokom te sledece noci ne moze da napada nikog.
+- ne moze da napada prvu noc.
+- ima 2 napada u toku jedne igre
+
+
+------------------------------------------------------------------------------------
+Doctor (Brani)
+------------------------------------------------------------------------------------
+Napad: 0
+Odbrana: 0
+Strana: Grad
+
+Tokom noci, Doktor bira kog igraca ce da obrani od napada tokom iste.
+- moze sebe da sacuva samo jednom tokom igre.
+- kada sacuva igraca, daje mu odbranu jacine 2
+
+
+------------------------------------------------------------------------------------
+Bodyguard (Brani)
+------------------------------------------------------------------------------------
+Napad: 2
+Odbrana: 0
+Strana: Grad
+
+Tokom noci, Bodyguard bira kog igraca ce da obrani(role1) od napada tokom iste.
+- kada Bodyguard odbrani nekog igraca(role1), Bodyguard preusmerava napad na sebe, i napada napadaca.
+- Ako je role1 napadnut od vise napadaca, role1 je mrtav, Bodyguard je mrtav i jedan nasumicno odabran napadac je mrtav.
+- ako je role1 vec zasticen(vec ima odbranu 2), Bodyguard ne umire i napadac ne umire.
+- moze sebe da sacuva samo jednom tokom igre.
+- kada sacuva igraca, daje mu odbranu jacine 2
+
+
+------------------------------------------------------------------------------------
+Survivor (Samoodbrana)
+------------------------------------------------------------------------------------
+Napad: 0
+Odbrana: 0
+Strana: Nesvrstano
+
+Survivor-ov cilj je da ostane ziv do kraja partije. Ako ostane ziv zajedno sa jednim timom, krade pobedu.
+- ima sposobnost da se zastiti jednom tokom partije
+- kada se zastiti, daje sebi odbranu 2
+
+
+------------------------------------------------------------------------------------
+Jester (Samoodbrana)
+------------------------------------------------------------------------------------
+Napad: 0
+Odbrana: 0
+Strana: Nesvrstano
+
+Ako ga ljudi obese na glasanju, on pobedjuje
+- ima sposobnost da se zastiti jednom tokom partije
+- kada se zastiti, daje sebi odbranu 2
+
+
+------------------------------------------------------------------------------------
+Kako rolovi biraju:
+- Vigilante, Tracker, Sheriff - Default choosing (Everyone but them)
+- Doctor, Bodyguard - Can choose everyone
+- Veteran, Survivor, Jester - Only self choose
+- Transporter - Chooses anyone (two targets)
+- Mafioso, Godfather, Framer, Consort - Mafia choosing
+- Mayor - Day choosing
+------------------------------------------------------------------------------------
+Kako funkcionicu napad i Odbrana
+- Najjaci napad je 3, a najslabiji je 1, 0 je indikacija da uloga ne napada.
+- Najjaca odbrana je 2, a najslabija je 1, 0 je indikacija da svako moze da ubije tu ulogu.
+- Da bi napad prosao, vrednost napada napadaca mora da bude striktno veca od odbrane mete
+------------------------------------------------------------------------------------
+
+
+Sta svaki role treba da ima:
+- napad [0, 3];
+- odbrana [0, 2];
+- strana (mafija, town, nesvrstano);
+- immediateAnswer (true, false)
+
+Godfather
+- isSus
+- Player target;
+
+Mafioso
+- isSus
+- Player target;
+
+Consort
+- isSus
+- Player target;
+
+Framer
+- isSus
+- Player target;
+
+Tracker
+- Player target;
+
+Sheriff
+- Player target;
+
+Mayor
+
+Transporter
+- Player target;
+
+Veteran
+
+Vigilante
+- Player target;
+
+Doctor
+- Player target;
+
+Bodyguard
+- Player target;
+
+Survivor
+
+Jester
+
+InformationCenter
+isSus
+isFramed
+
+
+DefaultState

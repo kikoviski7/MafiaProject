@@ -55,7 +55,7 @@ public class Main {
 			System.out.println("Player isAlive: " + PlayersList.get(i).isAlive);
 			System.out.println("Player role: " + PlayersList.get(i).role.name);
 
-			if (PlayersList.get(i).role.name.equals("transporter")) {
+			if (PlayersList.get(i).role.name.equals("transporter") && PlayersList.get(i).isAlive) {
 				System.out.println("Players targets: " + PlayersList.get(i).target.name + " "
 						+ PlayersList.get(i).target.role.name + " " + transporterSecondTargets.get(night - 1).name + " "
 						+ transporterSecondTargets.get(night - 1).role.name);
@@ -90,7 +90,7 @@ public class Main {
 
 		ArrayList<Player> PlayersListWithRoles = assignRolesToPlayers(PlayersList, RolesList);
 
-		while (checkWinCondition(PlayersListWithRoles) == false) {
+		while (!checkWinCondition(PlayersListWithRoles)) {
 
 			night++;
 
@@ -120,6 +120,18 @@ public class Main {
 				player.role.defence = 1;
 			} else {
 				player.role.defence = 0;
+			}
+			
+			//Mafia inheritance
+			if (player.role.inherits) {
+				if (player.role.name == "mafioso") {
+					player.role = new Godfather();
+					System.out.println("Godfather died. You are new Godfather");
+				}
+				else if(player.role.name == "framer" || player.role.name == "consort") {
+					player.role = new Mafioso();
+					System.out.println("Mafioso died. You are new Mafioso");
+				}
 			}
 
 		}
@@ -243,7 +255,7 @@ public class Main {
 			veteran.role.action(veteran.target, PlayersList);
 		}
 
-		if (transporter != null) {
+		if (transporter != null && transporter.isAlive) {
 			transporter.role.action(transporterSecondTargets.get(night - 1), PlayersList);
 		}
 

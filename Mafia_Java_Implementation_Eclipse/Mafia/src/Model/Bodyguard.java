@@ -6,7 +6,10 @@ import java.util.Random;
 //TODO: zavrsiti bodyguarda; niko ne umire kada bodyguard nekog zastiti
 
 public class Bodyguard extends Role {
-	public Player bodyguard;
+	Player bodyguard;
+	Player godfather;
+	Player mafioso;
+	Player mafiaBacking;
 	ArrayList<Player> attackers = new ArrayList<>();
 
 	public Bodyguard() {
@@ -19,6 +22,28 @@ public class Bodyguard extends Role {
 	@Override
 	public void action(Player target, ArrayList<Player> playersList) {
 		for (Player player : playersList) {
+		    if ("godfather".equalsIgnoreCase(player.role.name)) {
+		    	godfather = player;
+		        break;
+		    }
+		}
+		
+		for (Player player : playersList) {
+		    if ("mafioso".equalsIgnoreCase(player.role.name)) {
+		    	mafioso = player;
+		        break;
+		    }
+		}
+		
+		for (Player player : playersList) {
+		    if ("framer".equalsIgnoreCase(player.role.name) || "consort".equalsIgnoreCase(player.role.name)) {
+		    	mafiaBacking = player;
+		        break;
+		    }
+		}
+		
+		
+		for (Player player : playersList) {
 		    if ("bodyguard".equalsIgnoreCase(player.role.name)) {
 		        bodyguard = player;
 		        break;
@@ -26,6 +51,7 @@ public class Bodyguard extends Role {
 		    }
 		}
 		
+		// ako role ne targetuje bodyguarda i ako je role napadac
 		for (Player player : playersList) {
 			if(player.target == bodyguard.target && player != bodyguard && 
 					(player.role.name.equals("vigilante") || player.role.name.equals("mafioso") || 
@@ -58,6 +84,13 @@ public class Bodyguard extends Role {
 				if(bodyguard.role.attack > attacker.role.defence) {
 					bodyguard.isAlive = false;
 					attacker.isAlive = false;
+					if(attacker == godfather) {
+						mafioso.role.inherits = true;
+					}
+					else if(attacker == mafioso && godfather.isAlive == false) {
+						mafiaBacking.role.inherits = true;
+					}
+					
 				}
 			}
 		}
@@ -65,6 +98,13 @@ public class Bodyguard extends Role {
 			Player attacker = attackers.get(randomBoolean() ? 0 : 1);
 			attacker.isAlive = false;
 			bodyguard.isAlive = false;
+			if(attacker == godfather) {
+				mafioso.role.inherits = true;
+			}
+			else if(attacker == mafioso && godfather.isAlive == false) {
+				mafiaBacking.role.inherits = true;
+			}
+			
 		}
 		
 	}
