@@ -56,9 +56,11 @@ public class Main {
 			System.out.println("Player role: " + PlayersList.get(i).role.name);
 
 			if (PlayersList.get(i).role.name.equals("transporter") && PlayersList.get(i).isAlive) {
-				System.out.println("Players targets: " + PlayersList.get(i).target.name + " "
-						+ PlayersList.get(i).target.role.name + " " + transporterSecondTargets.get(night - 1).name + " "
-						+ transporterSecondTargets.get(night - 1).role.name);
+				if(PlayersList.get(i).target != null) {
+					System.out.println("Players targets: " + PlayersList.get(i).target.name + " "
+							+ PlayersList.get(i).target.role.name + " " + transporterSecondTargets.get(night - 1).name + " "
+							+ transporterSecondTargets.get(night - 1).role.name);
+				}
 			}
 
 			else if (PlayersList.get(i).target != null) {
@@ -280,7 +282,7 @@ public class Main {
 			veteran.role.action(veteran.target, PlayersList);
 		}
 
-		if (transporter != null && transporter.isAlive) {
+		if (transporter != null && transporter.isAlive && transporterSecondTargets.size() == night) {
 			transporter.role.action(transporterSecondTargets.get(night - 1), PlayersList);
 		}
 
@@ -462,24 +464,26 @@ public class Main {
 					}
 					System.out.println("--------------------------------");
 
-					// Get throught all players
-					for (int i = 0; i < numberOfPlayers; i++) {
-						Player pl = PlayersList.get(i);
-						if (!pl.equals(player.target))
-							System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
-					}
+					if(target != 0) {
+						// Get throught all players
+						for (int i = 0; i < numberOfPlayers; i++) {
+							Player pl = PlayersList.get(i);
+							if (!pl.equals(player.target))
+								if(pl.isAlive) {System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);}
+						}
 
-					System.out.println("\nChoose another number: ");
+						System.out.println("\nChoose another number: ");
 
-					Scanner secondScanner = new Scanner(System.in); // Create a Scanner object
-					int secondTarget = scanner.nextInt(); // Reads integer input
+						Scanner secondScanner = new Scanner(System.in); // Create a Scanner object
+						int secondTarget = scanner.nextInt(); // Reads integer input
 
-					while (secondTarget < 0 || secondTarget > 8) {
-						System.out.println("\nWrong number, choose another number: ");
-						secondTarget = scanner.nextInt();
-					}
-					if (secondTarget != 0) {
-						transporterSecondTargets.add(PlayersList.get(secondTarget - 1));
+						while (secondTarget < 0 || secondTarget > 8) {
+							System.out.println("\nWrong number, choose another number: ");
+							secondTarget = scanner.nextInt();
+						}
+						if (secondTarget != 0) {
+							transporterSecondTargets.add(PlayersList.get(secondTarget - 1));
+						}
 					}
 					continue;
 				}
