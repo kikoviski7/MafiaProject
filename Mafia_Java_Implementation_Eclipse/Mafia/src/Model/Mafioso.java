@@ -25,7 +25,9 @@ public class Mafioso extends Role{
 		}
 		
 		if(!mafioso.role.isRoleBlocked) {
-			visit(target, playersList);
+			if(target != null) {
+				visit(target, playersList);
+			}
 		}
 		else {
 			if (mafioso.isAlive == false) {

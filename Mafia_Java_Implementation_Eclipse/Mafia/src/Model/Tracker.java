@@ -23,7 +23,9 @@ public class Tracker extends Role {
 		}
 		
 		if (!tracker.role.isRoleBlocked) {
-			visit(target, playersList);
+			if(target != null) {
+				visit(target, playersList);
+			}
 		}
 		
 	}

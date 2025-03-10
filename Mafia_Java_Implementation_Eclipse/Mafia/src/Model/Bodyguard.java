@@ -65,7 +65,9 @@ public class Bodyguard extends Role {
 			if ((bodyguard == target && bodyguard.role.hasAction == 0)) {
 				return;
 			}
-			visit(target, playersList);
+			if(target != null) {
+				visit(target, playersList);
+			}
 		}
 	}
 

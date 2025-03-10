@@ -12,7 +12,9 @@ public class Framer extends Role {
 	public void action(Player target, ArrayList<Player> playersList) {
 
 		
-		visit(target, playersList);
+		if(target != null) {
+			visit(target, playersList);
+		}
 
 	}
 

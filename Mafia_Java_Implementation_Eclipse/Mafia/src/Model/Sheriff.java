@@ -21,7 +21,9 @@ public class Sheriff extends Role {
 		if (sheriff.role.isRoleBlocked) {
 			return;
 		}
-		visit(target, playersList);
+		if(target != null) {
+			visit(target, playersList);
+		}
 		
 	}
 

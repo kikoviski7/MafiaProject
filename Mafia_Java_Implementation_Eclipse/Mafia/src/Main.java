@@ -106,8 +106,7 @@ public class Main {
 	}
 
 	private static void day(ArrayList<Player> playersList) {
-		System.out.println("\nPick a player to lynch"
-				+ "\n-----------------------------\n");
+		System.out.println("\nPick a player to lynch" + "\n-----------------------------\n");
 
 		for (int i = 0; i < numberOfPlayers; i++) {
 			Player pl = playersList.get(i);
@@ -118,7 +117,7 @@ public class Main {
 		}
 
 		System.out.println("\nChoose a number: ");
-		
+
 		Scanner scanner = new Scanner(System.in); // Create a Scanner object
 		int target = scanner.nextInt() - 1; // Reads integer input
 		if (target >= 0 && target <= 8) {
@@ -126,7 +125,7 @@ public class Main {
 			System.out.println("--------------------------------");
 		}
 
-		while(target <= 0 && target >= 8) {
+		while (target <= 0 && target >= 8) {
 			System.out.println("\nChoose a number: ");
 			target = scanner.nextInt() - 1; // Reads integer input
 			if (target >= 0 && target <= 8) {
@@ -134,8 +133,6 @@ public class Main {
 				System.out.println("--------------------------------");
 			}
 		}
-		
-		
 
 	}
 
@@ -150,14 +147,13 @@ public class Main {
 			} else {
 				player.role.defence = 0;
 			}
-			
-			//Mafia inheritance
+
+			// Mafia inheritance
 			if (player.role.inherits) {
 				if (player.role.name == "mafioso") {
 					player.role = new Godfather();
 					System.out.println("Godfather died. You are new Godfather");
-				}
-				else if(player.role.name == "framer" || player.role.name == "consort") {
+				} else if (player.role.name == "framer" || player.role.name == "consort") {
 					player.role = new Mafioso();
 					System.out.println("Mafioso died. You are new Mafioso");
 				}
@@ -189,7 +185,6 @@ public class Main {
 			if (!(survivor == null)) {
 				System.out.println("Survivor wins!");
 
-
 			} else {
 				System.out.println("Town wins!");
 
@@ -212,7 +207,8 @@ public class Main {
 			return false;
 		}
 	}
-	// Ako role detektuje da je ubio Godfathera, trazi mafiosu u listi rolova i tom igracu dodeljuje godfathera.
+	// Ako role detektuje da je ubio Godfathera, trazi mafiosu u listi rolova i tom
+	// igracu dodeljuje godfathera.
 
 	private static void performActionsAndVisits(ArrayList<Player> PlayersList, ArrayList<Model.Role> RolesList) {
 
@@ -279,7 +275,6 @@ public class Main {
 			}
 		}
 
-		
 		// TODO: red akcija ce biti definisan listom: prvi role u listi ima priotitet?
 		if (veteran != null) {
 			veteran.role.action(veteran.target, PlayersList);
@@ -322,15 +317,16 @@ public class Main {
 			framer.role.action(framer.target, PlayersList);
 		}
 
-		// TODO: Sheriff action treba da se premesti gore u deo gde se bira. Samim tim bi i framer trebalo da se premesti gore
+		// TODO: Sheriff action treba da se premesti gore u deo gde se bira. Samim tim
+		// bi i framer trebalo da se premesti gore
 		if (sheriff != null) {
 			sheriff.role.action(sheriff.target, PlayersList);
 		}
-		
+
 		if (mafioso != null) {
 			mafioso.role.action(mafioso.target, PlayersList);
 		}
-		
+
 		if (godfather != null) {
 			godfather.role.action(godfather.target, PlayersList);
 		}
@@ -422,7 +418,16 @@ public class Main {
 
 					Scanner scanner = new Scanner(System.in); // Create a Scanner object
 					int target = scanner.nextInt(); // Reads integer input
-					player.target = PlayersList.get(target - 1);
+
+					while (target < 0 || target > 8) {
+						System.out.println("\nWrong number, choose another number: ");
+						target = scanner.nextInt();
+					}
+
+					if (target != 0) {
+						player.target = PlayersList.get(target - 1);
+					}
+
 					System.out.println("--------------------------------");
 
 					continue;
@@ -446,7 +451,15 @@ public class Main {
 
 					Scanner scanner = new Scanner(System.in); // Create a Scanner object
 					int target = scanner.nextInt(); // Reads integer input
-					player.target = PlayersList.get(target - 1);
+
+					while (target < 0 || target > 8) {
+						System.out.println("\nWrong number, choose another number: ");
+						target = scanner.nextInt();
+					}
+
+					if (target != 0) {
+						player.target = PlayersList.get(target - 1);
+					}
 					System.out.println("--------------------------------");
 
 					// Get throught all players
@@ -460,7 +473,14 @@ public class Main {
 
 					Scanner secondScanner = new Scanner(System.in); // Create a Scanner object
 					int secondTarget = scanner.nextInt(); // Reads integer input
-					transporterSecondTargets.add(PlayersList.get(secondTarget - 1));
+
+					while (secondTarget < 0 || secondTarget > 8) {
+						System.out.println("\nWrong number, choose another number: ");
+						secondTarget = scanner.nextInt();
+					}
+					if (secondTarget != 0) {
+						transporterSecondTargets.add(PlayersList.get(secondTarget - 1));
+					}
 					continue;
 				}
 
@@ -502,7 +522,18 @@ public class Main {
 
 					Scanner scanner = new Scanner(System.in); // Create a Scanner object
 					int target = scanner.nextInt(); // Reads integer input
-					player.target = PlayersList.get(target - 1);
+
+					while (target < 0 || target > 8) {
+
+						System.out.println("\nWrong number, choose another number: ");
+						target = scanner.nextInt();
+
+					}
+
+					if (target != 0) {
+						player.target = PlayersList.get(target - 1);
+					}
+
 					System.out.println("--------------------------------");
 				}
 
@@ -526,7 +557,16 @@ public class Main {
 
 					Scanner scanner = new Scanner(System.in); // Create a Scanner object
 					int target = scanner.nextInt(); // Reads integer input
-					player.target = PlayersList.get(target - 1);
+					while (target < 0 || target > 8) {
+
+						System.out.println("\nWrong number, choose another number: ");
+						target = scanner.nextInt();
+
+					}
+
+					if (target != 0) {
+						player.target = PlayersList.get(target - 1);
+					}
 					System.out.println("--------------------------------");
 				}
 			}
@@ -561,32 +601,31 @@ public class Main {
 
 		RolesList.add(new Mafioso()); // Mafia attacking
 
-//		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
+		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
-		RolesList.add(new Consort());
+//		RolesList.add(new Consort());
 
-//		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
 
-		RolesList.add(new Bodyguard());
+//		RolesList.add(new Bodyguard());
 
-//		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
+		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
 
-		RolesList.add(new Vigilante());
+//		RolesList.add(new Vigilante());
 
 //		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
 		RolesList.add(new Transporter());
 
-//		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
-		
-		RolesList.add(new Survivor());
+		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
+
+//		RolesList.add(new Survivor());
 
 		// Town investigative bi trebalo poslednji da biraju zato sto oni dobijaju
 		// povratnu informaciju odmah
-//		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
+		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
 
-		RolesList.add(new Tracker());
-
+//		RolesList.add(new Tracker());
 
 		return RolesList;
 	}

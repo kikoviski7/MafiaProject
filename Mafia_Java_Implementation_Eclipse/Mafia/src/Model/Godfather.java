@@ -18,7 +18,9 @@ public class Godfather extends Role {
 		}
 		
 		if(!godfather.role.isRoleBlocked) {
-			visit(target, playersList);
+			if(target != null) {
+				visit(target, playersList);
+			}
 		}
 		
 	}

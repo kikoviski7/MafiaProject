@@ -14,8 +14,10 @@ public class Consort extends Role {
 	@Override
 	public void action(Player target, ArrayList<Player> playersList) {
 		
-		if(!immuneToRoleblock.contains(target.role.name)) {
-			visit(target, playersList);
+		 if(target != null) {
+			 if(!immuneToRoleblock.contains(target.role.name)){
+				visit(target, playersList);
+			}
 		}
 		
 	}

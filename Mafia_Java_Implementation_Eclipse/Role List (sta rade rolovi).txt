@@ -8,7 +8,7 @@ Odbrana: 1
 Strana: Mafija
 
 Narucuje ubistvo koje Mafioso izvrsava. 
-- Ako mafioso ne moze da izvrsi ubistvo, izvrsava ga on licno.
+- Ako mafioso ne moze da izvrsi ubistvo iz bilo kog razloga (role-blokovan ili mrtav), izvrsava ga on licno.
 - Ako sheriff poseti godfathera, Godfather nece biti sus.
 
 

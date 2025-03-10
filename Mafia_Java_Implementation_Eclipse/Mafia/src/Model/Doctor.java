@@ -24,7 +24,9 @@ public class Doctor extends Role {
 			if ((doctor == target && doctor.role.hasAction == 0)) {
 				System.out.println("You took one. Take it or leave.");
 			}
-			visit(target, playersList);
+			if(target != null) {
+				visit(target, playersList);
+			}
 		}
 		
 		 
