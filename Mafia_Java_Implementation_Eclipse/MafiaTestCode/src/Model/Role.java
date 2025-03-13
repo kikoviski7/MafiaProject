@@ -10,13 +10,15 @@ public abstract class Role {
 	public boolean isFramed = false;
 	public String alignment;
 	public boolean isRoleBlocked = false;
-	// category
 	public String category;
-	public boolean hasAction;
+	//TODO: da se ovo zove "action", a da postoji metoda koja se zove hasAction koja vraca boolean
+	// da bi kod bio citljiviji
+	public int hasAction;
+	public boolean inherits = false;
 	
 
 	
-	public Role(String name, int attack, int defence, boolean suspiciousToSheriff, boolean isFramed, String alignment, String subAlignment) {
+	public Role(String name, int attack, int defence, boolean suspiciousToSheriff, boolean isFramed, String alignment, String subAlignment, int hasAction) {
 		this.name = name;
 		this.attack = attack;
 		this.defence = defence;
@@ -24,6 +26,7 @@ public abstract class Role {
 		this.isFramed = isFramed;
 		this.alignment = alignment;
 		this.category = subAlignment;
+		this.hasAction = hasAction;
 	}
 	
 

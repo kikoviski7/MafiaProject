@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Mayor extends Role{
 	public Mayor()  {
-		super("mayor", 0,0,false,false,"town", "support");
+		super("mayor", 0,0,false,false,"town", "support", 10);
 		
 	}
 

@@ -109,8 +109,28 @@ public class Main {
 
 	private static void day(ArrayList<Player> playersList) {
 		System.out.println("\nPick a player to lynch" + "\n-----------------------------\n");
+		Player godfather = null;
+		Player mafioso = null;
+		Player framer = null;
+		Player consort = null;
 
 		for (int i = 0; i < numberOfPlayers; i++) {
+			if(playersList.get(i).role.name == "godfather") {
+				godfather = playersList.get(i);
+			}
+			
+			if(playersList.get(i).role.name == "mafioso") {
+				mafioso = playersList.get(i);
+			} 
+			
+			if(playersList.get(i).role.name == "framer") {
+				framer = playersList.get(i);
+			} 
+			
+			if(playersList.get(i).role.name == "consort") {
+				consort = playersList.get(i);
+			} 
+			
 			Player pl = playersList.get(i);
 
 			if (pl.isAlive) {
@@ -124,6 +144,40 @@ public class Main {
 		int target = scanner.nextInt() - 1; // Reads integer input
 		if (target >= 0 && target <= 8) {
 			playersList.get(target).isAlive = false;
+			
+			if (playersList.get(target).role.name == "godfather") {
+				if(mafioso.isAlive && mafioso != null) {
+					mafioso.role = new Godfather();
+					System.out.println(mafioso.name + ", you are new Godfather");
+				}
+				else {
+					if(consort != null) {
+						consort.role = new Mafioso();
+						System.out.println(consort.name + ", you are new Mafioso");
+					}
+					
+					if(framer != null) {
+						framer.role = new Mafioso();
+						System.out.println(framer.name + ", you are new Mafioso");
+					}
+				}
+			}
+			
+			if (playersList.get(target).role.name == "mafioso" && !(godfather.isAlive)) {
+				
+				if(consort != null) {
+					consort.role = new Mafioso();
+					System.out.println(consort.name + ", you are new Mafioso");
+				}
+				
+				if(framer != null) {
+					framer.role = new Mafioso();
+					System.out.println(framer.name + ", you are new Mafioso");
+				}
+				
+				
+			}
+			
 			System.out.println("--------------------------------");
 		}
 
@@ -132,6 +186,26 @@ public class Main {
 			target = scanner.nextInt() - 1; // Reads integer input
 			if (target >= 0 && target <= 8) {
 				playersList.get(target).isAlive = false;
+				
+				if (playersList.get(target).role.name == "godfather") {
+					mafioso.role = new Godfather();
+					System.out.println(mafioso.name + ", you are new Godfather");
+				}
+				
+				if (playersList.get(target).role.name == "mafioso") {
+					
+					if(consort != null) {
+						consort.role = new Mafioso();
+						System.out.println(consort.name + ", you are new Mafioso");
+					}
+					
+					if(framer != null) {
+						framer.role = new Mafioso();
+						System.out.println(framer.name + ", you are new Mafioso");
+					}
+					
+					
+				}
 				System.out.println("--------------------------------");
 			}
 		}
@@ -154,10 +228,10 @@ public class Main {
 			if (player.role.inherits) {
 				if (player.role.name == "mafioso") {
 					player.role = new Godfather();
-					System.out.println("Godfather died. You are new Godfather");
+					System.out.println("Godfather died.  " + player.name + ", you are new Godfather");
 				} else if (player.role.name == "framer" || player.role.name == "consort") {
 					player.role = new Mafioso();
-					System.out.println("Mafioso died. You are new Mafioso");
+					System.out.println("Mafioso died.  " + player.name + ", you are new Mafioso");
 				}
 			}
 

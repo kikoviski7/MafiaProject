@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Transporter extends Role {
 	Player transporterSecondTarget;
 	public Transporter() {
-		super("transporter", 0, 0, false, false, "town", "support");
+		super("transporter", 0, 0, false, false, "town", "support", 10);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -22,6 +22,10 @@ public class Transporter extends Role {
 		
 		if (transporter != null) {
 			transporterSecondTarget = secondTarget;
+			if (secondTarget.role.name.equals("veteran")) {
+				transporter.isAlive = false;
+				return;
+			}
 			visit(transporter, playersList);
 		}
 		

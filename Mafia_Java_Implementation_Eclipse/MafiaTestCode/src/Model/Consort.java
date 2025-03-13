@@ -5,17 +5,19 @@ import java.util.Arrays;
 
 public class Consort extends Role {
 	ArrayList<String> immuneToRoleblock = new ArrayList<>(
-			Arrays.asList("veteran", "transporter", "jester", "mayor", "survivor"));
+			Arrays.asList("veteran", "transporter", "mayor"));
 	public Consort() {
-		super("consort", 0, 0, true, false, "mafia", "backing");
+		super("consort", 0, 0, true, false, "mafia", "backing", 10);
 
 	}
 
 	@Override
 	public void action(Player target, ArrayList<Player> playersList) {
 		
-		if(!immuneToRoleblock.contains(target.role.name)) {
-			visit(target, playersList);
+		 if(target != null) {
+			 if(!immuneToRoleblock.contains(target.role.name)){
+				visit(target, playersList);
+			}
 		}
 		
 	}
