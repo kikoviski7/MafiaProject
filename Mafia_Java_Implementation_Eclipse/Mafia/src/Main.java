@@ -113,6 +113,8 @@ public class Main {
 		Player mafioso = null;
 		Player framer = null;
 		Player consort = null;
+		
+		
 
 		for (int i = 0; i < numberOfPlayers; i++) {
 			if(playersList.get(i).role.name == "godfather") {
@@ -143,6 +145,9 @@ public class Main {
 		Scanner scanner = new Scanner(System.in); // Create a Scanner object
 		int target = scanner.nextInt() - 1; // Reads integer input
 		if (target >= 0 && target <= 8) {
+			if(target == 0) {
+				return;
+			}
 			playersList.get(target).isAlive = false;
 			
 			if (playersList.get(target).role.name == "godfather") {
@@ -691,9 +696,9 @@ public class Main {
 
 //		RolesList.add(new Vigilante());
 
-//		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
+		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
-		RolesList.add(new Transporter());
+//		RolesList.add(new Transporter());
 
 		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
 
