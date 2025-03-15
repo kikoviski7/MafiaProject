@@ -21,8 +21,9 @@ public class Doctor extends Role {
 		    }
 		}
 		if (!doctor.role.isRoleBlocked) {
-			if ((doctor == target && doctor.role.hasAction == 0)) {
+			if ((doctor == target && doctor.role.actionsLeft == 0)) {
 				System.out.println("You took one. Take it or leave.");
+				return;
 			}
 			if(target != null) {
 				visit(target, playersList);

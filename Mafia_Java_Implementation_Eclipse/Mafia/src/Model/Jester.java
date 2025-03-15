@@ -10,7 +10,7 @@ public class Jester extends Role {
 
 	@Override
 	public void action(Player jester, ArrayList<Player> playersList) {
-		if(jester != null && jester.role.isRoleBlocked == false && jester.role.hasAction > 0) {
+		if(jester != null && jester.role.isRoleBlocked == false && jester.role.actionsLeft > 0) {
 			visit(jester, playersList);
 		}
 		
@@ -20,6 +20,7 @@ public class Jester extends Role {
 	public void visit(Player jester, ArrayList<Player> PlayersList) {
 		
 		jester.role.defence = 2;
+		jester.role.actionsLeft--;
 		
 	}
 

@@ -46,7 +46,7 @@ public class Veteran extends Role {
 	public void visit(Player veteran, ArrayList<Player> playersList) {
 		
 		veteran.role.defence = 3;
-		veteran.role.hasAction--;
+		veteran.role.actionsLeft--;
 		
 		for(Player pl : playersList) {
 			if (pl.role.name == "veteran") {

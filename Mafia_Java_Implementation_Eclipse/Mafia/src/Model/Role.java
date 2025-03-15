@@ -13,7 +13,7 @@ public abstract class Role {
 	public String category;
 	//TODO: da se ovo zove "action", a da postoji metoda koja se zove hasAction koja vraca boolean
 	// da bi kod bio citljiviji
-	public int hasAction;
+	public int actionsLeft;
 	public boolean inherits = false;
 	
 
@@ -26,7 +26,7 @@ public abstract class Role {
 		this.isFramed = isFramed;
 		this.alignment = alignment;
 		this.category = subAlignment;
-		this.hasAction = hasAction;
+		this.actionsLeft = hasAction;
 	}
 	
 

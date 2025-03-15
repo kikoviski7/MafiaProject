@@ -37,6 +37,44 @@ Tracker - Transporter 🖼
 Transporter 🖼 - Veteran 🔁, Framer 🔁
 Survivor 🛡 - None
 
+Breakdown:
+
+Godfather - Jester >> Order(Mafioso ⚔ Jester) >> Jester 💀
+Framer - Trasporter >> Transporter 🖼
+Bodyguard - Jester >> Bodyguard ⚔ Mafioso >> Mafioso 💀
+                    >> Mafioso ⚔ Bodyguard >> Bodyguard 💀
+                    >> Jester 👨‍🦱
+Veteran - None
+Transporter - Veteran, Framer >> Veteran 🔁
+                                >> Framer 🔁
+Jester - None
+Tracker - Transporter >> Tracker 📩(Your target is member of mafia)
+
+
+Alternative Breakdown:
+
+Godfather - Jester >> Order(Mafioso ⚔ Jester) >> Jester 💀
+Framer - Trasporter >> Transporter 🖼
+Bodyguard - Jester >> Bodyguard ⚔ Mafioso >> Mafioso 💀
+                    >> Mafioso ⚔ Bodyguard >> Bodyguard 💀
+                    >> Jester 👨‍🦱
+
+Jester - Jester >> Jester 🛡
+                >> Bodyguard 👨‍🦱
+                >> Mafioso 👨‍🦱
+                >> Mafioso ⚔ Jester 🛡
+
+Transporter - Jester, Veteran 
+                >> Jester 🔁
+                >> Framer 🔁
+                >> Bodyguard 💀
+                >> Mafioso 💀
+
+Veteran - Veteran
+        >> Transporter 💀
+
+Tracker - Transporter >> Tracker 📩(Your target is member of mafia)
+
 __________________________________________________________
 Interakcija Tracker - Transporter ✅ (Tracker-u ne moze da Trackuje Transportera)
 Interakcija Tracker - (Frameovan Role) 🖼 ✅ (Ako je role frameovan, ne moze biti trackovan)
@@ -198,6 +236,104 @@ Transporter prikazuje oba targeta svake noci ❌
 Ako je igrac sprecen, oduzima mu se SpecialAction ❌
 Frameovan igrac je frameovan dok ga neko ne proveri/trackuje ❓ (za sad je frameovan samo tu noc)
 __________________________________________________________
+
+Player3 godfather is choosing
+-----------------------------
+
+4 Player8 bodyguard
+5 Player4 veteran
+6 Player7 transporter
+7 Player6 survivor
+8 Player5 tracker
+
+Choose a number: 
+6
+--------------------------------
+Player1 framer is choosing
+-----------------------------
+
+4 Player8 bodyguard
+5 Player4 veteran
+6 Player7 transporter
+7 Player6 survivor
+8 Player5 tracker
+
+Choose a number: 
+7
+--------------------------------
+Player8 bodyguard is choosing
+-----------------------------
+
+1 Player3 godfather
+2 Player2 mafioso
+3 Player1 framer
+4 Player8 bodyguard
+5 Player4 veteran
+6 Player7 transporter
+7 Player6 survivor
+8 Player5 tracker
+
+Choose a number: 
+7
+--------------------------------
+Player4 veteran is choosing
+-----------------------------
+
+Stay alert?: y/n
+
+
+-----------------------------
+
+y
+Player7 transporter is choosing
+-----------------------------
+
+1 Player3 godfather
+2 Player2 mafioso
+3 Player1 framer
+4 Player8 bodyguard
+5 Player4 veteran
+6 Player7 transporter
+7 Player6 survivor
+8 Player5 tracker
+
+Choose a number: 
+6
+--------------------------------
+1 Player3 godfather
+2 Player2 mafioso
+3 Player1 framer
+4 Player8 bodyguard
+5 Player4 veteran
+7 Player6 survivor
+8 Player5 tracker
+
+Choose another number: 
+4
+Player6 survivor is choosing
+-----------------------------
+
+Protect yourself?: y/n
+
+
+-----------------------------
+
+n
+Player5 tracker is choosing
+-----------------------------
+
+1 Player3 godfather
+2 Player2 mafioso
+3 Player1 framer
+4 Player8 bodyguard
+5 Player4 veteran
+6 Player7 transporter
+7 Player6 survivor
+Choose a number: 
+2
+--------------------------------
+
+
 
 
 

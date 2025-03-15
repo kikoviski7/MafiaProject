@@ -10,7 +10,7 @@ public class Survivor extends Role{
 
 	@Override
 	public void action(Player survivor, ArrayList<Player> playersList) {
-		if(survivor != null && survivor.role.isRoleBlocked == false && survivor.role.hasAction > 0) {
+		if(survivor != null && survivor.role.isRoleBlocked == false && survivor.role.actionsLeft > 0) {
 			visit(survivor, playersList);
 		}
 		
@@ -20,6 +20,7 @@ public class Survivor extends Role{
 	public void visit(Player survivor, ArrayList<Player> PlayersList) {
 		
 		survivor.role.defence = 2;
+		survivor.role.actionsLeft--;
 		
 	}
 

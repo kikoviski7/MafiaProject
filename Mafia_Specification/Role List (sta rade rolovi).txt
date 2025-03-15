@@ -186,12 +186,34 @@ Kako funkcionicu napad i Odbrana
 - Da bi napad prosao, vrednost napada napadaca mora da bude striktno veca od odbrane mete
 ------------------------------------------------------------------------------------
 
+Kako funkcionicu napad i odbrana
+napad da bi prosao, mora biti striktno veci od odbrane
+
+Mafia inheritance
+----------------------------
+Godfather 💀
+Mafioso
+Random mafia backing
+
+>>>>
+
+Mafioso > Godfather
+----------------------------
+Godfather 💀
+Random mafia backing
+
+>>>>
+
+Random mafia backing > Mafioso
+---------------------------------
+
 
 Sta svaki role treba da ima:
-- napad [0, 3];
-- odbrana [0, 2];
-- strana (mafija, town, nesvrstano);
-- immediateAnswer (true, false)
+- attack [0, 3];
+- defence [0, 2];
+- side (mafija, town, nesvrstano);
+- immediateAnswer: boolean
+- roleName: String
 
 Godfather
 - isSus

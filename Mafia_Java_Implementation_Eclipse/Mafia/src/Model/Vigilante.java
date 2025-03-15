@@ -42,7 +42,7 @@ public class Vigilante extends Role {
 			}
 		}
 		
-		if (!vigilante.role.isRoleBlocked && vigilante.role.hasAction > 0) {
+		if (!vigilante.role.isRoleBlocked && vigilante.role.actionsLeft > 0) {
 			if(target != null) {
 				visit(target, playersList);
 			}

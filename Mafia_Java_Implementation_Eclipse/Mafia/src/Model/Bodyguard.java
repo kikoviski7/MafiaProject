@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 //TODO: zavrsiti bodyguarda; niko ne umire kada bodyguard nekog zastiti
 
@@ -62,8 +63,49 @@ public class Bodyguard extends Role {
 		}
 		
 		if (!bodyguard.role.isRoleBlocked) {
-			if ((bodyguard == target && bodyguard.role.hasAction == 0)) {
-				return;
+			if ((bodyguard == target)) {
+				if(bodyguard.role.actionsLeft == 0) {
+					System.out.println("You took one. Take it or leave.");
+					
+					while(bodyguard == target) {
+						System.out.println(bodyguard.name + " " + bodyguard.role.name + " is choosing"
+								+ "\n-----------------------------\n");
+
+						for (int i = 0; i < playersList.size(); i++) {
+							Player pl = playersList.get(i);
+
+							if (pl.isAlive) {
+								System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+							}
+						}
+
+						System.out.println("\nChoose a number: ");
+
+						Scanner scanner = new Scanner(System.in); // Create a Scanner object
+						int newTarget = scanner.nextInt(); // Reads integer input
+
+						while (newTarget < 0 || newTarget > 8) {
+
+							System.out.println("\nWrong number, choose another number: ");
+							newTarget = scanner.nextInt();
+
+						}
+
+						if (newTarget != 0) {
+							bodyguard.target = playersList.get(newTarget - 1);
+						}
+
+						System.out.println("--------------------------------");
+						
+						break;	
+					}
+					
+					bodyguard.role.action(bodyguard.target, playersList);
+				}
+				else {
+					bodyguard.role.actionsLeft--;
+				}
+				
 			}
 			if(target != null) {
 				visit(target, playersList);
