@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
 
 public class Tracker extends Role {
 	Player tracker;
@@ -31,18 +33,24 @@ public class Tracker extends Role {
 	}
 
 	@Override
-	public void visit(Player target, ArrayList<Player> PlayersList) {
+	public void visit(Player target, ArrayList<Player> playersList) {
 		if(untrackable.contains(target)) {
-			System.out.println("Your target is fast as fuck boii");
+			System.out.println("Your target is untrackable.");
 		}
 		else if(target.role.isFramed) {
-			System.out.println("Zajebote.");
+			
+			Random r = new Random();
+			int randomInt = r.nextInt(playersList.size());
+			while(randomInt == 0 || playersList.get(randomInt) == target) {
+				randomInt = r.nextInt(playersList.size());
+			}
+			System.out.println("Your target visited " + playersList.get(randomInt).name + " " + playersList.get(randomInt).role.name);
 		}
 		else if(target.target == null) {
-			System.out.println("Your target lazy af.");
+			System.out.println("Your target did not visit.");
 		}
 		else {
-			System.out.println("Your target visited " + target.target.name);
+			System.out.println("Your target visited " + target.target.name + " " + target.target.role.name);
 		}
 		
 	}

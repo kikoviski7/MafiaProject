@@ -24,7 +24,6 @@ public class Transporter extends Role {
 			transporterSecondTarget = secondTarget;
 			if (secondTarget.role.name.equals("veteran")) {
 				transporter.isAlive = false;
-				return;
 			}
 			visit(transporter, playersList);
 		}
@@ -39,12 +38,31 @@ public class Transporter extends Role {
 		
 		for(Player player : playersList) {
 			if (player.target == transporter.target && player != transporter) {
+				if(player.role.name.equals("veteran") && player.target.role.name.equals("veteran")) {
+					continue;
+				}
+				if(player.role.name.equals("survivor") && player.target.role.name.equals("survivor")) {
+					continue;
+				}
+				if(player.role.name.equals("jester") && player.target.role.name.equals("jester")) {
+					continue;
+				}
 				visitsFirstTarget.add(player);
 			}
+			
 		}
 		
 		for(Player player : playersList) {
 			if (player.target == transporterSecondTarget && player != transporter) {
+				if(player.role.name.equals("veteran") && player.target.role.name.equals("veteran")) {
+					continue;
+				}
+				if(player.role.name.equals("survivor") && player.target.role.name.equals("survivor")) {
+					continue;
+				}
+				if(player.role.name.equals("jester") && player.target.role.name.equals("jester")) {
+					continue;
+				}
 				visitsSecondTarget.add(player);
 			}
 		}

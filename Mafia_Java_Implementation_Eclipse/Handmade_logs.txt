@@ -108,7 +108,7 @@ Tracker - Transporter >> Tracker 📩(Your target is member of mafia)
 
 __________________________________________________________
 Interakcija Tracker - Transporter ✅ (Tracker-u ne moze da Trackuje Transportera)
-Interakcija Tracker - (Frameovan Role) 🖼 ✅ (Ako je role frameovan, ne moze biti trackovan)
+Interakcija Tracker - (Frameovan Role) 🖼 ✅ (Ako je role frameovan, tracker dobija random osobu)
 __________________________________________________________
 
 Mafioso 💀 - Veteran 🛡🔁
@@ -331,7 +331,7 @@ Player8 bodyguard is choosing
 1 Player3 godfather
 2 Player2 mafioso
 3 Player1 framer
-4 Player8 bodyguard
+4 Player8 bodyguard                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 5 Player4 veteran
 6 Player7 transporter
 7 Player6 survivor
@@ -486,7 +486,6 @@ Mafioso 🪢
 __________________________________________________________
 __________________________________________________________
 
-Mafioso - Jester 💀
 
 
 

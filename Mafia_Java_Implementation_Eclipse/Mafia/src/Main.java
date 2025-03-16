@@ -6,10 +6,12 @@ import Model.*;
 
 public class Main {
 	static boolean mayorRevealed = false;
-	
+
+	static boolean winCondition;
+
 	// Number of players
 	final static int numberOfPlayers = 8;
-	
+
 	static Scanner scanner = new Scanner(System.in); // Create a Scanner object
 
 	// Ovde cuvam svaki second target od transportera zbog logova
@@ -60,10 +62,10 @@ public class Main {
 			System.out.println("Player role: " + playersList.get(i).role.name);
 
 			if (playersList.get(i).role.name.equals("transporter") && playersList.get(i).isAlive) {
-				if(playersList.get(i).target != null) {
+				if (playersList.get(i).target != null) {
 					System.out.println("Players targets: " + playersList.get(i).target.name + " "
-							+ playersList.get(i).target.role.name + " " + transporterSecondTargets.get(night - 1).name + " "
-							+ transporterSecondTargets.get(night - 1).role.name);
+							+ playersList.get(i).target.role.name + " " + transporterSecondTargets.get(night - 1).name
+							+ " " + transporterSecondTargets.get(night - 1).role.name);
 				}
 			}
 
@@ -96,7 +98,7 @@ public class Main {
 
 		ArrayList<Player> playersListWithRoles = assignRolesToPlayers(playersList, RolesList);
 
-		while (!checkWinCondition(playersListWithRoles)) {
+		while (!winCondition) {
 
 			night++;
 
@@ -106,58 +108,56 @@ public class Main {
 
 			setDefaultRound(playersListWithRoles);
 
-			day(playersListWithRoles);
+			dayPhase(playersListWithRoles);
 		}
 
 	}
 
-	private static void day(ArrayList<Player> playersList) {
-		
-		
+	private static void dayPhase(ArrayList<Player> playersList) {
+
 		for (int i = 0; i < numberOfPlayers; i++) {
-			if(playersList.get(i).role.name == "mayor") {
-				if(mayorRevealed == false) {
+			if (playersList.get(i).role.name == "mayor") {
+				if (mayorRevealed == false) {
 					System.out.println("Mayor choose to reveal?");
 					Scanner scanner = new Scanner(System.in); // Create a Scanner object
 					String mayorDecision = scanner.nextLine(); // Reads integer input
-					
-					 if(mayorDecision.equals("y")) {
-						 mayorRevealed = true;
-					 }
+
+					if (mayorDecision.equals("y")) {
+						mayorRevealed = true;
+					}
 				}
 			}
 		}
-		
-		
-		
-		
-		
-		
+
 		Player godfather = null;
 		Player mafioso = null;
 		Player framer = null;
 		Player consort = null;
-		
+		Player jester = null;
+
 		System.out.println("\nPick a player to lynch" + "\n-----------------------------\n");
-		
 
 		for (int i = 0; i < numberOfPlayers; i++) {
-			if(playersList.get(i).role.name == "godfather") {
+			if (playersList.get(i).role.name.equals("godfather")) {
 				godfather = playersList.get(i);
 			}
-			
-			if(playersList.get(i).role.name == "mafioso") {
+
+			if (playersList.get(i).role.name.equals("mafioso")) {
 				mafioso = playersList.get(i);
-			} 
-			
-			if(playersList.get(i).role.name == "framer") {
+			}
+
+			if (playersList.get(i).role.name.equals("framer")) {
 				framer = playersList.get(i);
-			} 
-			
-			if(playersList.get(i).role.name == "consort") {
+			}
+
+			if (playersList.get(i).role.name.equals("consort")) {
 				consort = playersList.get(i);
-			} 
-			
+			}
+
+			if (playersList.get(i).role.name.equals("jester")) {
+				jester = playersList.get(i);
+			}
+
 			Player pl = playersList.get(i);
 
 			if (pl.isAlive) {
@@ -167,47 +167,49 @@ public class Main {
 
 		System.out.println("\nChoose a number: ");
 
-		
 		int target = scanner.nextInt() - 1; // Reads integer input
 		if (target >= 0 && target <= 8) {
-			if(target == 0) {
+			if (target == 0) {
+				return;
+			}
+			if (playersList.get(target) == jester) {
+				System.out.println("Jester wins!");
+				winCondition = true;
 				return;
 			}
 			playersList.get(target).isAlive = false;
-			
+
 			if (playersList.get(target).role.name == "godfather") {
-				if(mafioso.isAlive && mafioso != null) {
+				if (mafioso.isAlive && mafioso != null) {
 					mafioso.role = new Godfather();
 					System.out.println(mafioso.name + ", you are new Godfather");
-				}
-				else {
-					if(consort != null) {
+				} else {
+					if (consort != null) {
 						consort.role = new Mafioso();
 						System.out.println(consort.name + ", you are new Mafioso");
 					}
-					
-					if(framer != null) {
+
+					if (framer != null) {
 						framer.role = new Mafioso();
 						System.out.println(framer.name + ", you are new Mafioso");
 					}
 				}
 			}
-			
+
 			if (playersList.get(target).role.name == "mafioso" && !(godfather.isAlive)) {
-				
-				if(consort != null) {
+
+				if (consort != null) {
 					consort.role = new Mafioso();
 					System.out.println(consort.name + ", you are new Mafioso");
 				}
-				
-				if(framer != null) {
+
+				if (framer != null) {
 					framer.role = new Mafioso();
 					System.out.println(framer.name + ", you are new Mafioso");
 				}
-				
-				
+
 			}
-			
+
 			System.out.println("--------------------------------");
 		}
 
@@ -216,25 +218,24 @@ public class Main {
 			target = scanner.nextInt() - 1; // Reads integer input
 			if (target >= 0 && target <= 8) {
 				playersList.get(target).isAlive = false;
-				
+
 				if (playersList.get(target).role.name == "godfather") {
 					mafioso.role = new Godfather();
 					System.out.println(mafioso.name + ", you are new Godfather");
 				}
-				
+
 				if (playersList.get(target).role.name == "mafioso") {
-					
-					if(consort != null) {
+
+					if (consort != null) {
 						consort.role = new Mafioso();
 						System.out.println(consort.name + ", you are new Mafioso");
 					}
-					
-					if(framer != null) {
+
+					if (framer != null) {
 						framer.role = new Mafioso();
 						System.out.println(framer.name + ", you are new Mafioso");
 					}
-					
-					
+
 				}
 				System.out.println("--------------------------------");
 			}
@@ -269,7 +270,7 @@ public class Main {
 
 	}
 
-	private static boolean checkWinCondition(ArrayList<Player> playersList) {
+	private static void checkWinCondition(ArrayList<Player> playersList) {
 
 		ArrayList<Player> town = new ArrayList<>();
 		ArrayList<Player> mafia = new ArrayList<>();
@@ -295,7 +296,7 @@ public class Main {
 				System.out.println("Town wins!");
 
 			}
-			return true;
+			winCondition = true;
 		}
 
 		else if (town.size() == 0) {
@@ -306,11 +307,11 @@ public class Main {
 				System.out.println("Mafia wins!");
 
 			}
-			return true;
+			winCondition = true;
 		}
 
 		else {
-			return false;
+			winCondition = false;
 		}
 	}
 	// Ako role detektuje da je ubio Godfathera, trazi mafiosu u listi rolova i tom
@@ -485,7 +486,6 @@ public class Main {
 						System.out.println(player.name + " " + player.role.name + " is choosing"
 								+ "\n-----------------------------\n");
 
-						
 						System.out.println("Protect yourself?: y/n\n");
 						System.out.println("\n-----------------------------\n");
 
@@ -496,15 +496,13 @@ public class Main {
 							player.target = player;
 						}
 						continue;
-					}
-					else {
+					} else {
 						System.out.println(player.name + " " + player.role.name + " has no actions left"
 								+ "\n-----------------------------\n");
-						
+
 						continue;
 					}
 				}
-				
 
 				// TODO: mafija moze da izabere mafiju iako se ne prikazuje
 				// Mafioso, Godfather, Framer, Consort - Mafia choosing
@@ -578,12 +576,14 @@ public class Main {
 					}
 					System.out.println("--------------------------------");
 
-					if(target != 0) {
+					if (target != 0) {
 						// Get throught all players
 						for (int i = 0; i < numberOfPlayers; i++) {
 							Player pl = playersList.get(i);
 							if (!pl.equals(player.target))
-								if(pl.isAlive) {System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);}
+								if (pl.isAlive) {
+									System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+								}
 						}
 
 						System.out.println("\nChoose another number: ");
@@ -632,6 +632,14 @@ public class Main {
 						Player pl = playersList.get(i);
 
 						if (pl.isAlive) {
+							if (pl.role.name == "mayor" && mayorRevealed) {
+								continue;
+							}
+							if (pl.role.getCategory() == "protective") {
+								if (!(pl.role.actionsLeft > 0)) {
+									continue;
+								}
+							}
 							System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
 						}
 					}
@@ -719,17 +727,17 @@ public class Main {
 
 		RolesList.add(new Mafioso()); // Mafia attacking
 
-//		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
+		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
-		RolesList.add(new Framer());
+//		RolesList.add(new Framer());
 
-//		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
 
-		RolesList.add(new Bodyguard());
+//		RolesList.add(new Bodyguard());
 
-//		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
+		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
 
-		RolesList.add(new Veteran());
+//		RolesList.add(new Veteran());
 
 		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
@@ -741,9 +749,9 @@ public class Main {
 
 		// Town investigative bi trebalo poslednji da biraju zato sto oni dobijaju
 		// povratnu informaciju odmah
-//		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
+		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
 
-		RolesList.add(new Tracker());
+//		RolesList.add(new Tracker());
 
 		return RolesList;
 	}
