@@ -6,36 +6,67 @@ Protected 🛡
 Role-Blocked 😍
 Transported 🔁
 Framed 🖼
+Tracked 🖲
+Interrogated ⁉
 ---------------------------------------
 
-Mafioso 💀 - Mayor 🛡
+Mafioso 💀 - Mayor 
 Consort - Sheriff 😍
-Bodyguard 💀 - Mayor 🛡
+Bodyguard 💀 - Mayor 
 Vigilante - Jester 🛡
 Sheriff 😍 - Mafioso 💀
 Jester 🛡 - Jester 🛡
+
+
+Information center:
+
+basicAttacked [bodyguard, jester]
+roleBlocked [sheriff]
+powerfulProtected [jester]
+powerfulAttacked [mafioso]
+interrogated []
 _____________________________
 Interakcija Bodyguard - (Napadnut Role) 💀 ✅
 Interakcija Bodyguard - (Zasticen Role) 🛡 ✅ (Svi prezivljavaju)
 _____________________________
 
-Mafioso 💀 - Mayor 🛡
-Consort - Vigilante 😍
-Bodyguard 💀 - Mayor 🛡
-Vigilante 😍 - Consort
-Tracker - Vigilante 😍
+Mafioso 💀 - Mayor 
+Consort - Vigilante 😍🖲
+Bodyguard 💀 - Mayor 
+Vigilante 😍🖲 - Consort
+Tracker - Vigilante 😍🖲
 Survivor 🛡 - Survivor 🛡
 
+
+Information center:
+
+basicAttacked [bodyguard]
+roleBlocked [vigilante]
+powerfulProtected [survivor]
+powerfulAttacked [mafioso]
+tracked [vigilante]
+
 __________________________________________________________
+ako trackujem sa information center-om, kako cu znati ko je napao izmedju mafiose i vigilante-a? ❌
 __________________________________________________________
 
-Mafioso 💀 - Survivor 🛡
-Framer 🔁 - Transporter 🖼
-Bodyguard 💀 - Survivor 🛡
+Mafioso 💀 - Survivor 
+Framer 🔁 - Transporter 🖼🖲
+Bodyguard 💀 - Survivor 
 Veteran 🔁 - None
-Tracker - Transporter 🖼
-Transporter 🖼 - Veteran 🔁, Framer 🔁
-Survivor 🛡 - None
+Tracker - Transporter 🖼🖲
+Transporter 🖼🖲 - Veteran 🔁, Framer 🔁
+Survivor - None
+
+
+Information center:
+
+basicAttacked [bodyguard]
+framed [transporter]
+powerfulAttacked [mafioso]
+transported [framer, veteran]
+tracked [transporter]
+
 
 Breakdown:
 
@@ -80,36 +111,61 @@ Interakcija Tracker - Transporter ✅ (Tracker-u ne moze da Trackuje Transporter
 Interakcija Tracker - (Frameovan Role) 🖼 ✅ (Ako je role frameovan, ne moze biti trackovan)
 __________________________________________________________
 
-Mafioso 💀 - Veteran 🛡
-Consort 💀 - Veteran 🛡
-Doctor 💀 - Veteran 🛡
-Veteran 🛡 - Veteran 🛡
-Sheriff 💀 - Veteran 🛡
-Transporter - Sheriff 💀, Veteran 🛡
+Mafioso 💀 - Veteran 🛡🔁
+Consort 💀 - Veteran 🛡🔁
+Doctor 💀 - Veteran 🛡🔁
+Veteran 🛡🔁 - Veteran 🛡🔁
+Sheriff 💀🔁 - Veteran 🛡🔁
+Transporter - Sheriff 💀🔁, Veteran 🛡🔁
+
+
+Information center:
+
+unstoppableAttacked [mafioso, consort, doctor, sheriff, transporter]
+interrogated [veteran]
+transported [sheriff, veteran]
 
 __________________________________________________________
-Interakcija Transporter - (Random Role), Veteran 🛡 ✅ (Transporter ne zamenjuje nikoga i samo umire)
+Interakcija Transporter - (Random Role), Veteran 🛡 ❌ (Transporter zamenjuje iako je posetio veterana)
 __________________________________________________________
 
-Mafioso 💀 - Survivor 🛡
+Mafioso - Survivor 🛡
 Consort - Tracker 💀😍
 Bodyguard - Survivor 🛡
-Veteran 🛡 - Veteran 🛡
-Tracker 💀😍 - Veteran 🛡
-Transporter 💀 - Godfather, Veteran 🛡
+Veteran 🛡🔁 - Veteran 🛡🔁
+Tracker 💀😍 - Veteran 🛡🔁
+Transporter 💀 - Godfather 🔁, Veteran 🛡🔁
 Survivor 🛡 - Survivor 🛡
 
+
+Information center:
+
+roleBlocked [tracker]
+powerfulProtected [survivor, veteran]
+unstoppableAttacked [tracker, transporter]
+transported [godfather, veteran]
+
 __________________________________________________________
-Interakcija (Role-Blocked Role) 😍 - Veteran 🛡 ✅ (Role-blockovan role umire od veterana iako je role-blockovan)
+Interakcija (Role-Blocked Role) 😍 - Veteran 🛡 ✅❓ (Role-blockovan role umire od veterana iako je role-blockovan)
 __________________________________________________________
 
-Mafioso 💀🔁 - Tracker 🛡
-Framer - Bodyguard 🖼
-Bodyguard 💀🖼 - Tracker 🛡
+Mafioso 💀🔁 - Tracker 
+Framer - Bodyguard 💀🖼🖲
+Bodyguard 💀🖼🖲 - Tracker 
 Veteran - None
-Tracker 🛡 - Bodyguard 💀🖼
-Transporter - Godfather 🔁, Mafioso 🔁
+Tracker - Bodyguard 💀🖼🖲
+Transporter - Godfather 🔁, Mafioso 💀🔁
 Jester 🛡 - Jester 🛡
+
+
+Information center:
+
+basicAttacked [bodyguard]
+framed [bodyguard]
+powerfulProtected [jester]
+powerfulAttacked [mafioso]
+tracked [bodyguard]
+transported [godfather, mafioso]
 
 __________________________________________________________
 Interakcija (Random Role) 🔁 - (Random Role) ❓ (Ako je role transportovan, da li treba da bude role-blockovan? za sad nije)
@@ -122,6 +178,14 @@ Veteran 🛡 - Veteran 🛡
 Tracker - Transporter
 Transporter - Godfather 🔁, Mafioso 💀🔁
 Jester 🛡 - Jester 🛡
+
+
+Infromation center:
+
+unstoppableAttacked [mafioso, framer, bodyguard]
+powerfulProtected [jester, veteran]
+tracked [transporter]
+transported [godfather, mafioso]
 
 __________________________________________________________
 __________________________________________________________
@@ -333,6 +397,96 @@ Choose a number:
 2
 --------------------------------
 
+D1
+
+N1
+Mafioso 💀 - Veteran 🛡️
+Framer - Mayor 🖼️
+Bodyguard 💀 - Veteran 🛡️
+Veteran 🛡️ - Veteran 🛡️
+Mayor - /
+Survivor - None
+Sheriff - Mafioso
+
+__________________________________________________________
+
+N1
+Mafioso - Doctor 🔁💀
+Framer - Survivor 🔁🖼️🛡️
+Doctor 🔁💀 - None
+Veteran - None
+Transporter - Doctor 🔁💀, Survivor 🔁🖼️🛡️
+Survivor 🔁🖼️🛡️ - Survivor 🔁🖼️🛡️
+Tracker - Survivor 🔁🖼️🛡️
+
+__________________________________________________________
+Doctor umire u ovoj interakciji ❌ (Survivor je izabrao samog sebe ali kada ih je transporter zamenio ispalo je da je survivor izabrao doctora)
+__________________________________________________________
+
+
+D2
+Framer 🪢
+
+N2
+Mafioso - Survivor 🔁🛡️
+Doctor - Veteran 🛡️
+Veteran 🛡️ - None
+transporter 🔁 - transporter 🔁, Survivor 🔁🛡️
+Survivor 🔁🛡️ - Survivor 🔁🛡️
+Tracker - Mafioso
+
+D3
+Mafioso 🪢
+
+N3
+Godfather 🔁 - Godfather 🔁
+Doctor - None
+Veteran - None
+Transporter - Tracker 🔁, Godfather 🔁
+Tracker 🔁 -Tracker 🔁
+
+D4
+None
+
+N4
+Godfather 🔁 - Godfather 🔁
+Doctor - None
+Veteran - None
+Transporter - Tracker 🔁, Godfather 🔁
+Tracker 🔁 -Tracker 🔁
+
+D5
+None
+
+N5
+Godfather - Doctor 💀 
+Doctor - None
+Veteran 🛡️ - Veteran 🛡️
+Transporter - Doctor 🔁, Veteran 🔁
+Tracker - None
+
+
+__________________________________________________________
+Transporter nije trebao biti zasticen + survivor nije mogao da se odbrani
+Transporter treba da zameni menjanje iako umire od veterana ❌
+__________________________________________________________
+
+N1
+Mafioso - Survivor 💀🖼️🛡️
+Framer - Survivor 💀🖼️🛡️
+Doctor - Survivor 💀🖼️🛡️
+Veteran - None
+Transporter - None
+Survivor 💀🖼️🛡️ - Survivor 💀🖼️🛡️ 
+Sheriff - Survivor 💀🖼️🛡️
+
+D2
+Mafioso 🪢
+
+__________________________________________________________
+__________________________________________________________
+
+Mafioso - Jester 💀
 
 
 
