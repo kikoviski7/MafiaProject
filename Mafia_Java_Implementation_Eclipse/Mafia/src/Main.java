@@ -85,7 +85,6 @@ public class Main {
 	}
 
 	public static ArrayList<Player> assignRoles(ArrayList<Player> playersList) {
-
 		ArrayList<Player> PlayersWithRoles = null;
 
 		return PlayersWithRoles;
@@ -109,6 +108,8 @@ public class Main {
 			setDefaultRound(playersListWithRoles);
 
 			dayPhase(playersListWithRoles);
+			
+			checkWinCondition(playersListWithRoles);
 		}
 
 	}
@@ -169,7 +170,7 @@ public class Main {
 
 		int target = scanner.nextInt() - 1; // Reads integer input
 		if (target >= 0 && target <= 8) {
-			if (target == 0) {
+			if (target == -1) {
 				return;
 			}
 			if (playersList.get(target) == jester) {
@@ -603,22 +604,28 @@ public class Main {
 				}
 
 				// Veteran - Only self choose
-				// TODO: ako veteran nema alertova ne moze da alertuje
 				if (player.role.name == "veteran") {
 
-					System.out.println(player.name + " " + player.role.name + " is choosing"
-							+ "\n-----------------------------\n");
+					if(player.role.actionsLeft > 0) {
+						System.out.println(player.name + " " + player.role.name + " is choosing"
+								+ "\n-----------------------------\n");
 
-					Scanner scanner = new Scanner(System.in); // Create a Scanner object
-					System.out.println("Stay alert?: y/n\n");
-					System.out.println("\n-----------------------------\n");
+						Scanner scanner = new Scanner(System.in); // Create a Scanner object
+						System.out.println("Stay alert?: y/n\n");
+						System.out.println("\n-----------------------------\n");
 
-					String veteranDecision = scanner.nextLine(); // Read user input
+						String veteranDecision = scanner.nextLine(); // Read user input
 
-					if (veteranDecision.trim().equals("y")) {
-						player.target = player;
+						if (veteranDecision.trim().equals("y")) {
+							player.target = player;
+						}
+						continue;
 					}
-					continue;
+					else {
+						System.out.println(player.name + " " + player.role.name + " has no actions left."
+								+ "\n-----------------------------\n");
+						continue;
+					}
 
 				}
 
@@ -726,32 +733,44 @@ public class Main {
 		RolesList.add(new Godfather()); // Mafia attacking
 
 		RolesList.add(new Mafioso()); // Mafia attacking
+		
+		
 
-		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
+//		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
-//		RolesList.add(new Framer());
+		RolesList.add(new Framer());
+		
+		
 
-		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+//		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
 
-//		RolesList.add(new Bodyguard());
+		RolesList.add(new Bodyguard());
+		
+		
 
-		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
+//		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
 
-//		RolesList.add(new Veteran());
+		RolesList.add(new Veteran());
+		
+		
 
-		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
+//		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
-//		RolesList.add(new Transporter());
+		RolesList.add(new Transporter());
+		
+		
 
 		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
 
 //		RolesList.add(new Survivor());
+		
+		
 
 		// Town investigative bi trebalo poslednji da biraju zato sto oni dobijaju
 		// povratnu informaciju odmah
-		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
+//		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
 
-//		RolesList.add(new Tracker());
+		RolesList.add(new Tracker());
 
 		return RolesList;
 	}

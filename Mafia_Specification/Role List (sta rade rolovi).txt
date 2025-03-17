@@ -184,6 +184,11 @@ Kako funkcionicu napad i Odbrana
 - Najjaci napad je 3, a najslabiji je 1, 0 je indikacija da uloga ne napada.
 - Najjaca odbrana je 2, a najslabija je 1, 0 je indikacija da svako moze da ubije tu ulogu.
 - Da bi napad prosao, vrednost napada napadaca mora da bude striktno veca od odbrane mete
+
+0 - None
+1 - Basic
+2 - Powerful
+3 - Unstoppable
 ------------------------------------------------------------------------------------
 
 Kako funkcionicu napad i odbrana
@@ -205,6 +210,18 @@ Random mafia backing
 >>>>
 
 Random mafia backing > Mafioso
+---------------------------------
+// Execution order(priority list)
+	// veteran
+	// transporter
+	// consort
+	// jester/survivor
+	// doctor/bodyguard
+	// framer
+	// sheriff
+	// mafioso
+	// vigilante/godfather
+	// tracker
 ---------------------------------
 
 

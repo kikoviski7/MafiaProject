@@ -26,7 +26,7 @@ powerfulProtected [jester]
 powerfulAttacked [mafioso]
 interrogated []
 _____________________________
-Interakcija Bodyguard - (Napadnut Role) 💀 ✅
+Interakcija Bodyguard - (Napadnut Role) 💀 ✅ Kada mafioso postane godfather ❌
 Interakcija Bodyguard - (Zasticen Role) 🛡 ✅ (Svi prezivljavaju)
 _____________________________
 
@@ -85,7 +85,7 @@ Tracker - Transporter >> Tracker 📩(Your target is member of mafia)
 Alternative Breakdown:
 
 Godfather - Jester >> Order(Mafioso ⚔ Jester) >> Jester 💀
-Framer - Trasporter >> Transporter 🖼
+Framer - Transporter >> Transporter 🖼
 Bodyguard - Jester >> Bodyguard ⚔ Mafioso >> Mafioso 💀
                     >> Mafioso ⚔ Bodyguard >> Bodyguard 💀
                     >> Jester 👨‍🦱
@@ -97,18 +97,19 @@ Jester - Jester >> Jester 🛡
 
 Transporter - Jester, Veteran 
                 >> Jester 🔁
-                >> Framer 🔁
+                >> Veteran 🔁
                 >> Bodyguard 💀
                 >> Mafioso 💀
 
 Veteran - Veteran
         >> Transporter 💀
 
-Tracker - Transporter >> Tracker 📩(Your target is member of mafia)
+Tracker - Transporter >> Tracker 📩(Your target is untrackable)
 
 __________________________________________________________
-Interakcija Tracker - Transporter ✅ (Tracker-u ne moze da Trackuje Transportera)
+Interakcija Tracker - Transporter ✅ (Tracker ne moze da Trackuje Transportera)
 Interakcija Tracker - (Frameovan Role) 🖼 ✅ (Ako je role frameovan, tracker dobija random osobu)
+ako role nista nije izabrao, pokazivace se kao da jeste. ✅❓
 __________________________________________________________
 
 Mafioso 💀 - Veteran 🛡🔁
@@ -247,11 +248,9 @@ target na Godfather-a
 
 Mafioso se pretvara u Godfather-a ako Godfather umre ❌
 ovo treba da se desava kad napadaju: 
-Mafioso ❌
-Godfather ❌
 Bodyguard ❌
-Veteran ❌
-Vigilante ❌
+Veteran ✅
+
 __________________________________________________________
 Day 1
 
@@ -294,11 +293,11 @@ Mafia Wins!
 
 __________________________________________________________
 Transporter ne moze da izabere mrtve za drugi target ❌
-Survivor moze da se zastiti ako nema action ❌
+Survivor ne moze da se zastiti ako nema action ✅
 Vigilante baca error ❌
-Transporter prikazuje oba targeta svake noci ❌
-Ako je igrac sprecen, oduzima mu se SpecialAction ❌
-Frameovan igrac je frameovan dok ga neko ne proveri/trackuje ❓ (za sad je frameovan samo tu noc)
+Transporter prikazuje oba targeta svake noci ✅
+Ako je igrac sprecen, ne oduzima mu se SpecialAction ✅
+Frameovan igrac je frameovan dok ga neko ne proveri/trackuje ❌❓ (za sad je frameovan samo tu noc)✅
 __________________________________________________________
 
 Player3 godfather is choosing
@@ -467,8 +466,8 @@ Tracker - None
 
 
 __________________________________________________________
-Transporter nije trebao biti zasticen + survivor nije mogao da se odbrani
-Transporter treba da zameni menjanje iako umire od veterana ❌
+Transporter nije trebao biti zasticen + survivor nije mogao da se odbrani ✅
+Transporter ne treba da zameni iako umire od veterana ✅
 __________________________________________________________
 
 N1
@@ -485,21 +484,6 @@ Mafioso 🪢
 
 __________________________________________________________
 __________________________________________________________
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

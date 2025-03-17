@@ -56,9 +56,6 @@ public class Vigilante extends Role {
 		if(target.role.defence < vigilante.role.attack) {
 			target.isAlive = false;
 			
-			if(target == mafioso && godfather.isAlive == false) {
-				mafiaBacking.role.inherits = true;
-			}
 			
 		}
 		

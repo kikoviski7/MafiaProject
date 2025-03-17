@@ -14,15 +14,17 @@ public class Godfather extends Role {
 		for(Player player : playersList) {
 			if(player.role.name.equals("godfather")) {
 				godfather = player;
+				break;
 			}
 		}
 		
 		if(!godfather.role.isRoleBlocked) {
 			if(target != null) {
 				visit(target, playersList);
+		
 			}
 		}
-		
+		return;
 	}
 
 	@Override
@@ -30,6 +32,7 @@ public class Godfather extends Role {
 		if(godfather.role.attack > godfather.role.defence) {
 			target.isAlive = false;
 		}
+		return;
 		
 	}
 

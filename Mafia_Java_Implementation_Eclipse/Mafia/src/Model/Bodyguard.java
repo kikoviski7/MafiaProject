@@ -23,14 +23,14 @@ public class Bodyguard extends Role {
 	@Override
 	public void action(Player target, ArrayList<Player> playersList) {
 		for (Player player : playersList) {
-		    if ("godfather".equalsIgnoreCase(player.role.name)) {
+		    if ("godfather".equalsIgnoreCase(player.role.name) && player.isAlive) {
 		    	godfather = player;
 		        break;
 		    }
 		}
 		
 		for (Player player : playersList) {
-		    if ("mafioso".equalsIgnoreCase(player.role.name)) {
+		    if ("mafioso".equalsIgnoreCase(player.role.name) && player.isAlive) {
 		    	mafioso = player;
 		        break;
 		    }
@@ -119,6 +119,7 @@ public class Bodyguard extends Role {
 		if(attackers.size() == 1) {
 			Player attacker = attackers.get(0);
 			if(target.role.defence > 0) {
+				attackers.clear();
 				return;
 			}
 			else {
@@ -136,6 +137,7 @@ public class Bodyguard extends Role {
 					}
 					
 				}
+				
 			}
 		}
 		else if(attackers.size() == 2) {
@@ -148,8 +150,8 @@ public class Bodyguard extends Role {
 			else if(attacker == mafioso && godfather.isAlive == false) {
 				mafiaBacking.role.inherits = true;
 			}
-			
 		}
+		attackers.clear();
 		
 	}
 	boolean randomBoolean() {
