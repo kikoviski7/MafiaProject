@@ -388,8 +388,8 @@ public class Main {
 			veteran.role.action(veteran.target, playersList);
 		}
 
-		if (transporter != null && transporter.isAlive && transporterSecondTargets.size() == night) {
-			transporter.role.action(transporterSecondTargets.get(night - 1), playersList);
+		if (transporter != null && transporter.isAlive) {
+			transporter.role.action(transporterSecondTargets.get(transporterSecondTargets.size() - 1), playersList);
 		}
 
 		if (consort != null) {
