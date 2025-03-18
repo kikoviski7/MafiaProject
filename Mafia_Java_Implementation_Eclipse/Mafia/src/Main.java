@@ -736,27 +736,26 @@ public class Main {
 		
 		
 
-//		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
+		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
-		RolesList.add(new Framer());
+//		RolesList.add(new Framer());
+		
+		
+		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+
+//		RolesList.add(new Bodyguard());
 		
 		
 
-//		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
 
-		RolesList.add(new Bodyguard());
+//		RolesList.add(new Veteran());
 		
 		
 
-//		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
+		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
-		RolesList.add(new Veteran());
-		
-		
-
-//		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
-
-		RolesList.add(new Transporter());
+//		RolesList.add(new Transporter());
 		
 		
 
