@@ -21,11 +21,14 @@ public class Transporter extends Role {
 		}
 		
 		if (transporter != null) {
-			transporterSecondTarget = secondTarget;
-			if (secondTarget.role.name.equals("veteran")) {
-				transporter.isAlive = false;
+			if (secondTarget != null && transporter.target != null) {
+				transporterSecondTarget = secondTarget;
+				if (secondTarget.role.name.equals("veteran")) {
+					transporter.isAlive = false;
+				}
+				visit(transporter, playersList);
 			}
-			visit(transporter, playersList);
+			return;
 		}
 		
 	}

@@ -64,8 +64,8 @@ public class Main {
 			if (playersList.get(i).role.name.equals("transporter") && playersList.get(i).isAlive) {
 				if (playersList.get(i).target != null) {
 					System.out.println("Players targets: " + playersList.get(i).target.name + " "
-							+ playersList.get(i).target.role.name + " " + transporterSecondTargets.get(night - 1).name
-							+ " " + transporterSecondTargets.get(night - 1).role.name);
+							+ playersList.get(i).target.role.name + " " + transporterSecondTargets.get(transporterSecondTargets.size() - 1).name
+							+ " " + transporterSecondTargets.get(transporterSecondTargets.size() - 1).role.name);
 				}
 			}
 
@@ -106,8 +106,13 @@ public class Main {
 			performActionsAndVisits(playersListWithRoles, RolesList);
 
 			setDefaultRound(playersListWithRoles);
+			
+			checkWinCondition(playersListWithRoles);
 
-			dayPhase(playersListWithRoles);
+			if(winCondition == false) {
+				dayPhase(playersListWithRoles);
+			}else {break;}
+			
 			
 			checkWinCondition(playersListWithRoles);
 		}
@@ -389,7 +394,7 @@ public class Main {
 		}
 
 		if (transporter != null && transporter.isAlive) {
-			transporter.role.action(transporterSecondTargets.get(transporterSecondTargets.size() - 1), playersList);
+			transporter.role.action(transporterSecondTargets.size() == 0 ? null : transporterSecondTargets.get(transporterSecondTargets.size() - 1), playersList);
 		}
 
 		if (consort != null) {
@@ -741,9 +746,9 @@ public class Main {
 //		RolesList.add(new Framer());
 		
 		
-		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+//		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
 
-//		RolesList.add(new Bodyguard());
+		RolesList.add(new Bodyguard());
 		
 		
 
@@ -753,9 +758,9 @@ public class Main {
 		
 		
 
-		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
+//		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
-//		RolesList.add(new Transporter());
+		RolesList.add(new Transporter());
 		
 		
 

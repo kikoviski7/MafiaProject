@@ -28,6 +28,9 @@ public class Tracker extends Role {
 			if(target != null) {
 				visit(target, playersList);
 			}
+		}else {
+			System.out.println("Tracker is role-blocked");
+			return;
 		}
 		
 	}
