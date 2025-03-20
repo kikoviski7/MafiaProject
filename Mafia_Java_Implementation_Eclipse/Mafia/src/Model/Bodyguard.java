@@ -118,38 +118,40 @@ public class Bodyguard extends Role {
 	@Override
 	public void visit(Player target, ArrayList<Player> PlayersList) {
 
-		if (attackers.size() == 1) {
-			Player attacker = attackers.get(0);
-			if (target.role.defence > 0) {
-				attackers.clear();
-				return;
-			} else {
-				target.role.defence = 2;
-			}
-			if (target != bodyguard) {
-				if (bodyguard.role.attack > attacker.role.defence) {
-					bodyguard.isAlive = false;
-					attacker.isAlive = false;
-					if (attacker == godfather) {
-						mafioso.role.inherits = true;
-					} else if (attacker == mafioso && godfather.isAlive == false) {
-						mafiaBacking.role.inherits = true;
+		if(target.role.defence != 2) {
+			if (attackers.size() == 1) {
+				Player attacker = attackers.get(0);
+				if (target.role.defence > 0) {
+					attackers.clear();
+					return;
+				} else {
+					target.role.defence = 2;
+				}
+				if (target != bodyguard) {
+					if (bodyguard.role.attack > attacker.role.defence) {
+						bodyguard.isAlive = false;
+						attacker.isAlive = false;
+						if (attacker == godfather) {
+							mafioso.role.inherits = true;
+						} else if (attacker == mafioso && godfather.isAlive == false) {
+							mafiaBacking.role.inherits = true;
+						}
+
 					}
 
 				}
-
+			} else if (attackers.size() == 2) {
+				Player attacker = attackers.get(randomBoolean() ? 0 : 1);
+				attacker.isAlive = false;
+				bodyguard.isAlive = false;
+				if (attacker == godfather) {
+					mafioso.role.inherits = true;
+				} else if (attacker == mafioso && godfather.isAlive == false) {
+					mafiaBacking.role.inherits = true;
+				}
 			}
-		} else if (attackers.size() == 2) {
-			Player attacker = attackers.get(randomBoolean() ? 0 : 1);
-			attacker.isAlive = false;
-			bodyguard.isAlive = false;
-			if (attacker == godfather) {
-				mafioso.role.inherits = true;
-			} else if (attacker == mafioso && godfather.isAlive == false) {
-				mafiaBacking.role.inherits = true;
-			}
+			attackers.clear();
 		}
-		attackers.clear();
 
 	}
 

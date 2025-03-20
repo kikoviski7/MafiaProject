@@ -708,6 +708,10 @@ public class Main {
 					System.out.println("--------------------------------");
 				}
 			}
+			else {
+				System.out.println(player.name +" "+ player.role.name + " is not dead, therefore not choosing." );
+				System.out.println("--------------------------------");
+			}
 
 		}
 
@@ -741,9 +745,9 @@ public class Main {
 		
 		
 
-		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
+//		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
-//		RolesList.add(new Framer());
+		RolesList.add(new Consort());
 		
 		
 //		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
@@ -752,9 +756,9 @@ public class Main {
 		
 		
 
-		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
+//		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
 
-//		RolesList.add(new Veteran());
+		RolesList.add(new Veteran());
 		
 		
 
@@ -764,9 +768,9 @@ public class Main {
 		
 		
 
-		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
+//		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
 
-//		RolesList.add(new Survivor());
+		RolesList.add(new Survivor());
 		
 		
 
