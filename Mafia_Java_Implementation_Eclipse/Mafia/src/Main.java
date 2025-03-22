@@ -709,7 +709,7 @@ public class Main {
 				}
 			}
 			else {
-				System.out.println(player.name +" "+ player.role.name + " is not dead, therefore not choosing." );
+				System.out.println(player.name +" "+ player.role.name + " is dead, therefore not choosing." );
 				System.out.println("--------------------------------");
 			}
 
@@ -747,24 +747,30 @@ public class Main {
 
 //		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
-		RolesList.add(new Consort());
+//		RolesList.add(new Consort());
+		
+		RolesList.add(new Framer());
 		
 		
 //		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
 
-		RolesList.add(new Bodyguard());
+		RolesList.add(new Doctor());
 		
 		
 
 //		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
 
-		RolesList.add(new Veteran());
+//		RolesList.add(new Veteran());
+		
+		RolesList.add(new Vigilante());
 		
 		
 
 //		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
-		RolesList.add(new Transporter());
+//		RolesList.add(new Transporter());
+		
+		RolesList.add(new Mayor());
 		
 		
 

@@ -29,7 +29,7 @@ public class Godfather extends Role {
 
 	@Override
 	public void visit(Player target, ArrayList<Player> PlayersList) {
-		if(godfather.role.attack > godfather.role.defence) {
+		if(godfather.role.attack > godfather.target.role.defence) {
 			target.isAlive = false;
 		}
 		return;

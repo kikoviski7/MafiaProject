@@ -484,17 +484,100 @@ Mafioso 🪢
 
 __________________________________________________________
 __________________________________________________________
+N1
+Mafioso - Sheriff 💀
+Framer - Doctor 🖼
+Doctor 🖼 - Godfather 🛡️
+Vigilante 🔁💀 - Vigilante 🔁💀
+Transporter 🔁🧩 - Transporter 🔁🧩, Vigilante 🔁💀
+Survivor 🛡️ - Survivor 🛡️
+Sheriff - Transporter 🔁🧩
 
+D1
+Doctor 🎗
 
+N2
+Mafioso - None
+Framer - Survivor 🖼
+Transporter - None
 
+D2
+Transporter 🎗
 
+Survivor Wins!
+__________________________________________________________
+__________________________________________________________
+N1
+Mafioso 🛡️ - None
+Consort - Tracker 😍
+Doctor - Mafioso 🛡️
+Veteran 🛡️ - Veteran 🛡️
+Survivor - None
+Tracker 😍 - Doctor 
 
+D2
+Mayor - Revealed
+Survivor 🎗
 
+N2
+Mafioso - Doctor 💀
+Consort - None
+Doctor - Tracker 🛡️
+Veteran 🛡️ - Veteran 🛡️
+Tracker 🛡️ - Godfather
 
+D3
+Consort 🎗
 
+N3
+Mafioso - Veteran 💀🖲
+Tracker - Veteran 💀🖲
 
+D4
+None
 
+N4 
+Mafioso - Mayor 💀🖲
+Tracker - Mayor 💀🖲
 
+D5
+Tracker 🎗
+
+Mafia Wins!
+__________________________________________________________
+__________________________________________________________
+N1
+Mafioso 💀 - Doctor 💀🖼
+Framer - Doctor 💀🖼
+Doctor 💀🖼 - Vigilante 🛡️
+Vigilante 🛡️ - Mafioso 💀
+Survivor 🛡️ - Survivor 🛡️
+Tracker - Mayor 
+
+D2
+Mayor - Revealed
+Vigilante 🎗
+
+N2
+Godfather - Survivor 💀
+Framer 🖲 - Mayor 🖼
+Tracker - Framer 🖲
+
+D3
+Godfather 🎗
+
+N3
+Mafioso - None
+Tracker - Mayor
+
+D4
+Mafioso 🎗
+
+Town Wins!
+
+__________________________________________________________
+Survivor bi trebalo da umre od Godfather-a ✅
+__________________________________________________________
 
 
 
