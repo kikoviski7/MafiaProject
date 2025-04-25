@@ -1,0 +1,61 @@
+Kalkulator za odluke
+
+pocetni meni (1):
+- play dugme (vodi na "stranica za biranje setova/rolova")
+- prethodne igre
+- settings (luksuz)
+- credits (luksuz)
+
+stranica za biranje setova/rolova (2):
+- odabir seta za igru (vodi na odabir igraca)
+- opcija za promenu/kreiranje seta
+
+odabir igraca
+- svi igraci koji su vec upisani u bazu
+- svi igraci koji su u igri koja se trenutno pravi
+- opcija za dodavanje novog igraca
+- opcija za ponavljanje prethodnih imena
+- opcija za pretragu imena (luksuz)
+- opcija za pokretanje igre (vodi u igru)
+
+igra:
+- recenice koje narator treba da izgovori
+- nacin da narator zabelezi odluke igraca tokom noci
+- kalkulacija odluka
+- vracanje da default vrednosti
+- recenice koje narator treba da izgovori
+- timer 
+- nacin da narator zabelezi odluke igraca tokom dana
+- narator belezi glasove
+- igra izbacuje osobu relativno glasovima
+- provera uslova za kraj igre (igra || pobednicki ekran)
+
+
+Tehnologije
+- java
+- html/css
+- spring boot
+
+
+
+Class Diagram
+
+Player
+-id:int{id}
+-role:Role
+-name:String
+
+Visits
+
+Role(abstract)
+-id:int{id}
+-name:String
+-attack:ENUM
+-defence:ENUM
+-side:String
+-category:String
+
+
+
+
+
