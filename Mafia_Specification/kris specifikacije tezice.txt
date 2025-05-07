@@ -56,6 +56,13 @@ Role(abstract)
 -category:String
 
 
+Delovi plana: 
+- parametri koji su potrebni za igru
+- baza podataka (sta/kako se pise)
+- ui ideje
+- kalkulator akcija
+- 
+
 
 
 
