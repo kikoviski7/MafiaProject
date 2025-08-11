@@ -30,7 +30,7 @@
             <td>Opis: Biranje igraca (pregame)</td>
         </tr>
         <tr>
-            <td>Preduslovi: /</td>
+            <td>Preduslovi: sistem je pokrenut</td>
         </tr>
         <tr>
             <td>Posledice: /</td>
@@ -45,7 +45,7 @@
             </td>
         </tr>
     </table>
-    <table border="1px">
+    <!-- <table border="1px">
         <caption>
             Slucaj koriscenja
           </caption>
@@ -75,7 +75,7 @@
                 </ol>
             </td>
         </tr>
-    </table>
+    </table> -->
     <table border="1px">
         <caption>
             Slucaj koriscenja
@@ -90,13 +90,13 @@
             <td>Ucesnik: Admin</td>
         </tr>
         <tr>
-            <td>Opis: Biranje igraca (game - noc)</td>
+            <td>Opis: Narator upisuje odluke igraca (game - noc)</td>
         </tr>
         <tr>
             <td>Preduslovi: sistem me dodelio svakom igracu ulogu, sve je ispravno</td>
         </tr>
         <tr>
-            <td>Posledice: /</td>
+            <td>Posledice: kalkulator moze da racuna rezultate odluka igraca</td>
         </tr>
         <tr>
             <td>Osnovni tok izvrsavanja:
@@ -134,8 +134,41 @@
             <td>Osnovni tok izvrsavanja:
                 <ol>
                     <li>ispisuju se desavanja (posledica odluka)</li>
+                    <li>pokrece se discussion timer</li>
                     <li>bira se igrac koji ispada iz igre (ukoliko se igraci sloze)</li>
-                    <li>slucaj koriscenja se zavrsava vracanjem na trecu stranu (ponavlja se dok se igra ne zavrsi)</li>
+                    <li>Alternativni tok A: slucaj koriscenja se zavrsava vracanjem na trecu stranu (ponavlja se dok se igra ne zavrsi)</li>
+                    <li>Alternativni tok B: prelazak na end game screen</li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+    <table border="1px">
+        <caption>
+            Slucaj koriscenja
+          </caption>
+        <tr>
+            <td>Identifikator: /</td>
+        </tr>
+        <tr>
+            <td>Naziv: End game screen</td>
+        </tr>
+        <tr>
+            <td>Ucesnik: Admin</td>
+        </tr>
+        <tr>
+            <td>Opis: Biranje igraca (game - dan)</td>
+        </tr>
+        <tr>
+            <td>Preduslovi: /</td>
+        </tr>
+        <tr>
+            <td>Posledice: /</td>
+        </tr>
+        <tr>
+            <td>Osnovni tok izvrsavanja:
+                <ol>
+                    <li>ispisuju se rezultati igre</li>
+                    <li>slucaj koriscenja se zavrsava prelaskom na main menu</li>
                 </ol>
             </td>
         </tr>

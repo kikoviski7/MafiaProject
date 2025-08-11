@@ -1,0 +1,224 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033\deflangfe2052{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}{\f1\fswiss\fprq2\fcharset238 Arial;}{\f2\froman\fprq2\fcharset0 Times New Roman;}{\f3\fnil\fcharset1 Segoe UI Symbol;}{\f4\fnil\fcharset1 Cambria Math;}{\f5\fnil\fcharset1 Segoe UI Symbol;}{\f6\fswiss\fprq2 Arial;}{\f7\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue0;\red128\green128\blue128;}
+{\stylesheet{ Normal;}{\s1 heading 1;}{\s2 heading 2;}{\s3 heading 3;}{\s4 heading 4;}}
+{\*\generator Riched20 10.0.19041}{\*\mmathPr\mmathFont4\mnaryLim0\mdispDef1\mwrapIndent1440 }\viewkind4\uc1 
+\pard\widctlpar\s1\sb480\sa120\sl276\slmult1\cf1\b\f0\fs46 Specifikacija projekta: Mafia\par
+
+\pard\widctlpar\s2\sb360\sa80\sl276\slmult1\fs34 1. Uvod\par
+
+\pard\widctlpar\s3\sb280\sa80\sl276\slmult1\fs26 1.1. Cilj dokumenta\par
+
+\pard\widctlpar\sl276\slmult1\b0\fs22\par
+Cilj ovog dokmenta je opsati tehni\f1\'e8ki\f0  i igra\f1\'e8ki\f0  aspekt igre \ldblquote Mafia\rdblquote  koja slu\f1\'9ei\f0  kao podr\f1\'9aka\f0  naratoru u istoimenoj dru\f1\'9atvenoj\f0  igri.\par
+
+\pard\widctlpar\s3\sb280\sa80\sl276\slmult1\b\fs26 1.2. Opis projekta\par
+
+\pard\widctlpar\sl276\slmult1\b0\fs22\par
+Mafia je aplikacija dizajnirana da pomogne naratoru pri komunikaciji, vo\f1\'f0enju\f0  igre i kalkulisanju poteza igra\f1\'e8a\f0 . Cilj je automatizovati i olak\f1\'9aati\f0  vo\f1\'f0enje\f0  igre kroz jasno definisane faze, bez prekidanja fluidnosti(toka) igre.\par
+
+\pard\widctlpar\s3\sb280\sa80\sl276\slmult1\b\fs26 1.3. Ciljna grupa\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Naratori i igra\f1\'e8i\f0  dru\f1\'9atvene\f0  igre Mafia\par
+{\pntext\f7\'B7\tab}Ljudi stariji od 15 i mla\f1\'f0i\f0  od 40\par
+{\pntext\f7\'B7\tab}Ljudi koji razumeju engleski jezik\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar {\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080 Grupa prijatelja koja tra\f1\'9ei\f0  jednostavniji na\f1\'e8in\f0  igranja igre\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sl276\slmult1\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s2\sb360\sa80\sl276\slmult1\b\fs34 2. Funkcionalni zahtevi\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s3\sb280\sa80\sl276\slmult1\fs26 2.1. Upravljanje igra\f1\'e8ima\f0\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Unos broja igra\f1\'e8a\f0 .\line\par
+{\pntext\f7\'B7\tab}Dodela imena igra\f1\'e8ima\f0  (ili auto-generisanje).\line\par
+{\pntext\f7\'B7\tab}Dodela nasumi\f1\'e8nih\f0  uloga iz definisanog seta.\line\par
+{\pntext\f7\'B7\tab}Izmena ili ru\f1\'e8na\f0  dodela uloga (za prilago\f1\'f0ene\f0  igre).\line\par
+{\pntext\f7\'B7\tab}Mogu\f1\'e6nost\f0  uklanjanja igra\f1\'e8a\f0  pre po\f1\'e8etka\f0  igre.\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s3\sb280\sa80\sl276\slmult1\b\fs26 2.2. Uloga (Role)\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sb240\sa240\sl276\slmult1\b0\fs22 Sistem uloga mora biti fleksibilan, kako bi omogu\f1\'e6io\f0  razli\f1\'e8ite\f0  varijante igre. Svaka uloga ima:\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080 Ime\line\par
+{\pntext\f7\'B7\tab}Timska pripadnost (Mafija / Grad / Neutralni)\line\par
+{\pntext\f7\'B7\tab}Akciju koju mo\f1\'9ee\f0  da preduzme (npr. \ldblquote Ubiti\rdblquote , \ldblquote Za\f1\'9atiti\f0\rdblquote , \ldblquote Ispitati\rdblquote )\line\par
+{\pntext\f7\'B7\tab}Ograni\f1\'e8enja\f0  (npr. samo no\f1\'e6u\f0 , samo jednom u igri, itd.)\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\li720\sb240\sa240\sl276\slmult1 INTERFACE:\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1800\sl276\slmult1\tx1080\tx1800 svi parametri role-a u interfejsu radi lak\f1\'9ae\f0  preglednosti\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent1080{\pntxtb\'B7}}\widctlpar\sl276\slmult1 Primer osnovnih uloga:\par
+{\pntext\f7\'B7\tab}\par
+\trowd\trgaph100\trleft-100\trrh500\trbrdrl\brdrs\brdrw10\brdrbtw\brdrbar \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl100\trpaddr100\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx1030\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx2160\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx6890 
+\pard\intbl\widctlpar\sl276\slmult1\qc\b Uloga\b0\cell\b Tim\b0\cell\b Opis\b0\cell\row\trowd\trgaph100\trleft-100\trrh500\trbrdrl\brdrs\brdrw10\brdrbtw\brdrbar \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl100\trpaddr100\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx1030\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx2160\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx6890 
+\pard\intbl\widctlpar\sl276\slmult1 Mafija\f1\'9a\f0\cell Mafija\cell Glasa s mafijom da elimini\f1\'9au\f0  igra\f1\'e8a\f0  no\f1\'e6u\f0\cell\row\trowd\trgaph100\trleft-100\trrh500\trbrdrl\brdrs\brdrw10\brdrbtw\brdrbar \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl100\trpaddr100\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx1030\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx2160\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx6890 
+\pard\intbl\widctlpar\sl276\slmult1 Doktor\cell Gra\f1\'f0ani\f0\cell Mo\f1\'9ee\f0  da za\f1\'9atiti\f0  jednog igra\f1\'e8a\f0  po no\f1\'e6i\f0\cell\row\trowd\trgaph100\trleft-100\trrh500\trbrdrl\brdrs\brdrw10\brdrbtw\brdrbar \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl100\trpaddr100\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx1030\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx2160\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx6890 
+\pard\intbl\widctlpar\sl276\slmult1 Detektiv\cell Gra\f1\'f0ani\f0\cell Mo\f1\'9ee\f0  da proveri da li je neko \f1\'e8lan\f0  mafije\cell\row\trowd\trgaph100\trleft-100\trrh500\trbrdrl\brdrs\brdrw10\brdrbtw\brdrbar \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl100\trpaddr100\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx1030\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx2160\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx6890 
+\pard\intbl\widctlpar\sl276\slmult1 Gra\f1\'f0anin\f0\cell Gra\f1\'f0ani\f0\cell Nema specijalnu mo\f1\'e6\f0\cell\row\trowd\trgaph100\trleft-100\trrh500\trbrdrl\brdrs\brdrw10\brdrbtw\brdrbar \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl100\trpaddr100\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx1030\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx2160\clbrdrl\brdrw5\brdrs\brdrcf1\clbrdrt\brdrw5\brdrs\brdrcf1\clbrdrr\brdrw5\brdrs\brdrcf1\clbrdrb\brdrw5\brdrs\brdrcf1 \cellx6890 
+\pard\intbl\widctlpar\sl276\slmult1 Ubica\cell Neutralni\cell Mo\f1\'9ee\f0  samostalno da elimini\f1\'9ae\f0  igra\f1\'e8e\f0 , bez tima\cell\row 
+\pard\widctlpar\sl276\slmult1\par
+
+\pard\widctlpar\s3\sb280\sa80\sl276\slmult1\b\fs26 2.3. Igra\f1\'e8\f0 /Osoba (Player)\par
+
+\pard\widctlpar\sl276\slmult1\b0\fs22 Svaki igra\f1\'e8\f0 /osoba ima:\par
+-int: id\par
+-string: name (nickname)\par
+-role: role\par
+-boolean: gender (mozemo zbog statistike)\par
+\par
+
+\pard\widctlpar\s3\sb280\sa80\sl276\slmult1\b\fs26 2.4. Faze igre\par
+
+\pard\widctlpar\s4\sb240\sa40\sl276\slmult1\f3\fs22\u11035?\f0  No\f1\'e6na\f0  faza:\par
+
+\pard 
+{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec{\pntxta.}}
+\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0 Aplikacija poziva uloge redosledom (npr. mafija \f4\u8594?\f0\lang1033  doktor \f4\u8594?\f0\lang1033  \f1\'9aerif\f0 ).\line\par
+{\pntext\f0 2.\tab}Omogu\f1\'e6iti\f0  izbor mete (ili "preskakanje" ako igra\f1\'e8\f0  ne \f1\'9eeli\f0  da deluje).\line\par
+{\pntext\f0 3.\tab}\f1\'c8uvanje\f0  akcija iza scene za procesiranje u jutarnjoj fazi.\line\par
+
+\pard 
+{\pntext\f0 4.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec{\pntxta.}}
+\widctlpar\s4\sb240\sa40\sl276\slmult1\b\f5\u-10180?\u-8418?\f0  Dnevna faza:\par
+
+\pard 
+{\pntext\f0 5.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec{\pntxta.}}
+\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0 Aplikacija prikazuje \f1\'9ata\f0  se desilo prethodne no\f1\'e6i\f0 .\line\par
+{\pntext\f0 6.\tab}Igra\f1\'e8i\f0  diskutuju, a zatim glasaju.\line\par
+{\pntext\f0 7.\tab}Aplikacija evidentira glasove i elimini\f1\'9ae\f0  igra\f1\'e8a\f0  s najvi\f1\'9ae\f0  glasova, tj. nastavlja dalje ako igra\f1\'e8i\f0  imaju jednak broj glasova\line\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar {\pntext\f0 8.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec{\pntxta.}}
+\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080 Mogu\f1\'e6nost\f0  glasanja za \ldblquote niko\rdblquote  (presko\f1\'e8i\f0  glasanje).\line\par
+
+\pard 
+{\pntext\f0 9.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec{\pntxta.}}
+\widctlpar\sl276\slmult1\par
+
+\pard 
+{\pntext\f0 10.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec{\pntxta.}}
+\widctlpar\s2\sb360\sa80\sl276\slmult1\b\fs34 3. Nefunkcionalni zahtevi\par
+
+\pard 
+{\pntext\f0 11.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec{\pntxta.}}
+\widctlpar\s3\sb280\sa80\sl276\slmult1\fs26 3.5. Modularnost\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Mogu\f1\'e6nost\f0  dodavanja novih uloga bez promene core logike.\line\par
+{\pntext\f7\'B7\tab}Podr\f1\'9aka\f0  za pravljenje "custom setova" pravila i uloga.\par
+{\pntext\f7\'B7\tab}Napraviti \ldblquote custom\rdblquote  imena za svoje rolove i \ldblquote custom\rdblquote  slike.\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s3\sb280\sa80\sl276\slmult1\b\fs26 3.6. Lokalizacija\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Vi\f1\'9aejezi\'e8nost\f0 : omogu\f1\'e6iti\f0  vi\f1\'9ae\f0  jezika (po\f1\'e8etno\f0 : srpski, engleski).\line\par
+{\pntext\f7\'B7\tab}Lako dodavanje novih prevoda.\par
+{\pntext\f7\'B7\tab}Sleng opcija\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s3\sb280\sa80\sl276\slmult1\b\fs26 3.7. Pristupa\f1\'e8nost\f0\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar {\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Tamna i svetla tema.\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sl276\slmult1\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s2\sb360\sa80\sl276\slmult1\b\fs34 4. Tehnologije\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\fs22 Frontend:\b0  \line\par
+{\pntext\f7\'B7\tab}\b Backend:\b0  SpringBoot\line\par
+{\pntext\f7\'B7\tab}\b Baza:\b0  \line\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar {\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b Hosting:\b0  \line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sl276\slmult1\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s2\sb360\sa80\sl276\slmult1\b\fs34 5. Interfejs korisnika (UI detalji)\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s3\sb280\sa80\sl276\slmult1\fs26 5.1. Ekran za pripremu igre\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Unos broja igra\f1\'e8a\f0\line\par
+{\pntext\f7\'B7\tab}Dodela imena\line\par
+{\pntext\f7\'B7\tab}Pode\f1\'9aavanje\f0  uloga (izbor iz liste ili random)\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s3\sb280\sa80\sl276\slmult1\b\fs26 5.2. Ekran igre\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Trenutna faza: No\f1\'e6\f0  / Dan\line\par
+{\pntext\f7\'B7\tab}Pregled \f1\'9eivih\f0  igra\f1\'e8a\f0\line\par
+{\pntext\f7\'B7\tab}Status uloga (ko je ve\f1\'e6\f0  delovao, itd.)\line\par
+{\pntext\f7\'B7\tab}Tabela glasanja tokom dana\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s3\sb280\sa80\sl276\slmult1\b\fs26 5.3. Ekran za naratora\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Detaljan vodi\f1\'e8\f0  kroz redosled doga\f1\'f0aja\f0\line\par
+{\pntext\f7\'B7\tab}Tajni uvid u sve uloge\line\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar {\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080 Mogu\f1\'e6nost\f0  "ru\f1\'e8ne\f0  intervencije" u slu\f1\'e8aju\f0  gre\f1\'9aaka\f0\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sl276\slmult1\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s2\sb360\sa80\sl276\slmult1\b\fs34 6. Pravila igre (u aplikaciji)\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sb240\sa240\sl276\slmult1\b0\fs22 Aplikacija mora poznavati i po\f1\'9atovati\f0  osnovna pravila:\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080 Svaka no\f1\'e6\f0 : mafija glasa za \f1\'9ertvu\f0 , doktor mo\f1\'9ee\f0  spasiti, detektiv proverava.\line\par
+{\pntext\f7\'B7\tab}Svaki dan: diskusija i glasanje.\line\par
+{\pntext\f7\'B7\tab}Igra se zavr\f1\'9aava\f0  kada:\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent1080{\pntxtb\'B7}}\widctlpar\fi-360\li1800\sl276\slmult1\tx1080\tx1800 Svi mafija\f1\'9ai\f0  budu izba\f1\'e8eni\f0  (gra\f1\'f0ani\f0  pobedili)\line\par
+{\pntext\f7\'B7\tab}Mafija ima ve\f1\'e6inu\f0  (mafija pobedila)\line\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar {\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent1080{\pntxtb\'B7}}\widctlpar\fi-360\li1800\sl276\slmult1\tx1080\tx1800 Posebne pobede za neutralne role (ako ih ima)\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sl276\slmult1\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s2\sb360\sa80\sl276\slmult1\b\fs34 7. Napredne mogu\f1\'e6nosti\f0  (nice-to-have)\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\fs22 Replay mode\b0  \f6\endash\f0  pregled cele partije nakon zavr\f1\'9aetka\f0 .\line\par
+{\pntext\f7\'B7\tab}\b Statistika\b0  \f6\endash\f0  brojevi pobeda po ulozi, du\f1\'9eina\f0  partije, itd.\line\par
+{\pntext\f7\'B7\tab}\b Timer\b0  \f6\endash\f0  za automatsko ograni\f1\'e8enje\f0  vremena diskusije.\line\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar {\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b "Hardcore" mod\b0  \f6\endash\f0  bez uvida za naratora, igra je 100% vo\f1\'f0ena\f0  aplikacijom.\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sl276\slmult1\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s2\sb360\sa80\sl276\slmult1\b\fs34 8. Test slu\f1\'e8ajevi\f0\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Dodavanje 10 igra\f1\'e8a\f0  i nasumi\f1\'e8na\f0  podela uloga\par
+{\pntext\f7\'B7\tab}Pravilna obrada no\f1\'e6ne\f0  faze (mafija ubija, doktor spa\f1\'9aava\f0 , detektiv ispituje)\par
+{\pntext\f7\'B7\tab}Pravilno evidentiranje glasanja\par
+{\pntext\f7\'B7\tab}Detekcija pobedni\f1\'e8kog\f0  tima\par
+{\pntext\f7\'B7\tab}Resetovanje igre i pokretanje nove partije\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar {\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sl276\slmult1\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sl276\slmult1\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s2\sb360\sa80\sl276\slmult1\b\fs34 9. Budu\f1\'e6i\f0  razvoj\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Povezivanje sa drugim ekranom za igra\f1\'e8e\f0\line\par
+{\pntext\f7\'B7\tab}Audio/glasovni narator\line\par
+{\pntext\f7\'B7\tab}Povezivanje s telefonskim imenikom za br\f1\'9ei\f0  unos imena\par
+{\pntext\f7\'B7\tab}\f1\'c8uvanje\f0  igra\f1\'e8a\f0  u bazu\par
+{\pntext\f7\'B7\tab}Igra\f1\'e8ima\f0  dodati sliku\par
+
+\pard\brdrb\brdrs\brdrw30\brdrcf2\brdrbtw\brdrbar {\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080 Svaki role ima svoju sliku\line\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\sl276\slmult1\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\s2\sb360\sa80\sl276\slmult1\b\fs34 10. Prilozi\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080\b0\fs22 Wireframe-ovi (skice UI-a)\line\par
+{\pntext\f7\'B7\tab}Dijagram toka igre\line\par
+{\pntext\f7\'B7\tab}JSON \f1\'9aema\f0  za uloge\par
+
+\pard\widctlpar\sl276\slmult1\tx360\tx1080\par
+
+\pard{\pntext\f7\'B7\tab}{\*\pn\pnlvlblt\pnf7\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li1080\sl276\slmult1\tx360\tx1080 UML diagram\par
+
+\pard\widctlpar\sl276\slmult1\par
+}
+ 
