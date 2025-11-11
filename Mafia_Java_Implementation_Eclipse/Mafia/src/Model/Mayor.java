@@ -9,14 +9,14 @@ public class Mayor extends Role{
 	}
 
 	@Override
-	public void action(Player target, ArrayList<Player> playersList) {
-		// TODO Auto-generated method stub
+	public boolean action(Player target, ArrayList<Player> playersList) {
+		return false;
 		
 	}
 
 	@Override
-	public void visit(Player player, ArrayList<Player> PlayersList) {
-		// TODO Auto-generated method stub
+	public boolean visit(Player player, ArrayList<Player> PlayersList) {
+		return false;
 		
 	}
 

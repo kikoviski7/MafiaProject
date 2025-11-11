@@ -5,14 +5,18 @@ import java.util.Scanner;
 import Model.*;
 
 public class Main {
+	
+	//region global variables
 	static boolean mayorRevealed = false;
-
+	
+	
 	static boolean winCondition;
 
 	// Number of players
 	final static int numberOfPlayers = 8;
 
-	static Scanner scanner = new Scanner(System.in); // Create a Scanner object
+	
+	static Scanner scanner = new Scanner(System.in); 
 
 	// Ovde cuvam svaki second target od transportera zbog logova
 	public static ArrayList<Player> transporterSecondTargets = new ArrayList<>();
@@ -20,27 +24,29 @@ public class Main {
 	// roundRecaps(night, action(targetedBy, target))
 	public static ArrayList<NightRecap> gameLog = new ArrayList<>();
 
+	
 	public static int night = 0;
+	
+	public static ArrayList<Player> playersList = new ArrayList<>();
+	//endregion
 
 	public static void main(String[] args) {
 
+		// enterPlayerNames stavlja samo placeholder stringove (primer: player1, player2...)
 		ArrayList<Player> playersList = enterPlayersNames();
+		
+		// shuffle mi ne treba jer upisujem kako prozivam (shuffle se desava uzivo i spontano)
+//		shufflePlayers(playersList);
 
-		shufflePlayers(playersList);
+ 		startGame(playersList);	
+ 		}
 
-		startGame(playersList);
-	}
-
+	// ovde se takodje i prave igraci (promeniti ime funkcije)
 	public static ArrayList<Player> enterPlayersNames() {
 		// Lista igraca:
-		ArrayList<Player> playersList = new ArrayList<>();
+		
 
 		for (int i = 1; i <= numberOfPlayers; i++) {
-
-			Scanner myObj = new Scanner(System.in); // Create a Scanner object
-//			System.out.println("Unesite ime igraca: ");
-
-//			String playerName = myObj.nextLine(); // Read user input
 
 			String playerName = "Player" + i;
 
@@ -50,7 +56,7 @@ public class Main {
 
 		}
 		return playersList;
-	}
+  	}
 
 	// Prikazivanje igraca
 	public static void printPlayers(ArrayList<Player> playersList) {
@@ -80,6 +86,7 @@ public class Main {
 		System.out.println("--------------------------------");
 	}
 
+	// Mesanje liste igraca
 	public static void shufflePlayers(ArrayList<Player> playersList) {
 		Collections.shuffle(playersList);
 	}
@@ -90,12 +97,12 @@ public class Main {
 		return PlayersWithRoles;
 	}
 
-	public static void startGame(ArrayList<Player> playersList) {
+	public static void startGame(ArrayList<Player> PlayerList) {
 
 		// Deklaracija uloga
 		ArrayList<Model.Role> RolesList = declareAndChooseRoles();
 
-		ArrayList<Player> playersListWithRoles = assignRolesToPlayers(playersList, RolesList);
+		ArrayList<Player> playersListWithRoles = assignRolesToPlayers(PlayerList ,RolesList);
 
 		while (!winCondition) {
 
@@ -390,7 +397,10 @@ public class Main {
 
 		// TODO: red akcija ce biti definisan listom: prvi role u listi ima priotitet?
 		if (veteran != null) {
-			veteran.role.action(veteran.target, playersList);
+			boolean killsSuccessful = veteran.role.action(veteran.target, playersList);
+			if (killsSuccessful) {
+				formPublicInfo(veteran);
+			}
 		}
 
 		if (transporter != null && transporter.isAlive) {
@@ -416,7 +426,10 @@ public class Main {
 		// TODO: svaki napadac treba da proveri da li bodyguard cuva njegov target pre
 		// napada
 		if (bodyguard != null) {
-			bodyguard.role.action(bodyguard.target, playersList);
+			boolean killSuccessful = bodyguard.role.action(bodyguard.target, playersList);
+			if (killSuccessful) {
+				formPublicInfo(bodyguard);
+			}
 		}
 
 		// TODO: framer kao role je useless kada nema sheriffa. razmisliti kako uticati
@@ -437,7 +450,10 @@ public class Main {
 		}
 
 		if (mafioso != null) {
-			mafioso.role.action(mafioso.target, playersList);
+			boolean killSuccessful = mafioso.role.action(mafioso.target, playersList);
+			if (killSuccessful) {
+				formPublicInfo(mafioso);
+			}
 		}
 
 		if (godfather != null) {
@@ -458,6 +474,31 @@ public class Main {
 		printPlayers(playersList);
 
 	}
+	private static void formPublicInfo(Player killer) {
+		
+		if (killer.role.name == "veteran") {
+			
+		}
+		else {
+			
+			if(killer.role.name == "bodyguard") {
+				System.out.println(killer.target.target.name + " je ubijen");
+			}
+			
+			if (killer.role.alignment == "mafia") {
+				System.out.println("Ubijen je od strane mafije");
+			}
+			else {
+				System.out.println("Ubijen je od strane "+ killer.role.name);
+			}
+			
+			System.out.println("--------------------------------------------\n");
+		}
+		
+		
+		
+}
+
 	// Execution order
 	// veteran
 	// transporter
@@ -474,12 +515,18 @@ public class Main {
 	// koliko imaju action left.
 	private static void choosingTragets(ArrayList<Player> playersList) {
 		for (Player player : playersList) {
-
+			
+			if (night == 1) {
+				System.out.println("Unesite ime za "+ player.role.name + ": ");
+				player.name = takeUserInput();
+			}
+			
 			if (player.isAlive) {
 
 				// Mayor - None
 
 				if (player.role.name == "mayor") {
+					
 //					System.out.println("\n-----------------------------\n");
 //					System.out.println(player.name + " " + player.role.name + " does not choose");
 //					System.out.println("\n-----------------------------\n");
@@ -716,9 +763,8 @@ public class Main {
 		}
 
 	}
-
-	private static ArrayList<Player> assignRolesToPlayers(ArrayList<Player> playersList,
-			ArrayList<Model.Role> rolesList) {
+	// funkcija spaja uloge i igrace
+	private static ArrayList<Player> assignRolesToPlayers(ArrayList<Player> playersList, ArrayList<Model.Role> rolesList) {
 
 		for (int i = 0; i < numberOfPlayers; i++) {
 			playersList.get(i).role = rolesList.get(i);
@@ -727,7 +773,7 @@ public class Main {
 		return playersList;
 
 	}
-
+    // random boolean za declareAndChooseRoles
 	private static boolean randomBoolean() {
 
 		return new Random().nextBoolean();
@@ -745,48 +791,66 @@ public class Main {
 		
 		
 
-//		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
+		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
+		//u slucaju da hocu da testiram neku kombinaciju
 //		RolesList.add(new Consort());
+//		RolesList.add(new Framer());
 		
-		RolesList.add(new Framer());
+		
+		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+		
+		//u slucaju da hocu da testiram neku kombinaciju
+//		RolesList.add(new Doctor());
+//		RolesList.add(new Bodyguard());
 		
 		
-//		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
 
-		RolesList.add(new Doctor());
-		
-		
+		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
 
-//		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
-
+		//u slucaju da hocu da testiram neku kombinaciju
 //		RolesList.add(new Veteran());
-		
-		RolesList.add(new Vigilante());
+//		RolesList.add(new Vigilante());
 		
 		
 
-//		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
+		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
+		//u slucaju da hocu da testiram neku kombinaciju
 //		RolesList.add(new Transporter());
-		
-		RolesList.add(new Mayor());
+//		RolesList.add(new Mayor());
 		
 		
 
-//		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
+		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
 
-		RolesList.add(new Survivor());
+		//u slucaju da hocu da testiram neku kombinaciju
+//		RolesList.add(new Survivor());
+//		RolesList.add(new Jester());
 		
 		
 
 		// Town investigative bi trebalo poslednji da biraju zato sto oni dobijaju
 		// povratnu informaciju odmah
-//		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
+		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
 
-		RolesList.add(new Tracker());
+		//u slucaju da hocu da testiram neku kombinaciju
+//		RolesList.add(new Tracker());
+//		RolesList.add(new Sheriff());
 
 		return RolesList;
+	}
+	
+	private static String takeUserInput() {
+
+		// Create a Scanner object for reading input
+        Scanner scanner = new Scanner(System.in);
+
+        // Read a line of text (until Enter is pressed)
+        String string = scanner.nextLine();
+
+        
+		return string;
 	}
 
 }

@@ -9,18 +9,20 @@ public class Framer extends Role {
 	}
 
 	@Override
-	public void action(Player target, ArrayList<Player> playersList) {
+	public boolean action(Player target, ArrayList<Player> playersList) {
 
 		
 		if(target != null) {
 			visit(target, playersList);
 		}
+		return false;
 
 	}
 
 	@Override
-	public void visit(Player target, ArrayList<Player> PlayersList) {
+	public boolean visit(Player target, ArrayList<Player> PlayersList) {
 		target.role.isFramed = true;
+		return false;
 
 	}
 

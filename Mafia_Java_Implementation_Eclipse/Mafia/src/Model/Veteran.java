@@ -12,7 +12,7 @@ public class Veteran extends Role {
 	}
 
 	@Override
-	public void action(Player veteran, ArrayList<Player> playersList) {
+	public boolean action(Player veteran, ArrayList<Player> playersList) {
 		for (Player player : playersList) {
 		    if ("godfather".equalsIgnoreCase(player.role.name)) {
 		    	godfather = player;
@@ -37,13 +37,15 @@ public class Veteran extends Role {
 		
 		
 		if (veteran != null) {
-			visit(veteran, playersList);
+			return visit(veteran, playersList);
 		}
+		return false;
+		
 		
 	}
 	
 	@Override
-	public void visit(Player veteran, ArrayList<Player> playersList) {
+	public boolean visit(Player veteran, ArrayList<Player> playersList) {
 		
 		veteran.role.defence = 3;
 		veteran.role.actionsLeft--;
@@ -62,6 +64,7 @@ public class Veteran extends Role {
 				}
 			}
 		}
+		return true;
 		
 		
 	}

@@ -15,7 +15,7 @@ public class Tracker extends Role {
 	}
 
 	@Override
-	public void action(Player target, ArrayList<Player> playersList) {
+	public boolean action(Player target, ArrayList<Player> playersList) {
 
 		for (Player player : playersList) {
 			if (player.role.name.equals("tracker")) {
@@ -30,13 +30,14 @@ public class Tracker extends Role {
 			}
 		}else {
 			System.out.println("Tracker is role-blocked");
-			return;
+			return false;
 		}
+		return false;
 		
 	}
 
 	@Override
-	public void visit(Player target, ArrayList<Player> playersList) {
+	public boolean visit(Player target, ArrayList<Player> playersList) {
 		if(untrackable.contains(target.role.name)) {
 			System.out.println("Your target is untrackable.");
 		}
@@ -57,6 +58,7 @@ public class Tracker extends Role {
 				System.out.println("Your target visited " + target.target.name + " " + target.target.role.name);
 			}
 		}
+		return false;
 		
 	}
 

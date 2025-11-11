@@ -19,7 +19,7 @@ public class Bodyguard extends Role {
 	}
 
 	@Override
-	public void action(Player target, ArrayList<Player> playersList) {
+	public boolean action(Player target, ArrayList<Player> playersList) {
 		for (Player player : playersList) {
 			if ("godfather".equalsIgnoreCase(player.role.name) && player.isAlive) {
 				godfather = player;
@@ -84,8 +84,8 @@ public class Bodyguard extends Role {
 
 						System.out.println("\nChoose a number: ");
 
-						Scanner scanner = new Scanner(System.in); // Create a Scanner object
-						int newTarget = scanner.nextInt(); // Reads integer input
+						Scanner scanner = new Scanner(System.in); 
+						int newTarget = scanner.nextInt(); 
 
 						while (newTarget < 0 || newTarget > 8) {
 
@@ -110,20 +110,25 @@ public class Bodyguard extends Role {
 
 			}
 			if (target != null) {
-				visit(target, playersList);
+				return visit(target, playersList);
 			}
 		}
+		return false;
+		
 	}
-
+	//bodigard napada napadaca mete
+	//posto postoji vise napadaca, koga ce da napadne bodigard se bira na random
 	@Override
-	public void visit(Player target, ArrayList<Player> PlayersList) {
+	public boolean visit(Player target, ArrayList<Player> PlayersList) {
 
 		if(target.role.defence != 2) {
+			//ako postoji samo jedan napadac, izaberi njega
 			if (attackers.size() == 1) {
 				Player attacker = attackers.get(0);
+				//ako bodigardov target vec ima defence, bodigard ga ne stiti, pa ni ne napada napadaca
 				if (target.role.defence > 0) {
 					attackers.clear();
-					return;
+					return false;
 				} else {
 					target.role.defence = 2;
 				}
@@ -152,6 +157,7 @@ public class Bodyguard extends Role {
 			}
 			attackers.clear();
 		}
+		return true;
 
 	}
 

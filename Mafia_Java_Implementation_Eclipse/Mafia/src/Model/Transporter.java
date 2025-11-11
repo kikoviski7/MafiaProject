@@ -10,7 +10,7 @@ public class Transporter extends Role {
 	}
 
 	@Override
-	public void action(Player secondTarget, ArrayList<Player> playersList) {
+	public boolean action(Player secondTarget, ArrayList<Player> playersList) {
 		
 		Player transporter = null;
 		
@@ -28,13 +28,14 @@ public class Transporter extends Role {
 				}
 				visit(transporter, playersList);
 			}
-			return;
+			return false;
 		}
+		return false;
 		
 	}
 
 	@Override
-	public void visit(Player transporter, ArrayList<Player> playersList) {
+	public boolean visit(Player transporter, ArrayList<Player> playersList) {
 		
 		ArrayList<Player> visitsFirstTarget = new ArrayList<>();
 		ArrayList<Player> visitsSecondTarget = new ArrayList<>();
@@ -77,6 +78,7 @@ public class Transporter extends Role {
 		for(Player player : visitsSecondTarget) {
 			player.target = transporter.target;
 		}
+		return false;
 		
 		
 		

@@ -11,7 +11,7 @@ public class Mafioso extends Role{
 	}
 
 	@Override
-	public void action(Player target, ArrayList<Player> playersList) {
+	public boolean action(Player target, ArrayList<Player> playersList) {
 		for(Player player : playersList) {
 			if(player.role.name.equals("mafioso")) {
 				mafioso = player;
@@ -26,7 +26,7 @@ public class Mafioso extends Role{
 		
 		if(!mafioso.role.isRoleBlocked) {
 			if(target != null) {
-				visit(target, playersList);
+				return visit(target, playersList);
 			}
 		}
 		else {
@@ -40,19 +40,22 @@ public class Mafioso extends Role{
 			mafioso.target = null;
 			godfather.role.action(target, playersList);
 		}
+		return false;
 		
 	}
 
 	@Override
-	public void visit(Player target, ArrayList<Player> PlayersList) {
+	public boolean visit(Player target, ArrayList<Player> PlayersList) {
 		if(mafioso.role.attack > target.role.defence) {
 			target.isAlive = false;
+			
 			
 			
 			if(target == mafioso && godfather.isAlive == false) {
 				mafiaBacking.role.inherits = true;
 			}
 		}
+		return true;
 		
 	}
 

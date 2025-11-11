@@ -12,7 +12,7 @@ public class Vigilante extends Role {
 	}
 
 	@Override
-	public void action(Player target, ArrayList<Player> playersList) {
+	public boolean action(Player target, ArrayList<Player> playersList) {
 		for (Player player : playersList) {
 		    if ("godfather".equalsIgnoreCase(player.role.name)) {
 		    	godfather = player;
@@ -44,20 +44,22 @@ public class Vigilante extends Role {
 		
 		if (!vigilante.role.isRoleBlocked && vigilante.role.actionsLeft > 0) {
 			if(target != null) {
-				visit(target, playersList);
+			   return visit(target, playersList);
 			}
 			
 		}
+		return false;
 		
 	}
 
 	@Override
-	public void visit(Player target, ArrayList<Player> PlayersList) {
+	public boolean visit(Player target, ArrayList<Player> PlayersList) {
 		if(target.role.defence < vigilante.role.attack) {
 			target.isAlive = false;
 			
 			
 		}
+		return true;
 		
 	}
 

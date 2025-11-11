@@ -10,7 +10,7 @@ public class Sheriff extends Role {
 	}
 
 	@Override
-	public void action(Player target, ArrayList<Player> playersList) {
+	public boolean action(Player target, ArrayList<Player> playersList) {
 		for (Player player : playersList) {
 			if (player.role.name.equals("sheriff")) {
 				sheriff = player;
@@ -19,22 +19,24 @@ public class Sheriff extends Role {
 		}
 		
 		if (sheriff.role.isRoleBlocked) {
-			return;
+			return false;
 		}
 		if(target != null) {
 			visit(target, playersList);
 		}
+		return false;
 		
 	}
 
 	@Override
-	public void visit(Player target, ArrayList<Player> PlayersList) {
+	public boolean visit(Player target, ArrayList<Player> PlayersList) {
 		if (target.role.suspiciousToSheriff || target.role.isFramed) {
 			System.out.println("Yo, nigga's bugarin!");
 		}
 		else {
 			System.out.println("Nigga's clean, legit.");
 		}
+		return false;
 		
 	}
 	

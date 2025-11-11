@@ -9,18 +9,20 @@ public class Survivor extends Role{
 	}
 
 	@Override
-	public void action(Player survivor, ArrayList<Player> playersList) {
+	public boolean action(Player survivor, ArrayList<Player> playersList) {
 		if(survivor != null && survivor.role.isRoleBlocked == false && survivor.role.actionsLeft > 0) {
 			visit(survivor, playersList);
 		}
+		return false;
 		
 	}
 
 	@Override
-	public void visit(Player survivor, ArrayList<Player> PlayersList) {
+	public boolean visit(Player survivor, ArrayList<Player> PlayersList) {
 		
 		survivor.role.defence = 2;
 		survivor.role.actionsLeft--;
+		return false;
 		
 	}
 

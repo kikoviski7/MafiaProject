@@ -12,21 +12,23 @@ public class Consort extends Role {
 	}
 
 	@Override
-	public void action(Player target, ArrayList<Player> playersList) {
+	public boolean action(Player target, ArrayList<Player> playersList) {
 		
 		 if(target != null) {
 			 if(!immuneToRoleblock.contains(target.role.name)){
 				visit(target, playersList);
 			}
 		}
+		 return false;
 		
 	}
 
 	//TODO: consort bi samo mogao da ukloni target sa svog targeta umesto da postoji ceo boolean koji
 	// odredjuje da li neko moze da upotrebi svoju sposobnost ili ne
 	@Override
-	public void visit(Player target, ArrayList<Player> PlayersList) {
+	public boolean visit(Player target, ArrayList<Player> PlayersList) {
 		target.role.isRoleBlocked = true;
+		return false;
 		
 	}
 

@@ -87,10 +87,10 @@ public abstract class Role {
 	}
 
 
-	public abstract void action(Player target, ArrayList<Player> playersList);
+	public abstract boolean action(Player target, ArrayList<Player> playersList);
 
 
-	public abstract void visit(Player player, ArrayList<Player> PlayersList);
+	public abstract boolean visit(Player player, ArrayList<Player> PlayersList);
 		
 		
 	

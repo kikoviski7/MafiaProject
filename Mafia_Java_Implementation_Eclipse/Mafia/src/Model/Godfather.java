@@ -10,7 +10,7 @@ public class Godfather extends Role {
 	}
 
 	@Override
-	public void action(Player target, ArrayList<Player> playersList) {
+	public boolean action(Player target, ArrayList<Player> playersList) {
 		for(Player player : playersList) {
 			if(player.role.name.equals("godfather")) {
 				godfather = player;
@@ -20,19 +20,20 @@ public class Godfather extends Role {
 		
 		if(!godfather.role.isRoleBlocked) {
 			if(target != null) {
-				visit(target, playersList);
+				return visit(target, playersList);
 		
 			}
 		}
-		return;
+		return false;
+		 
 	}
 
 	@Override
-	public void visit(Player target, ArrayList<Player> PlayersList) {
+	public boolean visit(Player target, ArrayList<Player> PlayersList) {
 		if(godfather.role.attack > godfather.target.role.defence) {
 			target.isAlive = false;
 		}
-		return;
+		return true;
 		
 	}
 
