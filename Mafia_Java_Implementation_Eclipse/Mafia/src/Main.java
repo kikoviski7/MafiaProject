@@ -21,24 +21,36 @@ public class Main {
 	// Ovde cuvam svaki second target od transportera zbog logova
 	public static ArrayList<Player> transporterSecondTargets = new ArrayList<>();
 
-	// roundRecaps(night, action(targetedBy, target))
+	// roundRecaps(night, action(targetedBy, target)) - ne koristi se
 	public static ArrayList<NightRecap> gameLog = new ArrayList<>();
 
 	
 	public static int night = 0;
 	
 	public static ArrayList<Player> playersList = new ArrayList<>();
+	
+	public static String redTextBeggining = "\u001B[31m";
+	public static String redTextEnding = "\u001B[0m";
 	//endregion
 
 	public static void main(String[] args) {
-
-		// enterPlayerNames stavlja samo placeholder stringove (primer: player1, player2...)
-		ArrayList<Player> playersList = enterPlayersNames();
 		
-		// shuffle mi ne treba jer upisujem kako prozivam (shuffle se desava uzivo i spontano)
-//		shufflePlayers(playersList);
-
- 		startGame(playersList);	
+		ArrayList<Player> playersList = null;
+		
+		
+		while(true) {
+			System.out.println("---------------Menu---------------");
+			System.out.println("0. Exit");
+			System.out.println("1. Enter players names");
+			System.out.println("2. Start a game");
+			String input = scanner.nextLine();
+			if (input.equals("0")) {System.exit(0);} 
+			else if (input.equals("1")) playersList = enterPlayersNames();
+			else if (input.equals("2")) {
+				if (playersList == null) playersList = enterPlayersNames();
+				else startGame(playersList);
+			}
+		}	
  		}
 
 	// ovde se takodje i prave igraci (promeniti ime funkcije)
@@ -47,8 +59,10 @@ public class Main {
 		
 
 		for (int i = 1; i <= numberOfPlayers; i++) {
+			
+			System.out.println("Enter player "+i+". name");
 
-			String playerName = "Player" + i;
+			String playerName = scanner.nextLine();
 
 			Player player = new Player(playerName, i, null);
 
@@ -102,26 +116,26 @@ public class Main {
 		// Deklaracija uloga
 		ArrayList<Model.Role> RolesList = declareAndChooseRoles();
 
-		ArrayList<Player> playersListWithRoles = assignRolesToPlayers(PlayerList ,RolesList);
+//		ArrayList<Player> playersListWithRoles = assignRolesToPlayers(PlayerList ,RolesList);
 
 		while (!winCondition) {
 
 			night++;
 
-			choosingTragets(playersListWithRoles);
+			choosingTragets(playersList, RolesList);
 
-			performActionsAndVisits(playersListWithRoles, RolesList);
+			performActionsAndVisits(playersList, RolesList);
 
-			setDefaultRound(playersListWithRoles);
+			setDefaultRound(playersList);
 			
-			checkWinCondition(playersListWithRoles);
+			checkWinCondition(playersList);
 
 			if(winCondition == false) {
-				dayPhase(playersListWithRoles);
+				dayPhase(playersList);
 			}else {break;}
 			
 			
-			checkWinCondition(playersListWithRoles);
+			checkWinCondition(playersList);
 		}
 
 	}
@@ -513,19 +527,26 @@ public class Main {
 
 	// TODO: kada biraju doctor, bodyguard, veteran, jester i survivor, napisati
 	// koliko imaju action left.
-	private static void choosingTragets(ArrayList<Player> playersList) {
-		for (Player player : playersList) {
-			
+	private static void choosingTragets(ArrayList<Player> playersList, ArrayList<Model.Role> rolesList) {
+		for (int k = 0; k < playersList.size(); k++) {
+			Player player = playersList.get(k);
 			if (night == 1) {
-				System.out.println("Unesite ime za "+ player.role.name + ": ");
-				player.name = takeUserInput();
+				for (int i = 0; i < playersList.size(); i++) {
+					System.out.println((i+1)+": " + playersList.get(i).name);
+					
+				}
+				
+				System.out.println("Choose a player to be "+ rolesList.get(k).name);
+				int chosenPlayer = scanner.nextInt()-1;
+				playersList.get(chosenPlayer).role = rolesList.get(k); 
+				
 			}
-			
-			if (player.isAlive) {
+				
+				
 
 				// Mayor - None
 
-				if (player.role.name == "mayor") {
+				if (player.role != null && player.role.name == "mayor") {
 					
 //					System.out.println("\n-----------------------------\n");
 //					System.out.println(player.name + " " + player.role.name + " does not choose");
@@ -534,7 +555,7 @@ public class Main {
 				}
 
 				// TODO: survivor i jester su slicni kao veteran
-				if (player.role.alignment == "unaligned") {
+				if (player.role != null && player.role.alignment == "unaligned") {
 					if (player.role.actionsLeft > 0) {
 						System.out.println(player.name + " " + player.role.name + " is choosing"
 								+ "\n-----------------------------\n");
@@ -559,7 +580,7 @@ public class Main {
 
 				// TODO: mafija moze da izabere mafiju iako se ne prikazuje
 				// Mafioso, Godfather, Framer, Consort - Mafia choosing
-				if (player.role.alignment == "mafia") {
+				if (player.role != null && player.role.alignment == "mafia") {
 					// Ako je Godfather ziv, mafioso ne bira
 					// TODO: ovde sam stavio: "ako je ziv prvi u listi" bice bug ako bude mesao
 					// listu rolova
@@ -574,11 +595,11 @@ public class Main {
 
 					for (int i = 0; i < numberOfPlayers; i++) {
 						Player pl = playersList.get(i);
-						if (pl.role.alignment == "mafia" || !(pl.isAlive)) {
+						if (!(pl.isAlive)) {
 							continue;
 						}
 
-						System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+						System.out.println(i + 1 + " " + pl.name);
 					}
 
 					System.out.println("\nChoose a number: ");
@@ -601,7 +622,7 @@ public class Main {
 				}
 
 				// Transporter - Chooses anyone (two targets)
-				if (player.role.name == "transporter") {
+				if (player.role != null && player.role.name == "transporter") {
 					System.out.println(player.name + " " + player.role.name + " is choosing"
 							+ "\n-----------------------------\n");
 
@@ -610,7 +631,7 @@ public class Main {
 						Player pl = playersList.get(i);
 
 						if (pl.isAlive) {
-							System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+							System.out.println(i + 1 + " " + pl.name);
 						}
 					}
 
@@ -635,7 +656,7 @@ public class Main {
 							Player pl = playersList.get(i);
 							if (!pl.equals(player.target))
 								if (pl.isAlive) {
-									System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+									System.out.println(i + 1 + " " + pl.name);
 								}
 						}
 
@@ -656,7 +677,7 @@ public class Main {
 				}
 
 				// Veteran - Only self choose
-				if (player.role.name == "veteran") {
+				if (player.role != null && player.role.name == "veteran") {
 
 					if(player.role.actionsLeft > 0) {
 						System.out.println(player.name + " " + player.role.name + " is choosing"
@@ -682,7 +703,7 @@ public class Main {
 				}
 
 				// Doctor, Bodyguard - Can choose everyone
-				if (player.role.getCategory() == "protective") {
+				if (player.role != null && player.role.getCategory() == "protective") {
 
 					System.out.println(player.name + " " + player.role.name + " is choosing"
 							+ "\n-----------------------------\n");
@@ -691,15 +712,15 @@ public class Main {
 						Player pl = playersList.get(i);
 
 						if (pl.isAlive) {
-							if (pl.role.name == "mayor" && mayorRevealed) {
+							if (night != 1 && pl.role.name == "mayor" && mayorRevealed) {
 								continue;
 							}
-							if (pl.role.getCategory() == "protective") {
+							if (night != 1 && pl.role.getCategory() == "protective") {
 								if (!(pl.role.actionsLeft > 0)) {
 									continue;
 								}
 							}
-							System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+							System.out.println(i + 1 + " " + pl.name);
 						}
 					}
 
@@ -726,39 +747,41 @@ public class Main {
 				// TODO: Vigilante moze da izabere sebe a ne bi smeo
 				else {
 
-					System.out.println(player.name + " " + player.role.name + " is choosing"
-							+ "\n-----------------------------\n");
+					if (player.role != null) {
+						System.out.println(player.name + " " + player.role.name + " is choosing"
+								+ "\n-----------------------------\n");
 
-					for (int i = 0; i < numberOfPlayers; i++) {
-						Player pl = playersList.get(i);
+						for (int i = 0; i < numberOfPlayers; i++) {
+							Player pl = playersList.get(i);
 
-						if (player == pl || !(pl.isAlive)) {
-							continue;
+							if (player == pl || !(pl.isAlive)) {
+								continue;
+							}
+							System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
 						}
-						System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+
+						System.out.println("Choose a number: ");
+
+						Scanner scanner = new Scanner(System.in); // Create a Scanner object
+						int target = scanner.nextInt(); // Reads integer input
+						while (target < 0 || target > 8) {
+
+							System.out.println("\nWrong number, choose another number: ");
+							target = scanner.nextInt();
+
+						}
+
+						if (target != 0) {
+							player.target = playersList.get(target - 1);
+						}
+						System.out.println("--------------------------------");
 					}
-
-					System.out.println("Choose a number: ");
-
-					Scanner scanner = new Scanner(System.in); // Create a Scanner object
-					int target = scanner.nextInt(); // Reads integer input
-					while (target < 0 || target > 8) {
-
-						System.out.println("\nWrong number, choose another number: ");
-						target = scanner.nextInt();
-
 					}
-
-					if (target != 0) {
-						player.target = playersList.get(target - 1);
-					}
-					System.out.println("--------------------------------");
-				}
-			}
-			else {
-				System.out.println(player.name +" "+ player.role.name + " is dead, therefore not choosing." );
-				System.out.println("--------------------------------");
-			}
+			
+//			else {
+//				System.out.println(player.name +" "+ player.role.name + " is dead, therefore not choosing." );
+//				System.out.println("--------------------------------");
+//			}
 
 		}
 
