@@ -1,11 +1,14 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Player {
 	public String name;
 	public int number;
 	public Role role;
 	public boolean isAlive = true;
 	public Player target;
+	public ArrayList<Player> targetedBy;
 	
 	public Player(String name, int number, Role role) {
 		this.name = name;

@@ -275,6 +275,8 @@ public class Main {
 			player.role.isFramed = false;
 			player.role.isRoleBlocked = false;
 			player.target = null;
+			player.targetedBy.clear();
+			
 
 			if (player.role.name.equals("godfather")) {
 				player.role.defence = 1;
@@ -581,12 +583,15 @@ public class Main {
 				// TODO: mafija moze da izabere mafiju iako se ne prikazuje
 				// Mafioso, Godfather, Framer, Consort - Mafia choosing
 				if (player.role != null && player.role.alignment == "mafia") {
+					
 					// Ako je Godfather ziv, mafioso ne bira
 					// TODO: ovde sam stavio: "ako je ziv prvi u listi" bice bug ako bude mesao
 					// listu rolova
 					if (player.role.name == "mafioso" && playersList.get(0).isAlive == true) {
 						player.target = playersList.get(0).target;
+						player.target.targetedBy.add(player);
 						playersList.get(0).target = null;
+						player.target.targetedBy.remove(playersList.get(0));
 						continue;
 					}
 
@@ -613,7 +618,9 @@ public class Main {
 					}
 
 					if (target != 0) {
-						player.target = playersList.get(target - 1);
+						Player targetedPlayer = playersList.get(target - 1);
+						player.target = targetedPlayer;
+						targetedPlayer.targetedBy.add(player);
 					}
 
 					System.out.println("--------------------------------");
@@ -647,7 +654,7 @@ public class Main {
 
 					if (target != 0) {
 						player.target = playersList.get(target - 1);
-					}
+						player.target.targetedBy.add(player);					}
 					System.out.println("--------------------------------");
 
 					if (target != 0) {
@@ -671,6 +678,8 @@ public class Main {
 						}
 						if (secondTarget != 0) {
 							transporterSecondTargets.add(playersList.get(secondTarget - 1));
+							playersList.get(target - 1).targetedBy.add(player);
+							
 						}
 					}
 					continue;
