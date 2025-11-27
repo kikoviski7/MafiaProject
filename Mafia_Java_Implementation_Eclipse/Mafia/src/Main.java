@@ -43,16 +43,38 @@ public class Main {
 			System.out.println("0. Exit");
 			System.out.println("1. Enter players names");
 			System.out.println("2. Start a game");
+			
 			String input = scanner.nextLine();
 			if (input.equals("0")) {System.exit(0);} 
 			else if (input.equals("1")) playersList = enterPlayersNames();
 			else if (input.equals("2")) {
-				if (playersList == null) playersList = enterPlayersNames();
+				if (playersList == null) enterPlayersNamesAutomatically();
 				else startGame(playersList);
 			}
+			
 		}	
  		}
 
+	public static void enterPlayersNamesAutomatically(){
+		
+		// Lista igraca:
+		
+
+				for (int i = 1; i <= numberOfPlayers; i++) {
+
+					String playerName = "Player " + i;
+
+					Player player = new Player(playerName, i, null);
+
+					playersList.add(player);
+					
+					
+
+				}
+				startGame(playersList);
+				
+	}
+	
 	// ovde se takodje i prave igraci (promeniti ime funkcije)
 	public static ArrayList<Player> enterPlayersNames() {
 		// Lista igraca:
@@ -487,25 +509,36 @@ public class Main {
 			tracker.role.action(tracker.target, playersList);
 		}
 
-		printPlayers(playersList);
+//		printPlayers(playersList);
 
 	}
 	private static void formPublicInfo(Player killer) {
 		
 		if (killer.role.name == "veteran") {
-			
+			if (killer.target == killer) {
+				for(Player player : killer.targetedBy) {
+					System.out.println(player.name + " je ubijen.");
+					System.out.println("Ubijen je od strane veterana.");
+					System.out.println("----------------------------------");
+				}
+			}
 		}
 		else {
 			
 			if(killer.role.name == "bodyguard") {
 				System.out.println(killer.target.target.name + " je ubijen");
+				System.out.println("----------------------------------");
 			}
 			
 			if (killer.role.alignment == "mafia") {
+				System.out.println(killer.target.name + " je ubijen.");
 				System.out.println("Ubijen je od strane mafije");
+				System.out.println("----------------------------------");
 			}
 			else {
+				System.out.println(killer.target.name + " je ubijen.");
 				System.out.println("Ubijen je od strane "+ killer.role.name);
+				System.out.println("----------------------------------");
 			}
 			
 			System.out.println("--------------------------------------------\n");
@@ -598,14 +631,23 @@ public class Main {
 					System.out.println(player.name + " " + player.role.name + " is choosing"
 							+ "\n-----------------------------\n");
 
-					for (int i = 0; i < numberOfPlayers; i++) {
-						Player pl = playersList.get(i);
-						if (!(pl.isAlive)) {
-							continue;
-						}
-
-						System.out.println(i + 1 + " " + pl.name);
+				
+						for (int i = 0; i < numberOfPlayers; i++) {
+							Player pl = playersList.get(i);
+							if (night != 1) {
+								
+								if (!(pl.isAlive)) {
+									continue;
+								}
+								if (pl.role.alignment == "mafia") {
+									continue;
+								}
+							}
+							System.out.println(i + 1 + " " + pl.name);
 					}
+
+						
+					
 
 					System.out.println("\nChoose a number: ");
 
@@ -678,7 +720,7 @@ public class Main {
 						}
 						if (secondTarget != 0) {
 							transporterSecondTargets.add(playersList.get(secondTarget - 1));
-							playersList.get(target - 1).targetedBy.add(player);
+							playersList.get(secondTarget - 1).targetedBy.add(player);
 							
 						}
 					}
@@ -714,9 +756,11 @@ public class Main {
 				// Doctor, Bodyguard - Can choose everyone
 				if (player.role != null && player.role.getCategory() == "protective") {
 
+					//Isprintuj poruku ko bira
 					System.out.println(player.name + " " + player.role.name + " is choosing"
 							+ "\n-----------------------------\n");
 
+					//Isprintuj sve igrace koji su legalni za biranje
 					for (int i = 0; i < numberOfPlayers; i++) {
 						Player pl = playersList.get(i);
 
@@ -735,6 +779,7 @@ public class Main {
 
 					System.out.println("\nChoose a number: ");
 
+					// Izaberi legalnog igraca
 					Scanner scanner = new Scanner(System.in); // Create a Scanner object
 					int target = scanner.nextInt(); // Reads integer input
 
@@ -747,6 +792,7 @@ public class Main {
 
 					if (target != 0) {
 						player.target = playersList.get(target - 1);
+						player.target.targetedBy.add(player);
 					}
 
 					System.out.println("--------------------------------");
@@ -766,7 +812,7 @@ public class Main {
 							if (player == pl || !(pl.isAlive)) {
 								continue;
 							}
-							System.out.println(i + 1 + " " + pl.name + " " + pl.role.name);
+							System.out.println(i + 1 + " " + pl.name);
 						}
 
 						System.out.println("Choose a number: ");

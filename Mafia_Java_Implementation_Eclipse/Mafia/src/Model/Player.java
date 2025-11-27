@@ -8,7 +8,7 @@ public class Player {
 	public Role role;
 	public boolean isAlive = true;
 	public Player target;
-	public ArrayList<Player> targetedBy;
+	public ArrayList<Player> targetedBy = new ArrayList<Player>();
 	
 	public Player(String name, int number, Role role) {
 		this.name = name;

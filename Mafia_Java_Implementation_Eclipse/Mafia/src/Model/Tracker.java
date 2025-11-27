@@ -29,7 +29,9 @@ public class Tracker extends Role {
 				visit(target, playersList);
 			}
 		}else {
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			System.out.println("Tracker is role-blocked");
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			return false;
 		}
 		return false;
@@ -39,7 +41,9 @@ public class Tracker extends Role {
 	@Override
 	public boolean visit(Player target, ArrayList<Player> playersList) {
 		if(untrackable.contains(target.role.name)) {
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			System.out.println("Your target is untrackable.");
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		}
 		else {
 			if(target.role.isFramed) {
@@ -49,13 +53,19 @@ public class Tracker extends Role {
 				while(randomInt == 0 || playersList.get(randomInt) == target) {
 					randomInt = r.nextInt(playersList.size());
 				}
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 				System.out.println("Your target visited " + playersList.get(randomInt).name + " " + playersList.get(randomInt).role.name);
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			}
 			else if(target.target == null) {
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 				System.out.println("Your target did not visit.");
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			}
 			else {
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 				System.out.println("Your target visited " + target.target.name + " " + target.target.role.name);
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			}
 		}
 		return false;

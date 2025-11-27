@@ -31,10 +31,14 @@ public class Sheriff extends Role {
 	@Override
 	public boolean visit(Player target, ArrayList<Player> PlayersList) {
 		if (target.role.suspiciousToSheriff || target.role.isFramed) {
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			System.out.println("Yo, nigga's bugarin!");
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		}
 		else {
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			System.out.println("Nigga's clean, legit.");
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		}
 		return false;
 		
