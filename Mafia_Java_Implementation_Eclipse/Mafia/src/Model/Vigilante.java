@@ -57,6 +57,10 @@ public class Vigilante extends Role {
 		if(target.role.defence < vigilante.role.attack) {
 			target.isAlive = false;
 			
+			System.out.println(target.name + "je ubijen.\n"
+					+ "Ubijen je od strane vigilante"+
+					"\n------------------------------------------------");
+			
 			
 		}
 		return true;

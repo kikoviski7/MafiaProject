@@ -1,6 +1,6 @@
 package Model;
-
 import java.util.ArrayList;
+
 
 public class Veteran extends Role {
 	Player godfather;
@@ -56,6 +56,9 @@ public class Veteran extends Role {
 			}
 			if(pl.target == veteran) {
 				pl.isAlive = false;
+				System.out.println(pl.name + " je ubijen.\n"
+						+ "Ubijen je od strane veterana"+
+						"\n------------------------------------------------");
 				if(pl == godfather) {
 					mafioso.role.inherits = true;
 				}
@@ -63,6 +66,7 @@ public class Veteran extends Role {
 					mafiaBacking.role.inherits = true;
 				}
 			}
+			
 		}
 		return true;
 		

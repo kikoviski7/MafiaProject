@@ -2,7 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 public class Tracker extends Role {
@@ -54,7 +53,7 @@ public class Tracker extends Role {
 					randomInt = r.nextInt(playersList.size());
 				}
 				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-				System.out.println("Your target visited " + playersList.get(randomInt).name + " " + playersList.get(randomInt).role.name);
+				System.out.println("Your target visited " + playersList.get(randomInt).name);
 				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			}
 			else if(target.target == null) {
@@ -64,7 +63,7 @@ public class Tracker extends Role {
 			}
 			else {
 				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-				System.out.println("Your target visited " + target.target.name + " " + target.target.role.name);
+				System.out.println("Your target visited " + target.target.name);
 				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			}
 		}

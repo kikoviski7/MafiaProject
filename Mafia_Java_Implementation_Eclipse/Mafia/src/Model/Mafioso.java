@@ -46,16 +46,17 @@ public class Mafioso extends Role{
 
 	@Override
 	public boolean visit(Player target, ArrayList<Player> PlayersList) {
+		if(target == mafioso && godfather.isAlive == false) {
+			mafiaBacking.role.inherits = true;
+		}
 		if(mafioso.role.attack > target.role.defence) {
 			target.isAlive = false;
-			
-			
-			
-			if(target == mafioso && godfather.isAlive == false) {
-				mafiaBacking.role.inherits = true;
-			}
+			System.out.println(target.name +" je ubijen.\n"
+					+ "Ubijen je od strane mafije"+
+					"\n------------------------------------------------");
+			return true;
 		}
-		return true;
+		return false;
 		
 	}
 

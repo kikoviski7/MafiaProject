@@ -32,6 +32,10 @@ public class Godfather extends Role {
 	public boolean visit(Player target, ArrayList<Player> PlayersList) {
 		if(godfather.role.attack > godfather.target.role.defence) {
 			target.isAlive = false;
+			
+			System.out.println(target.name +" je ubijen.\n"
+					+ "Ubijen je od strane mafije"+
+					"\n------------------------------------------------");
 		}
 		return true;
 		

@@ -6,11 +6,13 @@ import Model.*;
 
 public class Main {
 	
+	static boolean jesterLynched = true;
+	
 	//region global variables
 	static boolean mayorRevealed = false;
 	
 	
-	static boolean winCondition;
+	static boolean winConditionMet;
 
 	// Number of players
 	final static int numberOfPlayers = 8;
@@ -39,6 +41,7 @@ public class Main {
 		
 		
 		while(true) {
+			setDefaultGame();
 			System.out.println("---------------Menu---------------");
 			System.out.println("0. Exit");
 			System.out.println("1. Enter players names");
@@ -48,12 +51,19 @@ public class Main {
 			if (input.equals("0")) {System.exit(0);} 
 			else if (input.equals("1")) playersList = enterPlayersNames();
 			else if (input.equals("2")) {
-				if (playersList == null) enterPlayersNamesAutomatically();
+				if (playersList == null) {enterPlayersNamesAutomatically();}
 				else startGame(playersList);
 			}
 			
 		}	
  		}
+
+	private static void setDefaultGame() {
+		night = 0;
+		jesterLynched = false;
+//		setDefaultRound(playersList);
+		
+	}
 
 	public static void enterPlayersNamesAutomatically(){
 		
@@ -140,7 +150,7 @@ public class Main {
 
 //		ArrayList<Player> playersListWithRoles = assignRolesToPlayers(PlayerList ,RolesList);
 
-		while (!winCondition) {
+		while (!winConditionMet) {
 
 			night++;
 
@@ -152,12 +162,14 @@ public class Main {
 			
 			checkWinCondition(playersList);
 
-			if(winCondition == false) {
+			if(winConditionMet == false) {
 				dayPhase(playersList);
 			}else {break;}
 			
 			
 			checkWinCondition(playersList);
+			
+			if(winConditionMet) {break;}
 		}
 
 	}
@@ -222,8 +234,7 @@ public class Main {
 				return;
 			}
 			if (playersList.get(target) == jester) {
-				System.out.println("Jester wins!");
-				winCondition = true;
+				jesterLynched = true;
 				return;
 			}
 			playersList.get(target).isAlive = false;
@@ -347,7 +358,7 @@ public class Main {
 				System.out.println("Town wins!");
 
 			}
-			winCondition = true;
+			winConditionMet = true;
 		}
 
 		else if (town.size() == 0) {
@@ -358,11 +369,15 @@ public class Main {
 				System.out.println("Mafia wins!");
 
 			}
-			winCondition = true;
+			winConditionMet = true;
+		}
+		else if(jesterLynched) {
+			System.out.println("Jester wins!");
+			winConditionMet = true;
 		}
 
 		else {
-			winCondition = false;
+			winConditionMet = false;
 		}
 	}
 	// Ako role detektuje da je ubio Godfathera, trazi mafiosu u listi rolova i tom
@@ -435,10 +450,7 @@ public class Main {
 
 		// TODO: red akcija ce biti definisan listom: prvi role u listi ima priotitet?
 		if (veteran != null) {
-			boolean killsSuccessful = veteran.role.action(veteran.target, playersList);
-			if (killsSuccessful) {
-				formPublicInfo(veteran);
-			}
+			veteran.role.action(veteran.target, playersList);
 		}
 
 		if (transporter != null && transporter.isAlive) {
@@ -464,10 +476,7 @@ public class Main {
 		// TODO: svaki napadac treba da proveri da li bodyguard cuva njegov target pre
 		// napada
 		if (bodyguard != null) {
-			boolean killSuccessful = bodyguard.role.action(bodyguard.target, playersList);
-			if (killSuccessful) {
-				formPublicInfo(bodyguard);
-			}
+			bodyguard.role.action(bodyguard.target, playersList);
 		}
 
 		// TODO: framer kao role je useless kada nema sheriffa. razmisliti kako uticati
@@ -488,10 +497,7 @@ public class Main {
 		}
 
 		if (mafioso != null) {
-			boolean killSuccessful = mafioso.role.action(mafioso.target, playersList);
-			if (killSuccessful) {
-				formPublicInfo(mafioso);
-			}
+			mafioso.role.action(mafioso.target, playersList);
 		}
 
 		if (godfather != null) {
@@ -526,7 +532,8 @@ public class Main {
 		else {
 			
 			if(killer.role.name == "bodyguard") {
-				System.out.println(killer.target.target.name + " je ubijen");
+				System.out.println(killer.target.targetedBy.get(0).name + " je ubijen");
+				System.out.println("Ubijen je od strane " + killer.role.name);
 				System.out.println("----------------------------------");
 			}
 			
@@ -535,13 +542,9 @@ public class Main {
 				System.out.println("Ubijen je od strane mafije");
 				System.out.println("----------------------------------");
 			}
-			else {
-				System.out.println(killer.target.name + " je ubijen.");
-				System.out.println("Ubijen je od strane "+ killer.role.name);
-				System.out.println("----------------------------------");
-			}
 			
-			System.out.println("--------------------------------------------\n");
+			
+//			System.out.println("--------------------------------------------\n");
 		}
 		
 		
@@ -573,7 +576,7 @@ public class Main {
 				
 				System.out.println("Choose a player to be "+ rolesList.get(k).name);
 				int chosenPlayer = scanner.nextInt()-1;
-				playersList.get(chosenPlayer).role = rolesList.get(k); 
+				playersList.get(chosenPlayer).role = rolesList.get(k);
 				
 			}
 				
@@ -621,6 +624,7 @@ public class Main {
 					// TODO: ovde sam stavio: "ako je ziv prvi u listi" bice bug ako bude mesao
 					// listu rolova
 					if (player.role.name == "mafioso" && playersList.get(0).isAlive == true) {
+						if(playersList.get(0).target == null) {continue;}
 						player.target = playersList.get(0).target;
 						player.target.targetedBy.add(player);
 						playersList.get(0).target = null;
@@ -869,51 +873,51 @@ public class Main {
 		
 		
 
-		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
+//		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
 		//u slucaju da hocu da testiram neku kombinaciju
 //		RolesList.add(new Consort());
-//		RolesList.add(new Framer());
+		RolesList.add(new Framer());
 		
 		
-		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
+//		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
 		
 		//u slucaju da hocu da testiram neku kombinaciju
 //		RolesList.add(new Doctor());
-//		RolesList.add(new Bodyguard());
+		RolesList.add(new Bodyguard());
 		
 		
 
-		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
+//		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
 
 		//u slucaju da hocu da testiram neku kombinaciju
-//		RolesList.add(new Veteran());
+		RolesList.add(new Veteran());
 //		RolesList.add(new Vigilante());
 		
 		
 
-		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
+//		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
 		//u slucaju da hocu da testiram neku kombinaciju
-//		RolesList.add(new Transporter());
+		RolesList.add(new Transporter());
 //		RolesList.add(new Mayor());
 		
 		
 
-		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
+//		RolesList.add(randomBoolean() ? new Jester() : new Survivor()); // Unaligned Evil
 
 		//u slucaju da hocu da testiram neku kombinaciju
 //		RolesList.add(new Survivor());
-//		RolesList.add(new Jester());
+		RolesList.add(new Jester());
 		
 		
 
 		// Town investigative bi trebalo poslednji da biraju zato sto oni dobijaju
 		// povratnu informaciju odmah
-		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
+//		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
 
 		//u slucaju da hocu da testiram neku kombinaciju
-//		RolesList.add(new Tracker());
+		RolesList.add(new Tracker());
 //		RolesList.add(new Sheriff());
 
 		return RolesList;

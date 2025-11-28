@@ -136,6 +136,22 @@ public class Bodyguard extends Role {
 					if (bodyguard.role.attack > attacker.role.defence) {
 						bodyguard.isAlive = false;
 						attacker.isAlive = false;
+						
+						System.out.println(attacker.name + " je ubijen.\n"
+								+ "Ubijen je od strane " + bodyguard.role.name+
+								"\n------------------------------------------------");
+						
+						if(attacker.role.alignment == "mafia") {
+							System.out.println(bodyguard.name + " je ubijen.\n"
+									+ "Ubijen je od strane mafije"+
+									"\n------------------------------------------------");
+						}
+						else {
+							System.out.println(bodyguard.name + " je ubijen.\n"
+									+ "Ubijen je od strane " + attacker.role.name+
+									"\n------------------------------------------------");
+						}
+						
 						if (attacker == godfather) {
 							mafioso.role.inherits = true;
 						} else if (attacker == mafioso && godfather.isAlive == false) {
@@ -149,6 +165,22 @@ public class Bodyguard extends Role {
 				Player attacker = attackers.get(randomBoolean() ? 0 : 1);
 				attacker.isAlive = false;
 				bodyguard.isAlive = false;
+				
+				System.out.println(attacker.name + " je ubijen.\n"
+						+ "Ubijen je od strane " + bodyguard.role.name +
+						"\n------------------------------------------------");
+				
+				if(attacker.role.alignment == "mafia") {
+					System.out.println(bodyguard.name + " je ubijen.\n"
+							+ "Ubijen je od strane mafije"+
+							"\n------------------------------------------------");
+				}
+				else {
+					System.out.println(bodyguard.name + " je ubijen.\n"
+							+ "Ubijen je od strane " + attacker.role.name+
+							"\n------------------------------------------------");
+				}
+				 
 				if (attacker == godfather) {
 					mafioso.role.inherits = true;
 				} else if (attacker == mafioso && godfather.isAlive == false) {
