@@ -10,9 +10,9 @@ Tracked 🖲
 Interrogated ⁉
 ---------------------------------------
 
-Mafioso 💀 - Mayor 
+Mafioso 💀 - Mayor 🛡
 Consort - Sheriff 😍
-Bodyguard 💀 - Mayor 
+Bodyguard 💀 - Mayor 🛡
 Vigilante - Jester 🛡
 Sheriff 😍 - Mafioso 💀
 Jester 🛡 - Jester 🛡
@@ -57,6 +57,10 @@ Veteran 🔁 - None
 Tracker - Transporter 🖼🖲
 Transporter 🖼🖲 - Veteran 🔁, Framer 🔁
 Survivor - None
+
+__________________________________________________________
+ako framer framuje transportera, trackeru ce izaci da je nekog posetio?
+__________________________________________________________
 
 
 Information center:
