@@ -883,8 +883,8 @@ public class Main {
 //		RolesList.add(randomBoolean() ? new Consort() : new Framer()); // Mafia backing
 
 		//u slucaju da hocu da testiram neku kombinaciju
-//		RolesList.add(new Consort());
-		RolesList.add(new Framer());
+		RolesList.add(new Consort());
+//		RolesList.add(new Framer());
 		
 		
 //		RolesList.add(randomBoolean() ? new Bodyguard() : new Doctor()); // Town Protective
@@ -898,16 +898,16 @@ public class Main {
 //		RolesList.add(randomBoolean() ? new Vigilante() : new Veteran()); // Town Aggresive
 
 		//u slucaju da hocu da testiram neku kombinaciju
-		RolesList.add(new Veteran());
-//		RolesList.add(new Vigilante());
+//		RolesList.add(new Veteran());
+		RolesList.add(new Vigilante());
 		
 		
 
 //		RolesList.add(randomBoolean() ? new Mayor() : new Transporter()); // Town Support
 
 		//u slucaju da hocu da testiram neku kombinaciju
-		RolesList.add(new Transporter());
-//		RolesList.add(new Mayor());
+//		RolesList.add(new Transporter());
+		RolesList.add(new Mayor());
 		
 		
 
@@ -924,8 +924,8 @@ public class Main {
 //		RolesList.add(randomBoolean() ? new Sheriff() : new Tracker()); // Town Investigative
 
 		//u slucaju da hocu da testiram neku kombinaciju
-		RolesList.add(new Tracker());
-//		RolesList.add(new Sheriff());
+//		RolesList.add(new Tracker());
+		RolesList.add(new Sheriff());
 
 		return RolesList;
 	}
